@@ -1,0 +1,2416 @@
+%% bare_jrnl.tex
+%% V1.4a
+%% 2014/09/17
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8a or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_conf_compsoc.tex,
+%%                    bare_jrnl_compsoc.tex, bare_jrnl_transmag.tex
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices and paper sizes can       ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[journal]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabularray}
+\usepackage{adjustbox}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{subcaption}
+
+
+%New colors defined below
+\definecolor{dotgreen}{RGB}{0,176,80}
+\definecolor{dotsky}{RGB}{0,176,240}
+\definecolor{dotred}{RGB}{192,0,0}
+
+% Bibliography settings
+\usepackage[style=ieee]{biblatex}
+\addbibresource{references.bib}
+
+% Linea de referencias de pie de página
+\renewcommand{\footnoterule}
+ {\noindent\smash{\rule[3pt]{0.5\textwidth}{0.4pt}}}
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/tex-archive/info/epslatex/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Do not use the stfloats baselinefloat ability as IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/dblfloatfix/
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/endfloat/
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/url/
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Data augmentation techniques applied to the classification of multi-station seismic-volcanic signals}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{Franz Yupanqui Machaca\textsuperscript{a,b,c}, John~Doe\textsuperscript{a}, and
+  Jane~Doe\textsuperscript{c}\\
+  \vspace{1mm}
+  \begin{flushleft}
+  \small\textsuperscript{a}Programa de Doctorado en Ingeniería Sustentable, Universidad Católica del Norte, Avenida Angamos 0610, 1270709 Antofagasta, Chile\\
+  \textsuperscript{b}Millennium Institute on Volcanic Risk Research – Ckelar Volcanoes, Avenida Angamos 0610, 1270709 Antofagasta, Chile\\
+  \textsuperscript{c}4D Perceptio, Bolivia\\
+  \textsuperscript{d}Department of Another Thing, University of State and City, City, ST
+  \end{flushleft}
+  \thanks{F. Yupanqui Machaca, \color{blue}\href{mailto:frayup@gmail.com}{frayup@gmail.com} }
+  \thanks{J. Doe \color{blue}\href{mailto:frayup@gmail.com}{frayup@gmail.com} }
+  \thanks{J. Doe \color{blue}\href{mailto:frayup@gmail.com}{frayup@gmail.com} }
+  \thanks{Manuscript received April 19, 2005; revised September 17, 2025.}
+}
+
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~13, No.~9, September~2025}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2014 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\begin{abstract}
+The abstract goes here.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+Deep Learning, Transfer Learning, Data Augmentation, seismic.
+\end{IEEEkeywords}
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps.
+% 
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+% 
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+% 
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+%\IEEEPARstart{T}{his} demo file is intended to serve as a ``starter file''
+% for IEEE journal papers produced under \LaTeX\ using IEEEtran.cls version 1.8a and later.
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+%I wish you the best of success.
+%\hfill mds
+%\hfill September 17, 2025
+
+\subsection{The problem of recognition}
+The seismic-volcanic signatures are dangerous events that happen unexpectedly, although these present some signals before they happen. In the world, these events are registered continuously by means of seismometers. Afterward, expert geophysicists take these data and classify these signals, task 
+The seismic-volcanic activity has been studied for many years. Nowadays, this type of activity is registered by sensors that record signals in three dimensions. The seismic-volcanic pattern recognition process in Chile is typically done manually, although there are state-of-the-art studies that it makes automatically form \cite{salazar2022multi,salazar2020deep,malfante2018automatic,bicego2012classification,curilem2016pattern, lara2020automatic}. These studies regularly consider one channel of three available, one station, and one volcano.
+In this context, applying Machine Learning (ML) and Deep Learning (DL) techniques to the automatic classification of volcanic seismic events has become an interesting approach compared to traditional methods.
+
+\subsection{A summary of methods used in classificaction of volcanic seismic events}
+In the analysis and treatment of seismic-volcanic time signals, transformations are regularly considered that allow us to represent the observations in the domains of: time, frequency and cepstral\cite{malfante2018automatic,lara2020automatic}, which consider statistical measures, information theory, among others. Among the methods used for the analysis of this type of signals we have the Hidden Markov model (HMM)\cite{bicego2012classification,beyreuther2012constructing, carniel2014characterization} with its improvements such as the Hidden Semi-Markov Models (HSMM), the Continuous Wavelet Transform (CWT)\cite{beyreuther2012constructing} in the detection of singularities, Gaussian Mixture Model (GMM)\cite{langer2009synopsis}, and others (HMM-based generative embedding)\cite{bicego2012classification}.
+Currently, there are several works that propose the automatic classification of seismic-volcanic signals that consider supervised Machine Learning (ML) methods such as Support Vector Machines (SVM)\cite{malfante2018automatic,curilem2016pattern,giacco2009support,langer2009synopsis,lara2020automatic,curilem2018improving,malfante2018machine}; Multilayer Perceptron(MLP)\cite{giacco2009support,langer2009synopsis,lara2020automatic}; Random Forest\cite{malfante2018automatic,lara2020automatic,titos2019classification}; Linear Discriminant Analysis\cite{lara2020automatic}; Convolutional Neural Networks (CNN)\cite{titos2019classification,salazar2020deep,curilem2018using}; Temporal Convolutional Neural Network(TCN)\cite{titos2019classification,rodriguez2021bayesian}; Bayesian Neural Networks\cite{bueno2019volcano}; Tensor Learning Framework with Multilinear Principal Component Analysis(MPCA) and Support Tensor Machine(STM)\cite{peixoto2021tensor} techniques on multichannel and multistation data; Scalable Variational Inference for Gaussian Process (SVGP) and Deep Gaussian Processes (DGP)\cite{lopez2020acontribution}; Bag of Words in seismic document classification as a set of seismic words\cite{bicego2015volcano}.
+With unsupervised methods we have Kohonen Self-Organizing Map (SOM)\cite{langer2009synopsis,esposito2008unsupervised}, Cluster Analysis(CA)\cite{langer2009synopsis}, Balanced iterative reducing and clustering using hierarchies(BIRCH)\cite{duque2020exploring}.
+Transfer Learning (TL) was applied in the classification of volcanic seismic events using CNN\cite{mythesismaster,titos2019classification}.
+Deep Learning (DL) has been applied to seismic-volcanic signal classification, experimenting with different CNN\cite{mythesismaster} and RNN architectures\cite{salazar2020deep,ferreira2023deep,canario2020indepth}, and through Deep Gaussian Processes (DGP)\cite{lopez2020acontribution}.
+Recurrent Neural Networks (RNNs) provide real-time tracking capabilities of volcanic activity, even if the seismic sources change over time. It has been applied to seismic-volcanic signal classification, testing several architectures\cite{salazar2020deep}. In detection and classification, the following RNN architectures have been applied: vanilla-RNN, Long Short-Term Memory (LSTM), and Gated-Recurrent Unit (GRU)\cite{titos2018detection}; in \cite{rodriguez2021bayesian} vanilla-RNN and LSTM, in addition to identifying the degree of specialization of the neurons.
+Autoencoder (AE) is an excellent unsupervised learning algorithm. AE is considered a nonlinear compression structure to reduce the signal size, dimensionality reduction, towards another latent dimension. In \cite{mythesismaster} various AE architectures generated reconstructed and encoded seismic events, which were classified using different DL and TL model architectures. In \cite{rodriguez2021bayesian} AE is applied to obtain the segmentation mask of the seismic event.
+Data Augmentation (DA), which basically deals with the generation of new data from existing data, following some rules and restrictions so that they are considered equally valid as the originals. Amplitude deformation, frequency deformation, noise addition, and horizontal shift were applied to seismic signals \cite{curilem2018using}. In \cite{salazar2022multi} the importance of DA to avoid biased models in the classification of seismic-volcanic events was shown.
+In reference to volcanic seismic data, most works consider a single station channel for the classification of volcanic seismic events, but there are already some works that consider several channels and stations \cite{lara2020automatic,curilem2016pattern,maggi2017implementation,ferreira2023deep}. In addition, it is shown that the multi-station scheme is more precise than the single station \cite{titos2019classification,ferreira2023deep}.
+
+
+\section{Methodology}
+Currently, Machine Learning is already used for the Recognition of seismic-volcanic signal patterns.
+In fact, our previous researches developed\cite{mythesismaster,salazar2022multi} models that have implemented a new methodology for classifying these types of seismic signals by Deep Learning, Transfer Learning, and spectrograms. The rotation technique was used as a data augmentation technique for avoiding imbalanced data.
+The current research on recognizing seismic-volcanic signal patterns will consider data from the three Chilean volcanos. The Millennium Institute on Volcanic Risk Research – Ckelar Volcanoes\footnote{\href{https://ckelar.org}{\color{blue}https://ckelar.org}} monitors many of these volcanos by seismic stations provided with triaxial sensors.
+
+\subsection{Lascar volcano}
+The Lascar volcano is located in the north of Chile (23\textdegree22' S, 67 \textdegree44' W; 5592 m a.s.l.), 270 km NE from Antofagasta and 70 km SE from San Pedro de Atacama. The Millennium Institute for Volcanic Risk Research (CKELAR) has been monitoring the area using a network of 11 three-component seismic stations. Short-period 2 Hz seismometers have been continuously monitoring at 200 Hz. The database of signals was built using only the Z channel.
+\begin{figure*}
+  \begin{subfigure}{0.28\textwidth}
+    \includegraphics[width=\linewidth]{img/lascar_ubicacion.jpg}
+    \caption{} \label{fig:lascar_location}
+  \end{subfigure}%
+  \hspace*{\fill}   % maximize separation between the subfigures
+  \begin{subfigure}{0.72\textwidth}
+    \includegraphics[width=\linewidth]{img/lascar_estaciones.png}
+    \caption{} \label{fig:lascar:estations}
+  \end{subfigure}% 
+\caption{a) Location map of the Láscar volcano. b) Red dots indicate the position of seismic stations.} 
+\label{fig:lascar_map}
+\end{figure*}
+
+
+\subsection{Lascar's database}
+The Lascar database contains 6145 seismic events classified for geophysicist experts belonging to Ckelar. The data corresponds period between Mach to October 2018. In the next table, we show the data distribution.
+\begin{table*}
+\caption{Contribution of events from each station to the Lascar database.} % title of Table
+\centering
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{lrrrrrrrrrrr}
+\hline\hline %inserts double horizontal lines
+Event\textbackslash{}Station & LC01 & LC02 & LC03 & LC04 & LC05 & LC06 & LC07 & LC08 & LC09 & LC10 & B2DA \\
+\hline % inserts single horizontal line
+HY & 0 & 0 & 0 & 7 & 45 & 4 & 0 & 3 & 12 & 136 & 6 \\
+LP & 11 & 0 & 4 & 2 & 142 & 28 & 5 & 60 & 23 & 195 & 107 \\
+TC & 9 & 0 & 11 & 97 & 284 & 36 & 157 & 127 & 144 & 1,171 & 162 \\
+TR & 1 & 0 & 5 & 29 & 21 & 4 & 61 & 13 & 35 & 292 & 10 \\
+VT & 2 & 0 & 18 & 52 & 84 & 6 & 206 & 14 & 41 & 2,249 & 14 \\
+TOTAL & 23 & 0 & 38 & 187 & 576 & 78 & 429 & 217 & 255 & 4,043 & 299 \\
+\hline %inserts single line
+\end{tabular}
+\end{adjustbox}
+\end{table*}
+
+\begin{table*}
+\caption{Statistics of the events belonging to the Láscar volcano.} % title of Table
+\centering
+\begin{tabular}{lrrrrrrrrrrr}
+\hline\hline %inserts double horizontal lines
+  Events & Quantity (\%) & Quantity & Maximum (s) & Minimum (s) & Mean (s) & Median (s) & Mode (s) & Standard Deviation (s)  \\
+\hline % inserts single horizontal line
+HY & 3\% & 213 & 265 & 10 & 57.2 & 59 & 40 & 35.3 \\
+LP & 9\% & 577 & 600 & 9 & 82.3 & 67 & 25 & 63.5 \\
+TC & 36\% & 2,198 & 670 & 9 & 78.5 & 65 & 20 & 56.2 \\
+TR & 8\% & 471 & 216 & 9 & 46.2 & 31 & 20 & 33.8 \\
+VT & 44\% & 2,686 & 189 & 5 & 19.6 & 17 & 10 & 12.3 \\
+TOTAL & 100\% & 6,145 & 670 & 5 & 49.9 & 28.0 & 20 & 50.0 \\
+\hline %inserts single line
+\end{tabular}
+\end{table*}
+
+
+\section{Methods}
+We proposed a solution based on transfer learning because this helps to speed up training and improve the performance of the deep learning models \cite{titos2019classification,bueno2019volcano}, in addition to having few examples to generate the model again. For the TL, the pre -trained AlexNet\cite{krizhevsky2012imagenet} model was considered.
+The input data are generated spectrograms of the data labeled (waveforms) of each seismic event class. The processing sequence consists of five steps:
+\begin{enumerate}
+ \item describe the pre-process that applies to the time series (earthquake); 
+ \item detail the generation of spectrograms from the earthquakes labeled; 
+ \item use the data augmentation technique to increase the amount of data in training and test data sets; 
+ \item the construction of the prediction model; and, finally, 
+ \item estimate the performance of the model.
+\end{enumerate}
+The next paragraphs, each step is explained.
+\begin{enumerate}
+	\item Pre-processing: The seismometers register data at 200Hz, 500Hz or 100Hz. We resampled at 100Hz each event. Centered the data at mean. Apply the Butterworth-Highpass filter at 1Hz. Then we apply Butterworth-Bandpass filter at frequency between 1Hz to 10Hz. Next step is normalizing the data. This pre-processing task is realized by Obspy python toolbox \cite{beyreuther2010obspy}.
+	\item The spectrograms were calculated applying a short-time Fourier transform with formula
+$$
+S[x(t)](n,k)=\left|\sum_{m=0}^{N-1}x(m)\cdot w(m-n)\cdot e^{i2\pi mk}\right|^2$$
+Where x(t) and y(t) represent the seismic signal and short-time Fourier transform sliding window. The sliding window size was set to 1 with a 95% overlap. The spectrograms generated are images RGB of 224x224 pixels.
+	\item Data augmentation techniques are considered to avoid unbalanced dataset, and for that reason to avoid biased models. Many data augmentation techniques were implemented, and these will be presented in the next section.
+	\item The pre-trained model AlexNet\cite{krizhevsky2012imagenet} was considered for the being retrained over spectrograms, using the scheme of transfer learning.
+	\item The model performance is evaluated for metrics described in the next sections. The metrics is implemented on the TorchMetrics python toolbox\footnote{\href{https://lightning.ai/docs/torchmetrics/stable}{\color{blue}https://lightning.ai/docs/torchmetrics/stable}}.
+\end{enumerate}
+Codes for reproducing our method are available at.\footnote{\href{https://github.com/franznet/daseismicsignals}{\color{blue}https://github.com/franznet/daseismicsignals}}
+
+\subsection{Data Similarity}
+Kullback–Leibler divergence (KL divergence) has been used to measure similarities between synthetic and real datasets, and is defined as
+$$D_{KL}(P||Q)=\sum_{i}P(x_i )\cdot log\left(\frac{P(x_i)}{Q(x_i)}\right)$$
+where $P$ and $Q$ are the probability distributions whose distance is calculated over the samples $x_i$  of the distribution\cite{iglesias2023data}. Kullback–Leibler divergence (KL divergence) is not a symmetric distance, so it can be symmetrized to give rise to the so-called Jensen–Shannon divergence (JSD), defined as
+$$JSD(P||Q)=D_{KL} (P||(P+Q)/2) +D_{KL}(Q||(P+Q)/2)$$
+A measurement to quantify the distance between the time series distribution. It is based on calculating the Wasserstein distance between time series data. The metric is defined by measuring the Wasserstein distance of the energy between frequencies. The probability distributions have a Wasserstein–Fourier distance which is calculated as follows\cite{iglesias2023data}:
+$$WF([x],[y])=W_2 (s_x,s_y)$$
+where $s_x$ and $s_y$ are the normalised power spectral densities of the distributions.
+
+
+
+\subsection{Data Augmentation}
+\subsubsection{Rotation}
+This transformation considers the rotation of the spectrogram around the time axis, within a given percentage range of signal length and at a given axis position. The axis position can be at the beginning, middle, or end of the spectrogram.
+When applying this technique, the combination of the percentage rotation value, the location of the rotation axis, and the spectrogram of the event to which it will be applied is obtained. When generating new instances, care is taken to ensure that these three values are not repeated, thus ensuring unique instances in the dataset.
+\begin{figure*}
+\centering
+{\includegraphics[width=0.6\textwidth,keepaspectratio]{img/da_rotacion.png}}
+\caption{Transformation by rotations, the time stretching (a) is produced when we apply the angle of rotation (b); The possible rotation axes are located at the beginning (c), center (d), and end (e) of the spectrogram, respectively. Application examples include: (f) original spectrogram, (g) 19\% rotation around the central axis, (h) 23\% rotation around the initial axis, and (i) 24\% rotation around the final axis.}
+\label{fig:da_rotation}
+\end{figure*}
+
+
+\subsubsection{Jittering}
+Jittering is a technique for data augmentation that is utilized in time series analysis\cite{iwana2021empirical,iglesias2023data}. One of the simplest yet most effective transformation-based methods is how it is described. Jittering involves adding noise to a time series. 
+Mathematically, an original time series $x={x_1,...,x_t,...,x_T}$ is transformed into $x'={x_1+\epsilon_1,...,x_t+\epsilon_t,...,x_T+\epsilon_T}$ by adding noise at each time step $t$, where $\epsilon$ is typically Gaussian noise, distributed according to $N(\theta,\sigma^2)$. The standard deviation $\sigma$ of the added noise is a hyperparameter that must be predetermined\cite{iwana2021empirical}.
+Jittering assumes that the time series patterns of a particular dataset are typically noisy. Sensor, audio, or electroencephalogram (EEG) data could all be included in this statement. Jittering was used with wearable sensor data for Parkinson's disease monitoring.
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/da_jittering.png}}
+\caption{Generating new signal with Jittering. (a) Gaussian noise with $N(\mu=0,\sigma=0.2)$ distribution. (b) Original (blue) and generated (red) signal. (c) Spectrogram of the original signal, and (d) of the generated signal with jittering.}
+\label{fig:da_jittering}
+\end{figure*}
+
+
+\subsubsection{Drifting}
+One issue with both online and offline settings is the drift, which is the change in the data distribution over time. Random walk is used to simulate data drift. In mathematics, a random walk is classified as a stochastic or random process that depicts a path that comprises a succession of random steps in a mathematical space, such as integers or real. The integer number line $\mathrm{Z}$ is a basic example of a random walk, which begins at $\theta$, moves 1, or moves -1 with equal probability at each step. A random move of $+a$ or $–a$ with equal probability can be observed on any vector space, such as the real space. The real number $a\epsilon\mathrm{R}$ is the magnitude of the random walk[52].
+Let's say d defines a path starting at position $d_1=\phi(\tau)$. A random walk is modeled by the following expression:
+$$d_t=d_{t-1}+\phi(\tau)$$
+where $\phi$ is the random variable that describes the probability law for taking the next step and $\tau$ is the time interval between subsequent steps. Finally, an original time series $x={x_1,...,x_t,...,x_T}$ is transformed into $x\prime={x_1+d_1,...,x_t+d_t,...,x_T+d_T}$.
+Drifting can be used to create more robust training data sets and make the model less sensitive or more resistant to drift when it occurs in real data.
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/da_drifting.png}}
+\caption{Generating new signal with Drifting. (a) Drifting signal with $\tau=0.2$. (b) Original (blue) and generated (red) signal. (c) Spectrogram of the original signal, and (d) of the generated signal with drifting.}
+\label{fig:da_drifting}
+\end{figure*}
+
+\subsubsection{Genetic Algorithms}
+Genetic Algorithms (GA) are described as a class within Evolutionary Algorithms (EA), inspired by the process of evolution by natural selection. Their main goal is to generate high quality solutions to problems, based on bio-inspired operators such as selection, crossover and mutation[53]. In [54], genetic algorithms have been applied in data augmentation on time series of centers of pressure for the detection of neuropathies.
+Inspired by GA operators, a seismogram data augmentation technique was developed, which works as follows:
+\begin{itemize}
+ \item Selection: Involves selecting real seismograms of the same class, without repeating, to use as parents.
+ \item Crossover: Combines genetic information from two or more parent seismograms to produce a new one. It involves exchanging time series segments between the parents' chromosomes.
+ \item Mutation: Introducing small changes in a small proportion of the population. Here, a smoothing operation is applied to the scales of the exchanged segments.
+ \item Validation: For validation, KL and JS divergences are applied to measure similarity between datasets. Values closer to zero for the KL and JS divergences indicate greater similarity in the frequency-domain power distribution between the two seismic signals.
+\end{itemize}
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/da_ag1.png}}
+\caption{Generating new signal with Genetic Algorithm without time fitting. (a) and (b) are parent signals, red color indicates crossing segments. (c) Generated signal with Genetic Algorithm. (d) and (e) are spectrogram of parent signals. (f) Spectrogram of the generated signal with Genetic Algorithm.}
+\label{fig:da_ga1}
+\end{figure*}
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/da_ag2.png}}
+\caption{Generating new signal with Genetic Algorithm with time fitting. (a) and (b) are parent signals, red color indicates crossing segments. (c) Generated signal with Genetic Algorithm. (d) and (e) are spectrogram of parent signals. (f) Spectrogram of the generated signal with Genetic Algorithm.}
+\label{fig:da_ga2}
+\end{figure*}
+
+\subsubsection{SpecAugment}
+SpecAugment is a data augmentation technique designed for Automatic Speech Recognition (ASR).  Its purpose is to help the network learn useful features that are robust to certain time warping, partial loss of frequency information and partial loss of small signal segments.  It is a simple and computationally inexpensive method, since it acts directly on the log-mel spectrogram as if it were an image, which can be applied online during training[55].
+SpecAugment policies consist of frequency masking, time masking and time warping[56][57]. 
+We apply SpecAugment on spectrograms considering frequency and time masking policies, as well as temporal warping.
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/da_specaugment.png}}
+\caption{Generating new signal with SpecAugment. (a) Original spectrogram. Spectrogram with two time-frequency distortions. The distortions are shown in red (b), and with white noise in (c).}
+\label{fig:da_specaugment}
+\end{figure*}
+
+
+\subsubsection{Interpolation AEs}
+Autoencoders can interpolate in certain situations by decoding the convex combination of the latent codes of two data points and producing an output that semantically blends the features of the data points[58].
+First, an input $x\epsilon\mathrm{R}^{d_x}$ is passed through an "encoder" $z=f_\theta(x)$ parametrized by $\theta$ to obtain a latent code $z\epsilon\mathrm{R}^{d_z}$. The latent code is then passed through a "decoder" $\hat{x}=g_\phi(z)$ parametrized by $\phi$ to produce an approximate reconstruction $\hat{x}\epsilon\mathrm{R}^{d_x}$ of the input $x$. We consider the case where $f_\theta$ and $g_\phi$ are implemented as multi-layer neural networks. The encoder and decoder are trained simultaneously (i.e. with respect to $\theta$ and $\phi$) to minimize some notion of distance between the input $x$ and the output $\hat{x}$, for example the squared $L_2$ distance $\left\|x-\hat{x}\right\|^2$.
+Interpolating using an autoencoder describes the process of using the decoder $g_\phi$ to decode a mixture of two latent codes. Typically, the latent codes are combined via a convex combination, so that interpolation amounts to computing $x_\alpha=g_\phi(\alpha z_1+(1-\alpha) z_2)$ for some $\alpha\epsilon[0,1]$ where $z_1=f_\theta(x_1)$ and $z_2=f_\theta(x_2)$ are the latent codes corresponding to data points $x_1$ and $x_2$.
+\begin{figure*}
+\centering
+{\includegraphics[width=0.9\textwidth,keepaspectratio]{img/da_interpolacion.png}}
+\caption{Event interpolation (HY) at different intensity levels generates more diversity.}
+\label{fig:da_interpolation}
+\end{figure*}
+
+
+\subsection{Model performance - Metrics}
+Machine Learning metrics allow you to quantify the performance of a machine learning model once it is already trained, in addition to comparing it with generated Machine Learning models and the current situation. Evaluating the Machine Learning algorithm is an essential part of any project. Most of the time we use classification accuracy to measure the performance of our model, however, it is not enough to truly judge the model, which is why different types of evaluation metrics are considered.
+Among the different classification metrics, we can mention:
+\begin{itemize}
+ \item Confusion Matrix: Tabular display of truth labels versus model predictions. It's not exactly a performance metric, but rather a kind of basis on which other metrics evaluate results.
+\begin{table}
+\caption{Confusion matrix.}
+\centering
+\begin{tblr}{
+  cell{1}{1} = {c=2,r=2}{},
+  cell{1}{3} = {c=2}{},
+  cell{3}{1} = {r=2}{},
+}
+\textbf{~} &  & Predicted & \\
+ \hline
+ &  & 
+  Positive~(P)
+   & 
+  Negative~(N)
+  \\
+  \hline
+Actual & 
+  Positive (P)
+   & True positive (TP) & False negative (FN)\\
+ & 
+  Negative (N)
+   & False positive (FP) & True negative (TN)\\
+  \hline
+\end{tblr}
+\end{table}
+Where TP are true positives, TN are true negatives, FP are false positives and FN are false negatives.
+ \item Recall (Sensitivity): Calculates the real quantity that the model is able to identify.
+$$Recall=\frac{TP}{TP+FN}$$
+ \item Precision: Calculates the quality of the model in classification tasks. What cases identified as real are.
+$$Precision=\frac{TP}{TP+FP}$$
+ \item $F_\beta$: Combines precision and recall measures into a single value, making it easier to compare performance between several models. $\beta$ is a real positive factor, which gives more importance to precision than to recall if it is greater than 1. This is a metric widely used in problems in which the data set to be analyzed is unbalanced.
+$$F_\beta=(1+\beta^2)\cdot \frac{precision\cdot recall}{\beta^2 \cdot precision+recall}$$
+ \item Acurracy: Measures the percentage of correct cases. It usually has problems with unbalanced datasets.
+$$Accuracy=\frac{TP+TN}{TP+TN+FP+FN}$$
+ \item Specificity: The number of genuinely negative examples that the model identified divided by the total number of negative examples in the data set.
+$$Specificity=\frac{TN}{TN+FP}$$
+\end{itemize}
+
+
+\subsection{Evaluation metrics for data augmentation}
+Data augmentation techniques have become a widely strategy adopted for improve the generalization capacity of deep neural networks. However, a very important aspect is the concepts of similarity and diversity in the data [36]. The similarity captures the resemblance between the original and augmented data, and the diversity measure the variation in complexity between the original and augmented data.
+
+
+\subsubsection{Fréchet Inception Distance (FID)}
+The Fréchet Inception Distance is a primary metric for evaluating the quality of images generated by Generative Adversarial Networks (GANs)[37]. The main objective of the FID is to quantify the similarity between generated and real images[38]. It is considered an improvement over previous metrics such as the Inception Score (IS), as the FID uses statistics from real world samples for comparison, unlike the IS, which does not[39].
+The key idea behind the FID is to embed real and generated images into a vision-relevant feature space and then calculate a distance between the distributions of these two embeddings. In practice, this feature space is typically the penultimate layer (pool3, with 2048 features) of an Inception-V3 classifier network pre-trained on ImageNet[39].
+$$FID(\mu_r,\Sigma_r,\mu_g,\Sigma_g )=\left\|\mu_r-\mu_g \right\|_2^2+Tr(\Sigma_r+\Sigma_g-2(\Sigma_r \Sigma_g)^{\frac{1}{2}})$$
+where $(\mu_r,\Sigma_r)$ and $(\mu_g,\Sigma_g)$ denote the sample main and covariance of the embeddings of the real and generated data, respectively, and $Tr(\cdot)$ indicates the matrix trace[39].
+The theoretical range of the FID is $[0, \infty)$, since it is a distance measure. Lower FID scores indicate better image quality[42]. Theoretically, an FID of 0 means that the feature distributions of the generated and real images are identical (in terms of mean and covariance according to the Gaussian approximation)[38].
+FID has been found to correlate reasonably well with human judgments of the fidelity of generated images[38].
+
+
+\subsubsection{Kernel Inception Distance (KID)}
+The squared Maximum Mean Discrepancy (MMD) measurement is used by KID to determine the difference between the feature representations of real and generated images. The features are derived from the Inception network. Unlike the Fréchet Inception Distance[38], KID's unbiased estimator increases its reliability, particularly when there are less test images than the dimensions of the inception features. The lower KID signifies that there are more visual similarities between real and generated images[43].
+KID use a polynomial kernel $k(x,y)=(\frac{1}{d}x^T\cdot y+1)^3$ where d is the dimension of the Inception representation vector, and x and y are two feature vectors. The kernel $K(x,y)=k(\phi(x),\phi(y))$ can be used as an MMD for input images, and images can be converted to Inception representations through $\phi$ mapping[44].
+Since it's a distance metric, a KID value of 0 indicates a perfect match between the two feature distributions being compared (the one from the real images and the one from the generated ones). Theoretically, if the distributions are identical, the distance is zero. A key mathematical advantage of the KID is that it has a simple, unbiased estimator, unlike the FID[44].
+
+\subsubsection{Multi-Scale Structural Similarity (MS-SSIM)}
+MS-SSIM is a multi-scale improve version of SSIM that tries to eliminate aspects of an image that are not crucial for human perception[47][48]. The SSIM calculation (the basis of MS-SSIM) compares three principal components: luminance (intensity), contrast, and structure. It uses simple statistical moments such as the mean and standard deviation in local windows to obtain a similarity score.
+$$MS-SSIM(x,y)=\left[l_M (x,y)\right]^{\alpha_M}\cdot \prod_{j=1}^{M}\left[c_j(x,y)\right]^{\beta_j}\cdot \left[s_j (x,y)\right]^{\gamma_j}$$
+Where $l_M (x,y)$ represents the luminance component between images $x$ and $y$, $c_j(x,y)$ denotes the contrast component at scale $j$, and $s_j(x,y)$ reflects the structural similarity in scale $j$. The parameters $\alpha_M$, $\beta_j$, and $\gamma_j$ define the relative importance of the luminance, contrast, and structure components, respectively. Lastly, $M$ signifies the number of scales employed in the MS-SSIM calculation[46].
+The range of MS-SSIM values is between 0 and 1, and images with higher MS-SSIM values are perceived as more similar[45], with 1 indicating perfect similarity. Lower MS-SSIM scores indicate higher diversity[40][42].
+Unlike metrics such as FID (Fréchet Inception Distance) or KID (Kernel Inception Distance), the MS-SSIM does not require a pre-trained Inception network[49]. For this reason, is not recommended to use the IS, KID or FID because they already use weights from the inception network, which are valid for images similar to those in the ImageNet dataset. These metrics cannot be used as over fingerprint datasets because are not part of the ImageNet dataset[49]. 
+FID indicate better image quality. Lower MS-SSIM scores indicate higher diversity[40]. Smaller FID and KID values indicate more realistic images on image translation[41].
+Because our spectrograms dataset is not part of ImageNet dataset, we used the MS-SSIM score.
+
+
+\section{Results}
+We had unbalanced data, with 3\% (HY), 9\% (LP), 36\% (TC), 8\% (TR) and 44\% (VT), see Table 2. We generate new data means, data augmentation techniques such as Rotation, Jittering, Drifting, Scaling, Flipping, Genetic Algorithms, and SpecAugment. We designed a lot of experiments based on each data augmentation method (Table 3). Each new balanced dataset was considered for Transfer Learning with the AlexNet pre-trained model. On the other hand, we trained several models of Deep Learning, ad hoc, with new balanced datasets.
+
+\subsection{Real}
+The original unbalanced dataset of 6,145 events is considered, which was divided into the proportions of 80/20, for training and testing the model, respectively. This experiment will show the influence of an unbalanced dataset on the accuracy of the probabilistic model.
+\subsection{Rotation}
+The original unbalanced dataset of 6,145 events is considered, which is balanced considering rotation as a given technique, so that the number of examples of the underrepresented classes is increased, obtaining a dataset of 1.3430 events. This data set will show us the effectiveness of this technique of increasing data in the construction of the classification model.
+In addition, another balanced dataset of 13,430 purely artificial events were generated, 2,686 examples for each event, for comparison purposes.
+The parameters used for the rotation were in the rotation range of 5\% to 25\%, and with random rotation axis (start, center, end), without repetition.
+\subsection{Jittering}
+The original unbalanced dataset of 6,145 events is considered, and data augmentation is applied to the dataset to balance it by increasing examples from underrepresented classes, resulting in a dataset of 13,430 events.
+The parameters used are Gaussian noise with a distribution of $N(\mu=0,\sigma=0.2)$. A balanced dataset of 13,430 events was also generated entirely from artificial data. 
+\subsection{Drifting}
+The original unbalanced dataset of 6,145 events is considered, to which the data augmentation technique is applied in such a way that the dataset is balanced by increasing examples from underrepresented classes, resulting in a dataset of 13,430 events.
+The parameters used are random values from defined real intervals $[a,b]$. A balanced dataset of 13,430 events was also generated entirely from artificial data.
+\subsection{Genetic Algorithm)}
+Using the data augmentation technique of Genetic Algorithms, a balanced dataset of 13,430 artificial events was generated, 2,686 examples for each event. Different values of the signal proportion parameters of the parent events, as well as the number of crossing segments in the technique, are considered for the generation of the new dataset. This dataset will show the effectiveness of this data augmentation technique in building the model.
+In this type of data augmentation technique, there are two variants:
+\begin{itemize}
+ \item Without time adjustment: It is verified that the parents can be segmented into the number of crossover segments and time; the crossover occurs at the defined times. The parameters used are three crossover segments with a time of 5 seconds each.
+ \item With time adjustment: The number of crossover segments and the signal proportion to be used for the crossover are defined. The segment times are calculated proportionally for both parents.
+\end{itemize}
+\subsection{SpecAugment}
+Using SpecAugment's data augmentation technique, a balanced dataset of 13,430 artificial events was generated, 2,686 examples for each event. This dataset will show the effectiveness of this data augmentation technique in building the model. To generate the new data set, different values of the maximum percentage parameters of each time and frequency mask were considered, in addition to the number of masks for each of them.
+The parameters used are two time and frequency masks, with 10\% of the signal in each mask.
+
+\subsection{Interpolation AEs}
+This technique was used to generate a balanced dataset of 13,430 purely artificial events.
+For this technique, the randomly selected parameter $\alpha\epsilon\left[0.4,0.6\right]$ was used, with a designed ad hoc convolutional autoencoder to reconstruct the interpolated signal, see Figure \ref{fig:cae_interpolation}.
+
+\begin{figure}
+\centering
+{\includegraphics[width=0.5\textwidth,keepaspectratio]{img/cae.png}}
+\caption{Convolutional AutoEncoder of spectrograms.}
+\label{fig:cae_interpolation}
+\end{figure}
+
+
+
+
+\begin{table*}
+\caption{Statistics related to the transfer learning over AlexNet pre-trained model.}
+\centering
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{lllcrrrrr}
+\hline\hline %inserts double horizontal lines
+Dataset & Data type & Data Augmentation & Balanced dataset & Epochs & Total data & Train data & Test data & Training time (min.) \\
+\hline % inserts single horizontal line
+(i) & Real & No & NO & 10 & 6,145 & 4,916 & 1,229 & 4.2 \\
+(ii) & Real + Artificial & Rotation(5\%-25\%) & YES & 20 & 13,430 & 10,744 & 2,686 & 18.7 \\
+(iii) & Artificial & Rotation(5\%-25\%) & YES & 20 & 13,430 & 10,744 & 2,686 & 20.9 \\
+(iv) & Real + artificial & Jittering(0.2) & YES & 20 & 13,430 & 10,744 & 2,686 & 16.8 \\
+(v) & Artificiales & Jittering(0.2) & YES & 20 & 13,430 & 10,744 & 2,686 & 17.2 \\
+(vi) & Real + Artificial & Drifting Drift(0.01-0.1) & YES & 20 & 13,430 & 10,744 & 2,686 & 17.9 \\
+(vii) & Artificial & Drifting
+  Drift(0.01-0.1) & YES & 20 & 13,430 & 10,744 & 2,686 & 20.3 \\
+(viii) & Real + Artificial & Drifting Drift(0.001-0.01) & YES & 20 & 13,430 & 10,744 & 2,686 & 21.7 \\
+(ix) & Artificial & Drifting
+  Drift(0.001-0.01) & YES & 20 & 13,430 & 10,744 & 2,686 & 21.0 \\
+(x) & Real + Artificial & Drifting Drift(0.0001-0.001) & YES & 20 & 13,430 & 10,744 & 2,686 & 18.1 \\
+(xi) & Artificial & Drifting Drift(0.0001-0.001) & YES & 20 & 13,430 & 10,744 & 2,686 & 20.9 \\
+(xii) & Real + Artificial & Genetic Algorithm
+  Segment Size(5s) Crossover Segments(3) & YES & 20 & 13,430 & 10,744 & 2,686 & 16.7 \\
+(xiii) & Artificial & Genetic Algorithm Segment Size(5s) Crossover
+  Segments(3) & YES & 20 & 13,430 & 10,744 & 2,686 & 17.0 \\
+(xiv) & Real + Artificial & Genetic Algorithm
+  Segment Size(5s) Crossover Segments(5) & YES & 20 & 13,430 & 10,744 & 2,686 & 16.6 \\
+(xv) & Artificial & Genetic Algorithm Segment Size(5s) Crossover
+  Segments(5) & YES & 20 & 13,430 & 10,744 & 2,686 & 16.9 \\
+(xvi) & Real + Artificial & Genetic Algorithm
+  Signal Percent(40\%) Crossover Segments(10) & YES & 20 & 13,430 & 10,744 & 2,686 & 16.6 \\
+(xvii) & Artificial & Genetic Algorithm Signal Percent(40\%) Crossover
+  Segments(10) & YES & 20 & 13,430 & 10,744 & 2,686 & 17.3 \\
+(xviii) & Real + Artificial & Genetic Algorithm
+  Signal Percent(45\%) Crossover Segments(10) & YES & 20 & 13,430 & 10,744 & 2,686 & 16.5 \\
+(xix) & Artificial & Genetic Algorithm Signal Percent(45\%) Crossover
+  Segments(10) & YES & 20 & 13,430 & 10,744 & 2,686 & 17.1 \\
+(xx) & Real + Artificial & SpecAugment
+  Frequency Percent(0\%-10\%) Frequency Masks(2) Time Percent(0\%-10\%) Time
+  Marks(2) & YES & 20 & 13,430 & 10,744 & 2,686 & 16.5 \\
+(xxi) & Artificial & SpecAugment Frequency Percent(0\%-10\%) Frequency
+  Masks(2) Time Percent(0\%-10\%) Time Marks(2) & YES & 20 & 13,430 & 10,744 & 2,686 & 17.0 \\
+(xxii) & Real + Artificial & SpecAugment
+  Frequency Percent(0\%-15\%) Frequency Masks(2) Time Percent(0\%-15\%) Time Marks(2) & YES & 20 & 13,430 & 10,744 & 2,686 & 16.6 \\
+(xxiii) & Artificial & SpecAugment Frequency Percent(0\%-15\%) Frequency
+  Masks(2) Time Percent(0\%-15\%) Time Marks(2) & YES & 20 & 13,430 & 10,744 & 2,686 & 16.9 \\
+(xxiv) & Real + Artificial & Interpolation AE Signal percent(40\%-60\%) & YES & 20 & 13,430 & 10,744 & 2,686 & 16.6 \\
+(xxv) & Artificial & Interpolation
+  AE Signal percent(40\%-60\%) & YES & 20 & 13,430 & 10,744 & 2,686 & 17.9 \\
+\hline %inserts single line
+\end{tabular}
+\end{adjustbox}
+\end{table*}
+
+\begin{table*}
+\caption{Performance of transfer learning models trained to 1-20 [Hz].}
+\centering
+\begin{adjustbox}{width=\textwidth}
+\begin{tblr}{
+  cell{1}{1} = {r=2}{},
+  cell{1}{2} = {r=2}{},
+  cell{1}{3} = {r=2}{},
+  cell{1}{4} = {r=2}{},
+  cell{1}{5} = {r=2}{},
+  cell{1}{6} = {r=2}{},
+  cell{1}{7} = {r=2}{},
+  cell{1}{8} = {r=2}{},
+  cell{1}{9} = {c=5}{c},
+  cell{3}{3} = {r},
+  cell{3}{4} = {r},
+  cell{3}{5} = {r},
+  cell{3}{6} = {r},
+  cell{3}{7} = {r},
+  cell{3}{8} = {r},
+  cell{3}{9} = {r},
+  cell{3}{10} = {r},
+  cell{3}{11} = {r},
+  cell{3}{12} = {r},
+  cell{3}{13} = {r},
+  cell{4}{3} = {r},
+  cell{4}{4} = {r},
+  cell{4}{5} = {r},
+  cell{4}{6} = {r},
+  cell{4}{7} = {r},
+  cell{4}{8} = {r},
+  cell{4}{9} = {r},
+  cell{4}{10} = {r},
+  cell{4}{11} = {r},
+  cell{4}{12} = {r},
+  cell{4}{13} = {r},
+  cell{5}{3} = {r},
+  cell{5}{4} = {r},
+  cell{5}{5} = {r},
+  cell{5}{6} = {r},
+  cell{5}{7} = {r},
+  cell{5}{8} = {r},
+  cell{5}{9} = {r},
+  cell{5}{10} = {r},
+  cell{5}{11} = {r},
+  cell{5}{12} = {r},
+  cell{5}{13} = {r},
+  cell{6}{3} = {r},
+  cell{6}{4} = {r},
+  cell{6}{5} = {r},
+  cell{6}{6} = {r},
+  cell{6}{7} = {r},
+  cell{6}{8} = {r},
+  cell{6}{9} = {r},
+  cell{6}{10} = {r},
+  cell{6}{11} = {r},
+  cell{6}{12} = {r},
+  cell{6}{13} = {r},
+  cell{7}{3} = {r},
+  cell{7}{4} = {r},
+  cell{7}{5} = {r},
+  cell{7}{6} = {r},
+  cell{7}{7} = {r},
+  cell{7}{8} = {r},
+  cell{7}{9} = {r},
+  cell{7}{10} = {r},
+  cell{7}{11} = {r},
+  cell{7}{12} = {r},
+  cell{7}{13} = {r},
+  cell{8}{3} = {r},
+  cell{8}{4} = {r},
+  cell{8}{5} = {r},
+  cell{8}{6} = {r},
+  cell{8}{7} = {r},
+  cell{8}{8} = {r},
+  cell{8}{9} = {r},
+  cell{8}{10} = {r},
+  cell{8}{11} = {r},
+  cell{8}{12} = {r},
+  cell{8}{13} = {r},
+  cell{9}{3} = {r},
+  cell{9}{4} = {r},
+  cell{9}{5} = {r},
+  cell{9}{6} = {r},
+  cell{9}{7} = {r},
+  cell{9}{8} = {r},
+  cell{9}{9} = {r},
+  cell{9}{10} = {r},
+  cell{9}{11} = {r},
+  cell{9}{12} = {r},
+  cell{9}{13} = {r},
+  cell{10}{3} = {r},
+  cell{10}{4} = {r},
+  cell{10}{5} = {r},
+  cell{10}{6} = {r},
+  cell{10}{7} = {r},
+  cell{10}{8} = {r},
+  cell{10}{9} = {r},
+  cell{10}{10} = {r},
+  cell{10}{11} = {r},
+  cell{10}{12} = {r},
+  cell{10}{13} = {r},
+  cell{11}{3} = {r},
+  cell{11}{4} = {r},
+  cell{11}{5} = {r},
+  cell{11}{6} = {r},
+  cell{11}{7} = {r},
+  cell{11}{8} = {r},
+  cell{11}{9} = {r},
+  cell{11}{10} = {r},
+  cell{11}{11} = {r},
+  cell{11}{12} = {r},
+  cell{11}{13} = {r},
+  cell{12}{3} = {r},
+  cell{12}{4} = {r},
+  cell{12}{5} = {r},
+  cell{12}{6} = {r},
+  cell{12}{7} = {r},
+  cell{12}{8} = {r},
+  cell{12}{9} = {r},
+  cell{12}{10} = {r},
+  cell{12}{11} = {r},
+  cell{12}{12} = {r},
+  cell{12}{13} = {r},
+  cell{13}{3} = {r},
+  cell{13}{4} = {r},
+  cell{13}{5} = {r},
+  cell{13}{6} = {r},
+  cell{13}{7} = {r},
+  cell{13}{8} = {r},
+  cell{13}{9} = {r},
+  cell{13}{10} = {r},
+  cell{13}{11} = {r},
+  cell{13}{12} = {r},
+  cell{13}{13} = {r},
+  cell{14}{3} = {r},
+  cell{14}{4} = {r},
+  cell{14}{5} = {r},
+  cell{14}{6} = {r},
+  cell{14}{7} = {r},
+  cell{14}{8} = {r},
+  cell{14}{9} = {r},
+  cell{14}{10} = {r},
+  cell{14}{11} = {r},
+  cell{14}{12} = {r},
+  cell{14}{13} = {r},
+  cell{15}{3} = {r},
+  cell{15}{4} = {r},
+  cell{15}{5} = {r},
+  cell{15}{6} = {r},
+  cell{15}{7} = {r},
+  cell{15}{8} = {r},
+  cell{15}{9} = {r},
+  cell{15}{10} = {r},
+  cell{15}{11} = {r},
+  cell{15}{12} = {r},
+  cell{15}{13} = {r},
+  cell{16}{3} = {r},
+  cell{16}{4} = {r},
+  cell{16}{5} = {r},
+  cell{16}{6} = {r},
+  cell{16}{7} = {r},
+  cell{16}{8} = {r},
+  cell{16}{9} = {r},
+  cell{16}{10} = {r},
+  cell{16}{11} = {r},
+  cell{16}{12} = {r},
+  cell{16}{13} = {r},
+  cell{17}{3} = {r},
+  cell{17}{4} = {r},
+  cell{17}{5} = {r},
+  cell{17}{6} = {r},
+  cell{17}{7} = {r},
+  cell{17}{8} = {r},
+  cell{17}{9} = {r},
+  cell{17}{10} = {r},
+  cell{17}{11} = {r},
+  cell{17}{12} = {r},
+  cell{17}{13} = {r},
+  cell{18}{3} = {r},
+  cell{18}{4} = {r},
+  cell{18}{5} = {r},
+  cell{18}{6} = {r},
+  cell{18}{7} = {r},
+  cell{18}{8} = {r},
+  cell{18}{9} = {r},
+  cell{18}{10} = {r},
+  cell{18}{11} = {r},
+  cell{18}{12} = {r},
+  cell{18}{13} = {r},
+  cell{19}{3} = {r},
+  cell{19}{4} = {r},
+  cell{19}{5} = {r},
+  cell{19}{6} = {r},
+  cell{19}{7} = {r},
+  cell{19}{8} = {r},
+  cell{19}{9} = {r},
+  cell{19}{10} = {r},
+  cell{19}{11} = {r},
+  cell{19}{12} = {r},
+  cell{19}{13} = {r},
+  cell{20}{3} = {r},
+  cell{20}{4} = {r},
+  cell{20}{5} = {r},
+  cell{20}{6} = {r},
+  cell{20}{7} = {r},
+  cell{20}{8} = {r},
+  cell{20}{9} = {r},
+  cell{20}{10} = {r},
+  cell{20}{11} = {r},
+  cell{20}{12} = {r},
+  cell{20}{13} = {r},
+  cell{21}{3} = {r},
+  cell{21}{4} = {r},
+  cell{21}{5} = {r},
+  cell{21}{6} = {r},
+  cell{21}{7} = {r},
+  cell{21}{8} = {r},
+  cell{21}{9} = {r},
+  cell{21}{10} = {r},
+  cell{21}{11} = {r},
+  cell{21}{12} = {r},
+  cell{21}{13} = {r},
+  cell{22}{3} = {r},
+  cell{22}{4} = {r},
+  cell{22}{5} = {r},
+  cell{22}{6} = {r},
+  cell{22}{7} = {r},
+  cell{22}{8} = {r},
+  cell{22}{9} = {r},
+  cell{22}{10} = {r},
+  cell{22}{11} = {r},
+  cell{22}{12} = {r},
+  cell{22}{13} = {r},
+  cell{23}{3} = {r},
+  cell{23}{4} = {r},
+  cell{23}{5} = {r},
+  cell{23}{6} = {r},
+  cell{23}{7} = {r},
+  cell{23}{8} = {r},
+  cell{23}{9} = {r},
+  cell{23}{10} = {r},
+  cell{23}{11} = {r},
+  cell{23}{12} = {r},
+  cell{23}{13} = {r},
+  cell{24}{3} = {r},
+  cell{24}{4} = {r},
+  cell{24}{5} = {r},
+  cell{24}{6} = {r},
+  cell{24}{7} = {r},
+  cell{24}{8} = {r},
+  cell{24}{9} = {r},
+  cell{24}{10} = {r},
+  cell{24}{11} = {r},
+  cell{24}{12} = {r},
+  cell{24}{13} = {r},
+  cell{25}{3} = {r},
+  cell{25}{4} = {r},
+  cell{25}{5} = {r},
+  cell{25}{6} = {r},
+  cell{25}{7} = {r},
+  cell{25}{8} = {r},
+  cell{25}{9} = {r},
+  cell{25}{10} = {r},
+  cell{25}{11} = {r},
+  cell{25}{12} = {r},
+  cell{25}{13} = {r},
+  cell{26}{3} = {r},
+  cell{26}{4} = {r},
+  cell{26}{5} = {r},
+  cell{26}{6} = {r},
+  cell{26}{7} = {r},
+  cell{26}{8} = {r},
+  cell{26}{9} = {r},
+  cell{26}{10} = {r},
+  cell{26}{11} = {r},
+  cell{26}{12} = {r},
+  cell{26}{13} = {r},
+  cell{27}{3} = {r},
+  cell{27}{4} = {r},
+  cell{27}{5} = {r},
+  cell{27}{6} = {r},
+  cell{27}{7} = {r},
+  cell{27}{8} = {r},
+  cell{27}{9} = {r},
+  cell{27}{10} = {r},
+  cell{27}{11} = {r},
+  cell{27}{12} = {r},
+  cell{27}{13} = {r},
+}
+\hline\hline %inserts double horizontal lines
+\textbf{ }
+Dataset & Data augmentation & Accuracy & F1 & Recall & Precision & Cohen Kappa & Average
+  Acurracy & Class
+  Accuracy     &  &  &  & \\
+\hline % inserts single horizontal line
+ &  &  &  &  &  &  &  & HY & LP & TC & TR & VT\\
+\hline % inserts single horizontal line
+(i) & No & 62.8 & 63.9 & 62.8 & 66.7 & 67.6 & 62.8 & 38.9 & 74.8 & 73.5 & 33.3 & 93.4\\
+(ii) & Rotation(5\%-25\%) & 91.5 & 91.4 & 91.5 & 91.4 & 89.2 & 91.5 & 98.4 & 92.4 & 83.5 & 93.3 & 89.6\\
+(iii) & Rotation(5\%-25\%) & 94.2 & 94.0 & 94.2 & 94.0 & 92.6 & 94.2 & 99.8 & 96.3 & 83.1 & 96.1 & 95.8\\
+(iv) & Jittering(0.2) & 90.2 & 90.0 & 90.2 & 90.2 & 87.5 & 90.2 & 94.0 & 93.6 & 77.9 & 95.9 & 89.4\\
+(v) & Jittering(0.2) & 91.1 & 91.1 & 91.1 & 91.2 & 88.8 & 91.1 & 97.1 & 95.3 & 85.2 & 93.3 & 84.3\\
+(vi) & Drifting Drift(0.01-0.1) & 84.1 & 83.5 & 84.1 & 83.7 & 79.6 & 84.1 & 94.4 & 90.7 & 62.1 & 82.4 & 90.8\\
+(vii) & Drifting Drift(0.01-0.1) & 87.7 & 87.6 & 87.7 & 87.9 & 84.6 & 87.7 & 98.7 & 88.5 & 78.1 & 91.3 & 81.7\\
+(viii) & Drifting Drift(0.001-0.01) & 90.8 & 90.6 & 90.8 & 90.6 & 88.3 & 90.8 & 96.9 & 95.7 & 77.7 & 90.2 & 93.6\\
+(ix) & Drifting Drift(0.001-0.01) & 93.5 & 93.4 & 93.5 & 93.5 & 91.8 & 93.5 & 98.9 & 95.9 & 83.0 & 97.0 & 92.8\\
+(x) & Drifting Drift(0.0001-0.001) & 93.8 & 93.5 & 93.8 & 93.7 & 92.0 & 93.8 & 99.8 & 100.0 & 81.0 & 98.0 & 90.0\\
+(xi) & Drifting Drift(0.0001-0.001) & 97.6 & 97.6 & 97.6 & 97.6 & 97.0 & 97.6 & 100.0 & 99.0 & 93.4 & 100.0 & 95.6\\
+(xii) & Genetic Algorithm Segment
+  Size(5s) Crossover Segments(3) & 87.8 & 87.6 & 87.8 & 87.7 & 84.6 & 87.8 & 95.8 & 91.5 & 73.6 & 91.7 & 86.7\\
+(xiii) & Genetic
+  Algorithm Segment Size(5s) Crossover Segments(3) & 86.4 & 86.2 & 86.4 & 86.3 & 82.8 & 86.4 & 92.6 & 90.7 & 74.6 & 85.6 & 88.6\\
+(xiv) & Genetic Algorithm Segment
+  Size(5s) Crossover Segments(5) & 86.4 & 86.1 & 86.4 & 86.2 & 82.7 & 86.4 & 94.6 & 88.5 & 72.0 & 86.0 & 91.0\\
+(xv) & Genetic
+  Algorithm Segment Size(5s) Crossover Segments(5) & 85.8 & 85.5 & 85.8 & 85.9 & 81.9 & 85.8 & 90.4 & 94.4 & 75.1 & 77.3 & 91.8\\
+(xvi) & Genetic Algorithm Signal
+  Percent(40\%) Crossover Segments(10) & 84.9 & 84.7 & 84.9 & 84.7 & 80.8 & 84.9 & 88.1 & 91.5 & 74.1 & 80.0 & 90.8\\
+(xvii) & Genetic
+  Algorithm Signal Percent(40\%) Crossover Segments(10) & 83.0 & 82.9 & 83.0 & 83.0 & 78.6 & 83.0 & 89.2 & 83.1 & 77.2 & 73.9 & 91.8\\
+(xviii) & Genetic Algorithm Signal
+  Percent(45\%) Crossover Segments(10) & 83.7 & 83.4 & 83.7 & 83.8 & 79.3 & 83.7 & 94.0 & 84.3 & 75.0 & 73.2 & 91.8\\
+(xix) & Genetic
+  Algorithm Signal Percent(45\%) Crossover Segments(10) & 83.2 & 83.2 & 83.2 & 83.3 & 78.8 & 83.2 & 89.5 & 86.0 & 75.3 & 76.9 & 88.2\\
+(xx) & SpecAugment Frequency
+  Percent(0\%-10\%) Frequency Masks(2) Time Percent(0\%-10\%) Time Marks(2) & 90.5 & 90.2 & 90.5 & 90.2 & 87.9 & 90.5 & 98.2 & 95.5 & 77.9 & 90.2 & 90.4\\
+(xxi) & SpecAugment
+  Frequency Percent(0\%-10\%) Frequency Masks(2) Time Percent(0\%-10\%) Time
+  Marks(2) & 91.7 & 91.5 & 91.7 & 91.5 & 89.4 & 91.7 & 97.5 & 94.8 & 83.5 & 89.5 & 93.2\\
+(xxii) & SpecAugment Frequency
+  Percent(0\%-15\%) Frequency Masks(2) Time Percent(0\%-15\%) Time Marks(2) & 88.6 & 88.6 & 88.6 & 88.5 & 85.7 & 88.6 & 94.9 & 86.8 & 80.5 & 89.5 & 91.4\\
+(xxiii) & SpecAugment
+  Frequency Percent(0\%-15\%) Frequency Masks(2) Time Percent(0\%-15\%) Time
+  Marks(2) & 86.6 & 86.4 & 86.6 & 86.4 & 83.1 & 86.6 & 96.0 & 85.6 & 75.8 & 87.2 & 88.2\\
+(xxiv) & Interpolation AE Signal percent(40\%-60\%) & 87.5 & 87.4 & 87.5 & 87.6 & 84.1 & 87.5 & 89.3 & 90.9 & 76.9 & 89.3 & 91.0\\
+(xxv) & Interpolation AE Signal percent(40\%-60\%) & 93.1 & 93.1 & 93.1 & 93.3 & 91.3 & 93.1 & 97.6 & 96.5 & 83.7 & 96.5 & 91.4\\
+\hline %inserts single line
+\end{tblr}
+\end{adjustbox}
+\end{table*}
+
+\begin{table*}
+\caption{Test of trained models over the real dataset of 6,145 events.}
+\centering
+\begin{adjustbox}{width=\textwidth}
+\begin{tblr}{
+  cell{1}{1} = {r=2}{},
+  cell{1}{2} = {r=2}{},
+  cell{1}{3} = {r=2}{},
+  cell{1}{4} = {r=2}{},
+  cell{1}{5} = {r=2}{},
+  cell{1}{6} = {r=2}{},
+  cell{1}{7} = {r=2}{},
+  cell{1}{8} = {r=2}{},
+  cell{1}{9} = {c=5}{c},
+  cell{3}{3} = {r},
+  cell{3}{4} = {r},
+  cell{3}{5} = {r},
+  cell{3}{6} = {r},
+  cell{3}{7} = {r},
+  cell{3}{8} = {r},
+  cell{3}{9} = {r},
+  cell{3}{10} = {r},
+  cell{3}{11} = {r},
+  cell{3}{12} = {r},
+  cell{3}{13} = {r},
+  cell{4}{3} = {r},
+  cell{4}{4} = {r},
+  cell{4}{5} = {r},
+  cell{4}{6} = {r},
+  cell{4}{7} = {r},
+  cell{4}{8} = {r},
+  cell{4}{9} = {r},
+  cell{4}{10} = {r},
+  cell{4}{11} = {r},
+  cell{4}{12} = {r},
+  cell{4}{13} = {r},
+  cell{5}{3} = {r},
+  cell{5}{4} = {r},
+  cell{5}{5} = {r},
+  cell{5}{6} = {r},
+  cell{5}{7} = {r},
+  cell{5}{8} = {r},
+  cell{5}{9} = {r},
+  cell{5}{10} = {r},
+  cell{5}{11} = {r},
+  cell{5}{12} = {r},
+  cell{5}{13} = {r},
+  cell{6}{3} = {r},
+  cell{6}{4} = {r},
+  cell{6}{5} = {r},
+  cell{6}{6} = {r},
+  cell{6}{7} = {r},
+  cell{6}{8} = {r},
+  cell{6}{9} = {r},
+  cell{6}{10} = {r},
+  cell{6}{11} = {r},
+  cell{6}{12} = {r},
+  cell{6}{13} = {r},
+  cell{7}{3} = {r},
+  cell{7}{4} = {r},
+  cell{7}{5} = {r},
+  cell{7}{6} = {r},
+  cell{7}{7} = {r},
+  cell{7}{8} = {r},
+  cell{7}{9} = {r},
+  cell{7}{10} = {r},
+  cell{7}{11} = {r},
+  cell{7}{12} = {r},
+  cell{7}{13} = {r},
+  cell{8}{3} = {r},
+  cell{8}{4} = {r},
+  cell{8}{5} = {r},
+  cell{8}{6} = {r},
+  cell{8}{7} = {r},
+  cell{8}{8} = {r},
+  cell{8}{9} = {r},
+  cell{8}{10} = {r},
+  cell{8}{11} = {r},
+  cell{8}{12} = {r},
+  cell{8}{13} = {r},
+  cell{9}{3} = {r},
+  cell{9}{4} = {r},
+  cell{9}{5} = {r},
+  cell{9}{6} = {r},
+  cell{9}{7} = {r},
+  cell{9}{8} = {r},
+  cell{9}{9} = {r},
+  cell{9}{10} = {r},
+  cell{9}{11} = {r},
+  cell{9}{12} = {r},
+  cell{9}{13} = {r},
+  cell{10}{3} = {r},
+  cell{10}{4} = {r},
+  cell{10}{5} = {r},
+  cell{10}{6} = {r},
+  cell{10}{7} = {r},
+  cell{10}{8} = {r},
+  cell{10}{9} = {r},
+  cell{10}{10} = {r},
+  cell{10}{11} = {r},
+  cell{10}{12} = {r},
+  cell{10}{13} = {r},
+  cell{11}{3} = {r},
+  cell{11}{4} = {r},
+  cell{11}{5} = {r},
+  cell{11}{6} = {r},
+  cell{11}{7} = {r},
+  cell{11}{8} = {r},
+  cell{11}{9} = {r},
+  cell{11}{10} = {r},
+  cell{11}{11} = {r},
+  cell{11}{12} = {r},
+  cell{11}{13} = {r},
+  cell{12}{3} = {r},
+  cell{12}{4} = {r},
+  cell{12}{5} = {r},
+  cell{12}{6} = {r},
+  cell{12}{7} = {r},
+  cell{12}{8} = {r},
+  cell{12}{9} = {r},
+  cell{12}{10} = {r},
+  cell{12}{11} = {r},
+  cell{12}{12} = {r},
+  cell{12}{13} = {r},
+  cell{13}{3} = {r},
+  cell{13}{4} = {r},
+  cell{13}{5} = {r},
+  cell{13}{6} = {r},
+  cell{13}{7} = {r},
+  cell{13}{8} = {r},
+  cell{13}{9} = {r},
+  cell{13}{10} = {r},
+  cell{13}{11} = {r},
+  cell{13}{12} = {r},
+  cell{13}{13} = {r},
+  cell{14}{3} = {r},
+  cell{14}{4} = {r},
+  cell{14}{5} = {r},
+  cell{14}{6} = {r},
+  cell{14}{7} = {r},
+  cell{14}{8} = {r},
+  cell{14}{9} = {r},
+  cell{14}{10} = {r},
+  cell{14}{11} = {r},
+  cell{14}{12} = {r},
+  cell{14}{13} = {r},
+  cell{15}{3} = {r},
+  cell{15}{4} = {r},
+  cell{15}{5} = {r},
+  cell{15}{6} = {r},
+  cell{15}{7} = {r},
+  cell{15}{8} = {r},
+  cell{15}{9} = {r},
+  cell{15}{10} = {r},
+  cell{15}{11} = {r},
+  cell{15}{12} = {r},
+  cell{15}{13} = {r},
+  cell{16}{3} = {r},
+  cell{16}{4} = {r},
+  cell{16}{5} = {r},
+  cell{16}{6} = {r},
+  cell{16}{7} = {r},
+  cell{16}{8} = {r},
+  cell{16}{9} = {r},
+  cell{16}{10} = {r},
+  cell{16}{11} = {r},
+  cell{16}{12} = {r},
+  cell{16}{13} = {r},
+  cell{17}{3} = {r},
+  cell{17}{4} = {r},
+  cell{17}{5} = {r},
+  cell{17}{6} = {r},
+  cell{17}{7} = {r},
+  cell{17}{8} = {r},
+  cell{17}{9} = {r},
+  cell{17}{10} = {r},
+  cell{17}{11} = {r},
+  cell{17}{12} = {r},
+  cell{17}{13} = {r},
+  cell{18}{3} = {r},
+  cell{18}{4} = {r},
+  cell{18}{5} = {r},
+  cell{18}{6} = {r},
+  cell{18}{7} = {r},
+  cell{18}{8} = {r},
+  cell{18}{9} = {r},
+  cell{18}{10} = {r},
+  cell{18}{11} = {r},
+  cell{18}{12} = {r},
+  cell{18}{13} = {r},
+  cell{19}{3} = {r},
+  cell{19}{4} = {r},
+  cell{19}{5} = {r},
+  cell{19}{6} = {r},
+  cell{19}{7} = {r},
+  cell{19}{8} = {r},
+  cell{19}{9} = {r},
+  cell{19}{10} = {r},
+  cell{19}{11} = {r},
+  cell{19}{12} = {r},
+  cell{19}{13} = {r},
+  cell{20}{3} = {r},
+  cell{20}{4} = {r},
+  cell{20}{5} = {r},
+  cell{20}{6} = {r},
+  cell{20}{7} = {r},
+  cell{20}{8} = {r},
+  cell{20}{9} = {r},
+  cell{20}{10} = {r},
+  cell{20}{11} = {r},
+  cell{20}{12} = {r},
+  cell{20}{13} = {r},
+  cell{21}{3} = {r},
+  cell{21}{4} = {r},
+  cell{21}{5} = {r},
+  cell{21}{6} = {r},
+  cell{21}{7} = {r},
+  cell{21}{8} = {r},
+  cell{21}{9} = {r},
+  cell{21}{10} = {r},
+  cell{21}{11} = {r},
+  cell{21}{12} = {r},
+  cell{21}{13} = {r},
+  cell{22}{3} = {r},
+  cell{22}{4} = {r},
+  cell{22}{5} = {r},
+  cell{22}{6} = {r},
+  cell{22}{7} = {r},
+  cell{22}{8} = {r},
+  cell{22}{9} = {r},
+  cell{22}{10} = {r},
+  cell{22}{11} = {r},
+  cell{22}{12} = {r},
+  cell{22}{13} = {r},
+  cell{23}{3} = {r},
+  cell{23}{4} = {r},
+  cell{23}{5} = {r},
+  cell{23}{6} = {r},
+  cell{23}{7} = {r},
+  cell{23}{8} = {r},
+  cell{23}{9} = {r},
+  cell{23}{10} = {r},
+  cell{23}{11} = {r},
+  cell{23}{12} = {r},
+  cell{23}{13} = {r},
+  cell{24}{3} = {r},
+  cell{24}{4} = {r},
+  cell{24}{5} = {r},
+  cell{24}{6} = {r},
+  cell{24}{7} = {r},
+  cell{24}{8} = {r},
+  cell{24}{9} = {r},
+  cell{24}{10} = {r},
+  cell{24}{11} = {r},
+  cell{24}{12} = {r},
+  cell{24}{13} = {r},
+  cell{25}{3} = {r},
+  cell{25}{4} = {r},
+  cell{25}{5} = {r},
+  cell{25}{6} = {r},
+  cell{25}{7} = {r},
+  cell{25}{8} = {r},
+  cell{25}{9} = {r},
+  cell{25}{10} = {r},
+  cell{25}{11} = {r},
+  cell{25}{12} = {r},
+  cell{25}{13} = {r},
+  cell{26}{3} = {r},
+  cell{26}{4} = {r},
+  cell{26}{5} = {r},
+  cell{26}{6} = {r},
+  cell{26}{7} = {r},
+  cell{26}{8} = {r},
+  cell{26}{9} = {r},
+  cell{26}{10} = {r},
+  cell{26}{11} = {r},
+  cell{26}{12} = {r},
+  cell{26}{13} = {r},
+  cell{27}{3} = {r},
+  cell{27}{4} = {r},
+  cell{27}{5} = {r},
+  cell{27}{6} = {r},
+  cell{27}{7} = {r},
+  cell{27}{8} = {r},
+  cell{27}{9} = {r},
+  cell{27}{10} = {r},
+  cell{27}{11} = {r},
+  cell{27}{12} = {r},
+  cell{27}{13} = {r},
+}
+\hline\hline %inserts double horizontal lines
+\textbf{ }
+Dataset & Data augmentation & Accuracy & F1 & Recall & Precision & Cohen Kappa & Average Acurracy & Class Accuracy &  &  &  & \\
+\hline % inserts single horizontal line
+ &  &  &  &  &  &  &  & HY & LP & TC & TR & VT\\
+\hline % inserts single horizontal line
+(i) & No & - & - & - & - & - & - & - & - & - & - & -\\
+(ii) & Rotation(5\%-25\%) & 96.6 & 96.2 & 96.6 & 95.9 & 95.7 & 96.6 & 97.7 & 95.3 & 97.0 & 94.9 & 98.1\\
+(iii) & Rotation(5\%-25\%) & 93.7 & 88.9 & 93.7 & 85.5 & 86.9 & 93.7 & 100.0 & 96.0 & 82.5 & 93.8 & 96.0\\
+(iv) & Jittering(0.2) & 96.2 & 96.0 & 96.2 & 95.8 & 95.0 & 96.2 & 94.8 & 96.7 & 95.8 & 96.2 & 97.5\\
+(v) & Jittering(0.2) & 93.9 & 87.3 & 93.9 & 82.9 & 86.2 & 93.9 & 99.5 & 97.1 & 86.0 & 95.8 & 91.3\\
+(vi) & Drifting Drift(0.01-0.1) & 91.5 & 89.4 & 91.5 & 88.1 & 90.0 & 91.5 & 93.0 & 95.5 & 90.0 & 81.5 & 97.6\\
+(vii) & Drifting Drift(0.01-0.1) & 66.6 & 53.5 & 66.6 & 55.2 & 48.3 & 66.6 & 69.5 & 96.5 & 42.0 & 56.5 & 68.4\\
+(viii) & Drifting Drift(0.001-0.01) & 95.0 & 95.4 & 95.0 & 95.8 & 94.7 & 95.0 & 93.0 & 97.1 & 94.9 & 91.3 & 98.8\\
+(ix) & Drifting Drift(0.001-0.01) & 93.7 & 86.7 & 93.7 & 82.4 & 85.5 & 93.7 & 98.1 & 97.4 & 83.4 & 97.7 & 91.8\\
+(x) & Drifting Drift(0.0001-0.001) & 98.3 & 96.7 & 98.3 & 95.3 & 96.0 & 98.3 & 99.5 & 100.0 & 95.5 & 98.5 & 97.8\\
+(xi) & Drifting Drift(0.0001-0.001) & 97.2 & 93.8 & 97.2 & 91.0 & 92.9 & 97.2 & 100.0 & 98.3 & 93.3 & 99.6 & 94.9\\
+(xii) & Genetic Algorithm Segment
+  Size(5s) Crossover Segments(3) & 95.9 & 93.7 & 95.9 & 91.8 & 93.8 & 95.9 & 96.7 & 97.6 & 94.1 & 94.3 & 97.0\\
+(xiii) & Genetic
+  Algorithm Segment Size(5s) Crossover Segments(3) & 82.7 & 73.6 & 82.7 & 70.0 & 71.8 & 82.7 & 86.9 & 93.4 & 65.2 & 78.3 & 89.8\\
+(xiv) & Genetic Algorithm Segment
+  Size(5s) Crossover Segments(5) & 95.2 & 93.6 & 95.2 & 92.2 & 93.6 & 95.2 & 95.3 & 96.7 & 93.2 & 92.4 & 98.3\\
+(xv) & Genetic Algorithm
+  Segment Size(5s) Crossover Segments(5) & 75.2 & 67.3 & 75.2 & 64.9 & 64.3 & 75.2 & 77.5 & 91.2 & 57.3 & 61.4 & 88.8\\
+(xvi) & Genetic Algorithm Signal Percent(40\%) Crossover
+  Segments(10) & 93.3 & 94.0 & 93.3 & 94.9 & 93.8 & 93.3 & 90.6 & 98.1 & 95.5 & 84.1 & 98.3\\
+(xvii) & Genetic Algorithm
+  Signal Percent(40\%) Crossover Segments(10) & 81.4 & 74.2 & 81.4 & 70.7 & 72.4 & 81.4 & 85.4 & 83.9 & 67.9 & 78.6 & 91.1\\
+(xviii) & Genetic Algorithm Signal Percent(45\%) Crossover
+  Segments(10) & 94.0 & 94.0 & 94.0 & 94.2 & 93.8 & 94.0 & 95.3 & 94.8 & 95.1 & 86.4 & 98.5\\
+(xix) & Genetic Algorithm
+  Signal Percent(45\%) Crossover Segments(10) & 80.1 & 68.1 & 80.1 & 64.9 & 65.8 & 80.1 & 88.7 & 92.5 & 56.9 & 76.6 & 85.9\\
+(xx) & SpecAugment Frequency Percent(0\%-10\%) Frequency
+  Masks(2) Time Percent(0\%-10\%) Time Marks(2) & 96.7 & 96.4 & 96.7 & 96.1 & 95.4 & 96.7 & 98.6 & 98.6 & 95.8 & 92.4 & 98.2\\
+(xxi) & SpecAugment
+  Frequency Percent(0\%-10\%) Frequency Masks(2) Time Percent(0\%-10\%) Time
+  Marks(2) & 95.4 & 91.1 & 95.4 & 87.8 & 89.8 & 95.4 & 100.0 & 97.2 & 88.1 & 96.6 & 95.1\\
+(xxii) & SpecAugment Frequency Percent(0\%-15\%) Frequency
+  Masks(2) Time Percent(0\%-15\%) Time Marks(2) & 95.5 & 95.7 & 95.5 & 95.9 & 94.9 & 95.5 & 97.7 & 90.5 & 96.3 & 94.9 & 98.4\\
+(xxiii) & SpecAugment
+  Frequency Percent(0\%-15\%) Frequency Masks(2) Time Percent(0\%-15\%) Time
+  Marks(2) & 93.6 & 87.5 & 93.6 & 83.7 & 85.2 & 93.6 & 100.0 & 95.1 & 82.8 & 97.5 & 92.4\\
+(xxiv) & Interpolation
+  AE Signal percent(40\%-60\%) & 90.4 & 91.8 & 90.4 & 93.4 & 92.0 & 90.4 & 82.2 & 90.5 & 94.7 & 86.4 & 98.1\\
+(xxv) & Interpolation AE Signal percent(40\%-60\%) & 80.7 & 71.0 & 80.7 & 67.5 & 67.8 & 80.7 & 88.7 & 85.8 & 60.4 & 80.7 & 88.1\\
+\hline %inserts single line
+\end{tblr}
+\end{adjustbox}
+\end{table*}
+
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/curvas_entrenamiento.png}}
+\caption{Training, and validation performance scores of the transfer learning with AlexNet for the experiment: a) training and test loss for the experiment (viii), b) (ix), c) (xxi), and d) (xxv).}
+\label{fig:da_training}
+\end{figure*}
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/matriz_confusion.png}}
+\caption{Confusion matrix without normalization and normalized for experiments a) (viii), b) (ix), c) (xxi) and d) (xxv).}
+\label{fig:da_confusion_matrix}
+\end{figure*}
+
+
+The experimental evidence showed the data augmentation techniques' importance in the precision of deep learning models since models trained without considering data augmentation techniques presented low precision (Table 4).
+For comparing our models with the state-of-art, we consider performance metrics for accuracy, precision, recall, specificity, F1.
+
+\begin{table*}
+\caption{Similarity and Diversity metrics for experimental datasets.}
+\centering
+\begin{adjustbox}{width=\textwidth}
+\begin{tblr}{
+  row{2} = {c},
+  cell{1}{1} = {r=2}{},
+  cell{1}{2} = {r=2}{},
+  cell{1}{3} = {c=6}{c},
+  cell{1}{9} = {c=6}{c},
+  cell{1}{15} = {c=6}{c},
+  cell{3}{3} = {r},
+  cell{3}{4} = {r},
+  cell{3}{5} = {r},
+  cell{3}{6} = {r},
+  cell{3}{7} = {r},
+  cell{3}{8} = {r},
+  cell{3}{9} = {r},
+  cell{3}{10} = {r},
+  cell{3}{11} = {r},
+  cell{3}{12} = {r},
+  cell{3}{13} = {r},
+  cell{3}{14} = {r},
+  cell{3}{15} = {r},
+  cell{3}{16} = {r},
+  cell{3}{17} = {r},
+  cell{3}{18} = {r},
+  cell{3}{19} = {r},
+  cell{3}{20} = {r},
+  cell{4}{3} = {r},
+  cell{4}{4} = {r},
+  cell{4}{5} = {r},
+  cell{4}{6} = {r},
+  cell{4}{7} = {r},
+  cell{4}{8} = {r},
+  cell{4}{9} = {r},
+  cell{4}{10} = {r},
+  cell{4}{11} = {r},
+  cell{4}{12} = {r},
+  cell{4}{13} = {r},
+  cell{4}{14} = {r},
+  cell{4}{15} = {r},
+  cell{4}{16} = {r},
+  cell{4}{17} = {r},
+  cell{4}{18} = {r},
+  cell{4}{19} = {r},
+  cell{4}{20} = {r},
+  cell{5}{3} = {r},
+  cell{5}{4} = {r},
+  cell{5}{5} = {r},
+  cell{5}{6} = {r},
+  cell{5}{7} = {r},
+  cell{5}{8} = {r},
+  cell{5}{9} = {r},
+  cell{5}{10} = {r},
+  cell{5}{11} = {r},
+  cell{5}{12} = {r},
+  cell{5}{13} = {r},
+  cell{5}{14} = {r},
+  cell{5}{15} = {r},
+  cell{5}{16} = {r},
+  cell{5}{17} = {r},
+  cell{5}{18} = {r},
+  cell{5}{19} = {r},
+  cell{5}{20} = {r},
+  cell{6}{3} = {r},
+  cell{6}{4} = {r},
+  cell{6}{5} = {r},
+  cell{6}{6} = {r},
+  cell{6}{7} = {r},
+  cell{6}{8} = {r},
+  cell{6}{9} = {r},
+  cell{6}{10} = {r},
+  cell{6}{11} = {r},
+  cell{6}{12} = {r},
+  cell{6}{13} = {r},
+  cell{6}{14} = {r},
+  cell{6}{15} = {r},
+  cell{6}{16} = {r},
+  cell{6}{17} = {r},
+  cell{6}{18} = {r},
+  cell{6}{19} = {r},
+  cell{6}{20} = {r},
+  cell{7}{3} = {r},
+  cell{7}{4} = {r},
+  cell{7}{5} = {r},
+  cell{7}{6} = {r},
+  cell{7}{7} = {r},
+  cell{7}{8} = {r},
+  cell{7}{9} = {r},
+  cell{7}{10} = {r},
+  cell{7}{11} = {r},
+  cell{7}{12} = {r},
+  cell{7}{13} = {r},
+  cell{7}{14} = {r},
+  cell{7}{15} = {r},
+  cell{7}{16} = {r},
+  cell{7}{17} = {r},
+  cell{7}{18} = {r},
+  cell{7}{19} = {r},
+  cell{7}{20} = {r},
+  cell{8}{3} = {r},
+  cell{8}{4} = {r},
+  cell{8}{5} = {r},
+  cell{8}{6} = {r},
+  cell{8}{7} = {r},
+  cell{8}{8} = {r},
+  cell{8}{9} = {r},
+  cell{8}{10} = {r},
+  cell{8}{11} = {r},
+  cell{8}{12} = {r},
+  cell{8}{13} = {r},
+  cell{8}{14} = {r},
+  cell{8}{15} = {r},
+  cell{8}{16} = {r},
+  cell{8}{17} = {r},
+  cell{8}{18} = {r},
+  cell{8}{19} = {r},
+  cell{8}{20} = {r},
+  cell{9}{3} = {r},
+  cell{9}{4} = {r},
+  cell{9}{5} = {r},
+  cell{9}{6} = {r},
+  cell{9}{7} = {r},
+  cell{9}{8} = {r},
+  cell{9}{9} = {r},
+  cell{9}{10} = {r},
+  cell{9}{11} = {r},
+  cell{9}{12} = {r},
+  cell{9}{13} = {r},
+  cell{9}{14} = {r},
+  cell{9}{15} = {r},
+  cell{9}{16} = {r},
+  cell{9}{17} = {r},
+  cell{9}{18} = {r},
+  cell{9}{19} = {r},
+  cell{9}{20} = {r},
+  cell{10}{3} = {r},
+  cell{10}{4} = {r},
+  cell{10}{5} = {r},
+  cell{10}{6} = {r},
+  cell{10}{7} = {r},
+  cell{10}{8} = {r},
+  cell{10}{9} = {r},
+  cell{10}{10} = {r},
+  cell{10}{11} = {r},
+  cell{10}{12} = {r},
+  cell{10}{13} = {r},
+  cell{10}{14} = {r},
+  cell{10}{15} = {r},
+  cell{10}{16} = {r},
+  cell{10}{17} = {r},
+  cell{10}{18} = {r},
+  cell{10}{19} = {r},
+  cell{10}{20} = {r},
+  cell{11}{3} = {r},
+  cell{11}{4} = {r},
+  cell{11}{5} = {r},
+  cell{11}{6} = {r},
+  cell{11}{7} = {r},
+  cell{11}{8} = {r},
+  cell{11}{9} = {r},
+  cell{11}{10} = {r},
+  cell{11}{11} = {r},
+  cell{11}{12} = {r},
+  cell{11}{13} = {r},
+  cell{11}{14} = {r},
+  cell{11}{15} = {r},
+  cell{11}{16} = {r},
+  cell{11}{17} = {r},
+  cell{11}{18} = {r},
+  cell{11}{19} = {r},
+  cell{11}{20} = {r},
+  cell{12}{3} = {r},
+  cell{12}{4} = {r},
+  cell{12}{5} = {r},
+  cell{12}{6} = {r},
+  cell{12}{7} = {r},
+  cell{12}{8} = {r},
+  cell{12}{9} = {r},
+  cell{12}{10} = {r},
+  cell{12}{11} = {r},
+  cell{12}{12} = {r},
+  cell{12}{13} = {r},
+  cell{12}{14} = {r},
+  cell{12}{15} = {r},
+  cell{12}{16} = {r},
+  cell{12}{17} = {r},
+  cell{12}{18} = {r},
+  cell{12}{19} = {r},
+  cell{12}{20} = {r},
+  cell{13}{3} = {r},
+  cell{13}{4} = {r},
+  cell{13}{5} = {r},
+  cell{13}{6} = {r},
+  cell{13}{7} = {r},
+  cell{13}{8} = {r},
+  cell{13}{9} = {r},
+  cell{13}{10} = {r},
+  cell{13}{11} = {r},
+  cell{13}{12} = {r},
+  cell{13}{13} = {r},
+  cell{13}{14} = {r},
+  cell{13}{15} = {r},
+  cell{13}{16} = {r},
+  cell{13}{17} = {r},
+  cell{13}{18} = {r},
+  cell{13}{19} = {r},
+  cell{13}{20} = {r},
+  cell{14}{3} = {r},
+  cell{14}{4} = {r},
+  cell{14}{5} = {r},
+  cell{14}{6} = {r},
+  cell{14}{7} = {r},
+  cell{14}{8} = {r},
+  cell{14}{9} = {r},
+  cell{14}{10} = {r},
+  cell{14}{11} = {r},
+  cell{14}{12} = {r},
+  cell{14}{13} = {r},
+  cell{14}{14} = {r},
+  cell{14}{15} = {r},
+  cell{14}{16} = {r},
+  cell{14}{17} = {r},
+  cell{14}{18} = {r},
+  cell{14}{19} = {r},
+  cell{14}{20} = {r},
+  cell{15}{3} = {r},
+  cell{15}{4} = {r},
+  cell{15}{5} = {r},
+  cell{15}{6} = {r},
+  cell{15}{7} = {r},
+  cell{15}{8} = {r},
+  cell{15}{9} = {r},
+  cell{15}{10} = {r},
+  cell{15}{11} = {r},
+  cell{15}{12} = {r},
+  cell{15}{13} = {r},
+  cell{15}{14} = {r},
+  cell{15}{15} = {r},
+  cell{15}{16} = {r},
+  cell{15}{17} = {r},
+  cell{15}{18} = {r},
+  cell{15}{19} = {r},
+  cell{15}{20} = {r},
+  cell{16}{3} = {r},
+  cell{16}{4} = {r},
+  cell{16}{5} = {r},
+  cell{16}{6} = {r},
+  cell{16}{7} = {r},
+  cell{16}{8} = {r},
+  cell{16}{9} = {r},
+  cell{16}{10} = {r},
+  cell{16}{11} = {r},
+  cell{16}{12} = {r},
+  cell{16}{13} = {r},
+  cell{16}{14} = {r},
+  cell{16}{15} = {r},
+  cell{16}{16} = {r},
+  cell{16}{17} = {r},
+  cell{16}{18} = {r},
+  cell{16}{19} = {r},
+  cell{16}{20} = {r},
+  cell{17}{3} = {r},
+  cell{17}{4} = {r},
+  cell{17}{5} = {r},
+  cell{17}{6} = {r},
+  cell{17}{7} = {r},
+  cell{17}{8} = {r},
+  cell{17}{9} = {r},
+  cell{17}{10} = {r},
+  cell{17}{11} = {r},
+  cell{17}{12} = {r},
+  cell{17}{13} = {r},
+  cell{17}{14} = {r},
+  cell{17}{15} = {r},
+  cell{17}{16} = {r},
+  cell{17}{17} = {r},
+  cell{17}{18} = {r},
+  cell{17}{19} = {r},
+  cell{17}{20} = {r},
+  cell{18}{3} = {r},
+  cell{18}{4} = {r},
+  cell{18}{5} = {r},
+  cell{18}{6} = {r},
+  cell{18}{7} = {r},
+  cell{18}{8} = {r},
+  cell{18}{9} = {r},
+  cell{18}{10} = {r},
+  cell{18}{11} = {r},
+  cell{18}{12} = {r},
+  cell{18}{13} = {r},
+  cell{18}{14} = {r},
+  cell{18}{15} = {r},
+  cell{18}{16} = {r},
+  cell{18}{17} = {r},
+  cell{18}{18} = {r},
+  cell{18}{19} = {r},
+  cell{18}{20} = {r},
+  cell{19}{3} = {r},
+  cell{19}{4} = {r},
+  cell{19}{5} = {r},
+  cell{19}{6} = {r},
+  cell{19}{7} = {r},
+  cell{19}{8} = {r},
+  cell{19}{9} = {r},
+  cell{19}{10} = {r},
+  cell{19}{11} = {r},
+  cell{19}{12} = {r},
+  cell{19}{13} = {r},
+  cell{19}{14} = {r},
+  cell{19}{15} = {r},
+  cell{19}{16} = {r},
+  cell{19}{17} = {r},
+  cell{19}{18} = {r},
+  cell{19}{19} = {r},
+  cell{19}{20} = {r},
+  cell{20}{3} = {r},
+  cell{20}{4} = {r},
+  cell{20}{5} = {r},
+  cell{20}{6} = {r},
+  cell{20}{7} = {r},
+  cell{20}{8} = {r},
+  cell{20}{9} = {r},
+  cell{20}{10} = {r},
+  cell{20}{11} = {r},
+  cell{20}{12} = {r},
+  cell{20}{13} = {r},
+  cell{20}{14} = {r},
+  cell{20}{15} = {r},
+  cell{20}{16} = {r},
+  cell{20}{17} = {r},
+  cell{20}{18} = {r},
+  cell{20}{19} = {r},
+  cell{20}{20} = {r},
+  cell{21}{3} = {r},
+  cell{21}{4} = {r},
+  cell{21}{5} = {r},
+  cell{21}{6} = {r},
+  cell{21}{7} = {r},
+  cell{21}{8} = {r},
+  cell{21}{9} = {r},
+  cell{21}{10} = {r},
+  cell{21}{11} = {r},
+  cell{21}{12} = {r},
+  cell{21}{13} = {r},
+  cell{21}{14} = {r},
+  cell{21}{15} = {r},
+  cell{21}{16} = {r},
+  cell{21}{17} = {r},
+  cell{21}{18} = {r},
+  cell{21}{19} = {r},
+  cell{21}{20} = {r},
+  cell{22}{3} = {r},
+  cell{22}{4} = {r},
+  cell{22}{5} = {r},
+  cell{22}{6} = {r},
+  cell{22}{7} = {r},
+  cell{22}{8} = {r},
+  cell{22}{9} = {r},
+  cell{22}{10} = {r},
+  cell{22}{11} = {r},
+  cell{22}{12} = {r},
+  cell{22}{13} = {r},
+  cell{22}{14} = {r},
+  cell{22}{15} = {r},
+  cell{22}{16} = {r},
+  cell{22}{17} = {r},
+  cell{22}{18} = {r},
+  cell{22}{19} = {r},
+  cell{22}{20} = {r},
+  cell{23}{3} = {r},
+  cell{23}{4} = {r},
+  cell{23}{5} = {r},
+  cell{23}{6} = {r},
+  cell{23}{7} = {r},
+  cell{23}{8} = {r},
+  cell{23}{9} = {r},
+  cell{23}{10} = {r},
+  cell{23}{11} = {r},
+  cell{23}{12} = {r},
+  cell{23}{13} = {r},
+  cell{23}{14} = {r},
+  cell{23}{15} = {r},
+  cell{23}{16} = {r},
+  cell{23}{17} = {r},
+  cell{23}{18} = {r},
+  cell{23}{19} = {r},
+  cell{23}{20} = {r},
+  cell{24}{3} = {r},
+  cell{24}{4} = {r},
+  cell{24}{5} = {r},
+  cell{24}{6} = {r},
+  cell{24}{7} = {r},
+  cell{24}{8} = {r},
+  cell{24}{9} = {r},
+  cell{24}{10} = {r},
+  cell{24}{11} = {r},
+  cell{24}{12} = {r},
+  cell{24}{13} = {r},
+  cell{24}{14} = {r},
+  cell{24}{15} = {r},
+  cell{24}{16} = {r},
+  cell{24}{17} = {r},
+  cell{24}{18} = {r},
+  cell{24}{19} = {r},
+  cell{24}{20} = {r},
+  cell{25}{3} = {r},
+  cell{25}{4} = {r},
+  cell{25}{5} = {r},
+  cell{25}{6} = {r},
+  cell{25}{7} = {r},
+  cell{25}{8} = {r},
+  cell{25}{9} = {r},
+  cell{25}{10} = {r},
+  cell{25}{11} = {r},
+  cell{25}{12} = {r},
+  cell{25}{13} = {r},
+  cell{25}{14} = {r},
+  cell{25}{15} = {r},
+  cell{25}{16} = {r},
+  cell{25}{17} = {r},
+  cell{25}{18} = {r},
+  cell{25}{19} = {r},
+  cell{25}{20} = {r},
+  cell{26}{3} = {r},
+  cell{26}{4} = {r},
+  cell{26}{5} = {r},
+  cell{26}{6} = {r},
+  cell{26}{7} = {r},
+  cell{26}{8} = {r},
+  cell{26}{9} = {r},
+  cell{26}{10} = {r},
+  cell{26}{11} = {r},
+  cell{26}{12} = {r},
+  cell{26}{13} = {r},
+  cell{26}{14} = {r},
+  cell{26}{15} = {r},
+  cell{26}{16} = {r},
+  cell{26}{17} = {r},
+  cell{26}{18} = {r},
+  cell{26}{19} = {r},
+  cell{26}{20} = {r},
+  cell{27}{3} = {r},
+  cell{27}{4} = {r},
+  cell{27}{5} = {r},
+  cell{27}{6} = {r},
+  cell{27}{7} = {r},
+  cell{27}{8} = {r},
+  cell{27}{9} = {r},
+  cell{27}{10} = {r},
+  cell{27}{11} = {r},
+  cell{27}{12} = {r},
+  cell{27}{13} = {r},
+  cell{27}{14} = {r},
+  cell{27}{15} = {r},
+  cell{27}{16} = {r},
+  cell{27}{17} = {r},
+  cell{27}{18} = {r},
+  cell{27}{19} = {r},
+  cell{27}{20} = {r},
+}
+\hline\hline %inserts double horizontal lines
+Dataset & Data augmentation & {Fréchet Inception Distance\\(FID)
+       } &  &  &  &  &  & {Kernel Inception Distance\\(KID)
+       } &  &  &  &  &  & {Multiscale Structural Similarity Index\\(MS-SSIM)} &  &  &  &  & \\
+\hline % inserts single horizontal line
+ &  & HY & LP & TC & TR & VT & FID & HY & LP & TC & TR & VT & KID & HY & LP & TC & TR & VT & MS\\
+\hline % inserts single horizontal line
+(i) & No & 0.16 & 0.10 & 0.02 & 0.05 & 0.02 & 0.03 & 0.14 & -0.75 & 3.78 & 0.31 & -0.23 & 1.21 & 0.34 & 0.41 & 0.33 & 0.29 & 0.34 & 0.34\\
+(ii) & Rotation(5\%-25\%) & 0.70 & 0.61 & 0.50 & 0.45 & ~ & 0.56 & 4.81 & -1.40 & 4.41 & 2.56 & ~ & 2.59 & 0.38 & 0.42 & 0.36 & 0.29 & ~ & 0.36\\
+(iii) & Rotation(5\%-25\%) & 0.03 & 0.01 & 0.04 & 0.02 & 0.03 & 0.02 & 1.62 & 0.15 & 1.16 & -1.03 & 2.34 & 0.85 & 0.36 & 0.42 & 0.36 & 0.33 & 0.35 & 0.37\\
+(iv) & Jittering(0.2) & 10.09 & 5.46 & 7.65 & 8.88 & ~ & 8.02 & 56.99 & 18.80 & 40.98 & 48.72 & ~ & 41.37 & 0.28 & 0.36 & 0.27 & 0.26 & ~ & 0.29\\
+(v) & Jittering(0.2) & 0.01 & 0.01 & 0.02 & 0.02 & 0.03 & 0.02 & -2.50 & -2.35 & 3.38 & 0.24 & -2.77 & -0.80 & 0.26 & 0.33 & 0.26 & 0.21 & 0.23 & 0.26\\
+(vi) & Drifting Drift(0.01-0.1) & 34.80 & 30.48 & 35.93 & 30.01 & ~ & 32.81 & 102.53 & 71.83 & 89.02 & 83.60 & ~ & 86.75 & 0.40 & 0.46 & 0.42 & 0.35 & ~ & 0.41\\
+(vii) & Drifting Drift(0.01-0.1) & 0.01 & 0.02 & 0.01 & 0.01 & 0.01 & 0.01 & -0.06 & -0.10 & 0.29 & 0.51 & -0.11 & 0.11 & 0.80 & 0.81 & 0.81 & 0.76 & 0.71 & 0.78\\
+(viii) & Drifting Drift(0.001-0.01) & 1.50 & 1.23 & 2.69 & 0.84 & ~ & 1.56 & 3.25 & 3.61 & 3.84 & 1.01 & ~ & 2.93 & 0.37 & 0.42 & 0.38 & 0.31 & ~ & 0.37\\
+(ix) & Drifting Drift(0.001-0.01) & 0.03 & 0.01 & 0.02 & 0.03 & 0.01 & 0.02 & 1.53 & -1.02 & 0.30 & 1.14 & -0.80 & 0.23 & 0.42 & 0.48 & 0.43 & 0.37 & 0.36 & 0.41\\
+(x) & Drifting Drift(0.0001-0.001) & 0.02 & 0.02 & 0.03 & 0.02 & ~ & 0.02 & -4.42 & 4.68 & -3.96 & 0.79 & ~ & -0.73 & 0.35 & 0.40 & 0.33 & 0.29 & ~ & 0.34\\
+(xi) & Drifting Drift(0.0001-0.001) & 0.01 & 0.01 & 0.02 & 0.01 & 0.01 & 0.01 & -5.60 & -1.65 & 2.42 & 3.00 & 1.74 & -0.02 & 0.35 & 0.40 & 0.32 & 0.31 & 0.34 & 0.34\\
+(xii) & Genetic Algorithm Segment
+  Size(5s) Crossover Segments(3) & 0.89 & 0.41 & 0.39 & 0.28 & ~ & 0.49 & 2.36 & 2.98 & -1.94 & 2.55 & ~ & 1.49 & 0.38 & 0.40 & 0.35 & 0.30 & ~ & 0.36\\
+(xiii) & Genetic
+  Algorithm Segment Size(5s) Crossover Segments(3) & 0.02 & 0.01 & 0.00 & 0.01 & 0.01 & 0.01 & 0.45 & -2.49 & -0.40 & -2.06 & 2.54 & -0.39 & 0.35 & 0.40 & 0.37 & 0.30 & 0.36 & 0.36\\
+(xiv) & Genetic Algorithm Segment
+  Size(5s) Crossover Segments(5) & 1.65 & 0.83 & 0.76 & 1.03 & ~ & 1.07 & 1.51 & 4.59 & 2.90 & 1.29 & ~ & 2.57 & 0.35 & 0.41 & 0.35 & 0.30 & ~ & 0.35\\
+(xv) & Genetic Algorithm
+  Segment Size(5s) Crossover Segments(5) & 0.02 & 0.01 & 0.01 & 0.02 & 0.01 & 0.01 & 1.06 & -0.48 & -0.32 & -2.37 & -1.77 & -0.77 & 0.35 & 0.40 & 0.37 & 0.33 & 0.40 & 0.37\\
+(xvi) & Genetic Algorithm Signal Percent(40\%) Crossover
+  Segments(10) & 0.90 & 0.63 & 0.55 & 0.41 & ~ & 0.63 & 3.99 & 1.91 & 0.08 & 4.25 & ~ & 2.56 & 0.36 & 0.41 & 0.35 & 0.30 & ~ & 0.35\\
+(xvii) & Genetic Algorithm
+  Signal Percent(40\%) Crossover Segments(10) & 0.02 & 0.02 & 0.04 & 0.01 & 0.01 & 0.02 & -0.28 & -3.37 & -0.14 & 1.87 & -0.70 & -0.52 & 0.34 & 0.41 & 0.32 & 0.29 & 0.34 & 0.34\\
+(xviii) & Genetic Algorithm Signal Percent(45\%) Crossover
+  Segments(10) & 0.97 & 0.67 & 0.73 & 0.36 & ~ & 0.68 & 4.43 & -0.28 & 3.54 & 0.97 & ~ & 2.16 & 0.35 & 0.41 & 0.33 & 0.30 & ~ & 0.35\\
+(xix) & Genetic Algorithm
+  Signal Percent(45\%) Crossover Segments(10) & 0.01 & 0.00 & 0.00 & 0.01 & 0.01 & 0.01 & 0.91 & 0.75 & -0.73 & 2.75 & 0.86 & 0.91 & 0.31 & 0.41 & 0.35 & 0.30 & 0.34 & 0.34\\
+(xx) & SpecAugment Frequency Percent(0\%-10\%) Frequency
+  Masks(2) Time Percent(0\%-10\%) Time Marks(2) & 1.53 & 1.48 & 1.85 & 1.21 & ~ & 1.52 & 6.23 & 4.41 & 6.33 & 2.06 & ~ & 4.76 & 0.37 & 0.41 & 0.33 & 0.30 & ~ & 0.35\\
+(xxi) & SpecAugment
+  Frequency Percent(0\%-10\%) Frequency Masks(2) Time Percent(0\%-10\%) Time
+  Marks(2) & 0.00 & 0.01 & 0.02 & 0.01 & 0.01 & 0.01 & -1.21 & 2.46 & -0.33 & -1.04 & 1.03 & 0.18 & 0.34 & 0.40 & 0.35 & 0.31 & 0.34 & 0.35\\
+(xxii) & SpecAugment Frequency Percent(0\%-15\%) Frequency
+  Masks(2) Time Percent(0\%-15\%) Time Marks(2) & 3.84 & 3.45 & 3.08 & 3.22 & ~ & 3.40 & 16.73 & 11.34 & 7.82 & 6.15 & ~ & 10.51 & 0.35 & 0.41 & 0.33 & 0.31 & ~ & 0.35\\
+(xxiii) & SpecAugment
+  Frequency Percent(0\%-15\%) Frequency Masks(2) Time Percent(0\%-15\%) Time
+  Marks(2) & 0.01 & 0.01 & 0.01 & 0.00 & 0.01 & 0.01 & 0.31 & 1.29 & 0.47 & 0.72 & -0.61 & 0.44 & 0.35 & 0.40 & 0.36 & 0.32 & 0.39 & 0.37\\
+(xxiv) & Interpolation
+  AE Signal percent(40\%-60\%) & 2.31 & 2.46 & 2.18 & 1.88 & ~ & 2.21 & 9.48 & 3.04 & 4.03 & 7.12 & ~ & 5.92 & 0.38 & 0.44 & 0.36 & 0.33 & ~ & 0.38\\
+(xxv) & Interpolation AE Signal percent(40\%-60\%) & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & -0.22 & 0.62 & -0.89 & -0.44 & 0.03 & -0.18 & 0.43 & 0.48 & 0.41 & 0.37 & 0.41 & 0.42\\
+\hline %inserts single line
+\end{tblr}
+\end{adjustbox}
+\end{table*}
+
+\begin{table*}
+\caption{Relationship between Data Augmentation and Dataset.}
+\centering
+\begin{tabular}{clclll}
+\hline\hline %inserts double horizontal lines
+Code & \multicolumn{1}{c}{Data augmentation} & Dataset \\
+\hline % inserts single horizontal line
+N & Real dataset & i \\
+R & Rotation (5\%-25\%) & ii, iii \\
+J & Jittering (0.2) & iv, v \\
+D & Drifting (0.01-0.1) & vi, vii \\
+DD & Drifting (0.001-0.01) & viii, ix \\
+DDD & Drifting (0.0001-0.001) & x, xi \\
+G & Genetic Algorithm Segment Size(5s) Crossover Segments(3) & xii, xiii \\
+GG & Genetic Algorithm Segment Size(5s) Crossover Segments(5) & xiv, xv \\
+H & Genetic Algorithm Signal Percent(40\%) Crossover Segments(10) & xvi, xvii \\
+HH & Genetic Algorithm Signal Percent(45\%) Crossover Segments(10) & xviii, xix \\
+S & SpecAugment Frequency Percent(0\%-10\%) Frequency Masks(2) Time
+  Percent(0\%-10\%) Time Marks(2) & xx, xxi \\
+SS & SpecAugment Frequency Percent(0\%-15\%) Frequency Masks(2) Time
+  Percent(0\%-15\%) Time Marks(2) & xxii, xxiii \\
+I & Interpolation AE Signal percent(40\%-60\%) & xxiv, xv \\
+\hline %inserts single line
+\end{tabular}
+\label{table:code_dataset}
+\end{table*}
+
+
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/entrenamiento_prueba.png}}
+\caption{Accuracy of model training and testing on real data. \textcolor{dotgreen}{\textbf{Green}} shape indicates real dataset with 62.8\% of accuracy, \textcolor{dotred}{\textbf{red}} circles indicate datasets with real and artificial data, and \textcolor{dotsky}{\textbf{turquoise}} squares are entirely artificial datasets. The codes are described in Table \ref{table:code_dataset}.}
+\label{fig:da_training_test}
+\end{figure*}
+
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/entrenamiento_msssim.png}}
+\caption{Accuracy of model training and MS-SSIM metric. \textcolor{dotgreen}{\textbf{Green}} shape indicates real dataset, \textcolor{dotred}{\textbf{red}} circles indicate datasets with real and artificial data, and \textcolor{dotsky}{\textbf{turquoise}} squares are entirely artificial datasets. The codes are described in Table \ref{table:code_dataset}.
+}
+\label{fig:da_training_msssim}
+\end{figure*}
+
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/entrenamiento_msssim_zoom.png}}
+\caption{Zooming at figure of model training accuracy and MS-SSIM metric. \textcolor{dotgreen}{\textbf{Green}} shape indicates real dataset, \textcolor{dotred}{\textbf{red}} circles indicate datasets with real and artificial data, and \textcolor{dotsky}{\textbf{turquoise}} squares are entirely artificial datasets. The codes are described in Table \ref{table:code_dataset}.}
+\label{fig:da_training_msssim_zoom}
+\end{figure*}
+
+\begin{figure*}
+\centering
+{\includegraphics[width=0.8\textwidth,keepaspectratio]{img/prueba_msssim.png}}
+\caption{Accuracy of model testing and MS-SSIM metric. \textcolor{dotgreen}{\textbf{Green}} shape indicates real dataset, \textcolor{dotred}{\textbf{red}} circles indicate datasets with real and artificial data, and \textcolor{dotsky}{\textbf{turquoise}} squares are entirely artificial datasets. The codes are described in Table \ref{table:code_dataset}.}
+\label{fig:da_test_msssim}
+\end{figure*}
+
+
+\section{Discussion}
+The various experiments in this research show the performance of the probabilistic model on unbalanced datasets. Specifically, dataset (i) produced a model biased towards the LP, TC and VT events (Table 4).
+It can be seen that balanced datasets generate higher performance models, since they expand the examples of the event feature space. The models were then tested on real data, showing competitive levels of classification in most cases. Transfer learning allowed deep learning models to be generated in less time (Table 4).
+In Table 4 and Table 5. we can see that drifting data augmentation technique achieves best result in almost all of pre trained models. This can be because drifting technique covers best the data space. The best case is drifting (xi) with a drift range 0.0001 - 0.001 with an accuracy of 97.6\%, model trained over entirely artificial dataset. The next interesting result is the rotation (iii) with a range of 5\% - 25\% that achieves an accuracy of 94.2\% over another artificial dataset. In both previous cases, the F1 score metrics are similar in their accuracy respective. Although both models were generated from entirely artificial data, they show good performance in addition to the tests on real data, with accuracies of 97.2\% for (xi) and 93.7\% for (iii) (Table 5), although the highest accuracy value is recorded in (x) with 98.3\% with real and artificial data.
+It can be observed that the dataset composed of real and artificial data (x) generated by drifting in the range of 0.0001-0.001 reaches an accuracy of 93.8\%. Then the dataset of artificial data (ix) generated by drifting in range 0.001-0.01, reaches an accuracy of 93.5\%. Then we have the artificial data dataset (xxv) generated by Autoencoder Interpolation in the range 40\%-60\%, it obtains an accuracy of 93.1\% (Table 4). These models also show good performance in tests with real data, with accuracies of 98.3\% for (x), 93.7\% for (ix) and 80.7\% for (xxv) (Table 5). Only the last model has a large distance between training and test accuracy on real data.
+To obtain a generalized dataset, data from several stations were considered to generate a multi-station generalized probabilistic model. Furthermore, it was observed that models trained with completely artificial data achieved high recognition accuracy with real data in most cases (Table 5).
+Figure 11 shows that drifting, rotation, interpolation, and specification have slightly better accuracy values than the other techniques. In general, the trained models perform better when tested on real data than during training.
+Regarding the similarity and diversity metrics, it can be seen that the MS-SSIM values for the rotation and drifting techniques are similar, although the former shows more diversity, depending on the generation parameters (Table 6).
+It can also be seen that Jittering shows higher diversity in (v) and (iv), with MS-SSIM values of 0.26 and 0.29, respectively.
+The most similar are Interpolation (xxv) and Drifting (vi), with MS-SSIM values of 0.42 and 0.41, respectively.
+Figure 12 shows the concentration of points in terms of the value of the MS-SSIM similarity metric vs. the accuracy of the model training. Only two distant points are seen, the dataset with only real data (i), which is distant due to having a low accuracy because it is an unbalanced dataset. Another distant point is the drifting dataset (vii) with a range of 0.01-0.1 because it shows more similarity. Zooming in on Figure 13, it can be seen that almost all the datasets have the same level of diversity, including the real dataset, but the artificial Jittering dataset (v) presents more diversity. Comparing artificial datasets with real and artificial datasets, within the same DA method, it can be seen that the artificial datasets present more diversity and training performance with Jittering, SpecAugment (xx)(xxi), and Rotation.
+In Figure 14, the most artificial real datasets present better diversity and testing accuracy values than the artificial datasets in the same DA method, and they are Drifting (x)(xi), rotation (ii)(iii), SpecAugment (xvii)(xviii), Drifting (viii)(ix).
+
+
+
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+\section{Conclusion}
+The current situation was reviewed in relation to the characterization and recognition of seismic-volcanic signal patterns, by reading scientific articles.
+Regarding the specific objectives of this work, in this study of the current situation in the recognition of seismic-volcanic signal patterns has been developed, especially with regard to deep learning, transfer learning and augmentation techniques. data. Many Data augmentation methods have been evaluated and developed to balance the data deposition of volcanic seismic signals. Taking all this into account, it can be stated that the specific objectives of this work have been effective, and, therefore, the general objective of this research has also been effective.
+It can be seen that the developed models and data augmentation methods are competitive with the baseline presented by scientific articles on the current situation. In addition to the following results:
+\begin{itemize}
+ \item Data from multiple stations at Lascar volcano allowed us to build more generalized probabilistic models, avoiding bias when considering a single station.
+ \item Data augmentation techniques are important to improve the performance metrics of deep learning models, as they allow more examples to be generated within the feature space of seismic events.
+ \item Similarity and diversity metrics allowed us to analyze the characteristics of the various techniques implemented. 
+ \item Transfer learning helped generate models much faster than training them from scratch.
+\end{itemize}
+
+A repository on GitHub is available to verify data at: \href{https://github.com/franznet/daseismicsignals}{\color{blue}https://github.com/franznet/daseismicsignals}.
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+\appendices
+\section{Proof of the First Zonklar Equation}
+Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+\section{}
+Appendix two text goes here.
+
+
+% use section* for acknowledgment
+\section*{Acknowledgment}
+The authors would like to thank...
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+%\begin{thebibliography}{1}
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+%\end{thebibliography}
+\printbibliography
+
+
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{img/franz.jpg}}]{Franz~Yupanqui~Machaca}
+% or if you just want to reserve a space for a photo:
+earned his Master's degree in Computer Engineering from the Universidad Católica del Norte in Chile in 2023. He is currently pursuing his Ph.D. in Sustainable Engineering at the Universidad Católica del Norte, focusing on the development of advanced algorithms for seismic-volcanic signal recognition. His research interests include deep learning techniques, transfer learning, data augmentation, computational intelligence in signals, data analytics, and more.
+\end{IEEEbiography}
+
+
+% if you will not have a photo at all:
+\begin{IEEEbiographynophoto}{John Doe}
+Biography text here.
+\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+\begin{IEEEbiographynophoto}{Jane Doe}
+Biography text here.
+\end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+\begin{IEEEbiographynophoto}{John Doe}
+Biography text here.
+\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+\begin{IEEEbiographynophoto}{Jane Doe}
+Biography text here.
+\end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
