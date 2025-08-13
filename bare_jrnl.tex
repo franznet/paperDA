@@ -19,7 +19,7 @@
 %% Legal Notice:
 %% This code is offered as-is without any warranty either expressed or
 %% implied; without even the implied warranty of MERCHANTABILITY or
-%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% FITNESS FOR A PARTICULAR PURPOSE!
 %% User assumes all risk.
 %% In no event shall IEEE or any contributor to this code be liable for
 %% any damages or losses, including, but not limited to, incidental,
@@ -155,7 +155,7 @@
 % graphicx was written by David Carlisle and Sebastian Rahtz. It is
 % required if you want graphics, photos, etc. graphicx.sty is already
 % installed on most LaTeX systems. The latest version and documentation
-% can be obtained at: 
+% can be obtained at:
 % http://www.ctan.org/tex-archive/macros/latex/required/graphics/
 % Another good source of documentation is "Using Imported Graphics in
 % LaTeX2e" by Keith Reckdahl which can be found at:
@@ -315,8 +315,8 @@
 % \let\MYoriglatexcaption\caption
 % \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
 %\fi
-% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
-% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and
+% Axel Sommerfeldt. This package may be useful when used in conjunction with
 % IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
 % submissions have lists of figures/tables at the end of the paper and that
 % figures/tables without any captions are placed on a page by themselves at
@@ -345,7 +345,7 @@
 % http://www.ctan.org/tex-archive/macros/latex/contrib/endfloat/
 %
 % The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
-% later in the document, say, to conditionally put the References on a 
+% later in the document, say, to conditionally put the References on a
 % page by themselves.
 
 
@@ -410,10 +410,10 @@
 }
 
 
-% note the % following the last \IEEEmembership and also \thanks - 
+% note the % following the last \IEEEmembership and also \thanks -
 % these prevent an unwanted space from occurring between the last author name
 % and the end of the author line. i.e., if you had this:
-% 
+%
 % \author{....lastname \thanks{...} \thanks{...} }
 %                     ^------------^------------^----Do not want these spaces!
 %
@@ -435,7 +435,7 @@
 {Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
 % The only time the second header will appear is for the odd numbered pages
 % after the title page when using the twoside option.
-% 
+%
 % *** Note that you probably will NOT want to include the author's ***
 % *** name in the headers of peer review papers.                   ***
 % You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
@@ -492,17 +492,17 @@ Deep Learning, Transfer Learning, Data Augmentation, seismic.
 \section{Introduction}
 % The very first letter is a 2 line initial drop letter followed
 % by the rest of the first word in caps.
-% 
+%
 % form to use if the first word consists of a single letter:
 % \IEEEPARstart{A}{demo} file is ....
-% 
+%
 % form to use if you need the single drop letter followed by
 % normal text (unknown if ever used by IEEE):
 % \IEEEPARstart{A}{}demo file is ....
-% 
+%
 % Some journals put the first two words in caps:
 % \IEEEPARstart{T}{his demo} file is ....
-% 
+%
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
 %\IEEEPARstart{T}{his} demo file is intended to serve as a ``starter file''
@@ -514,7 +514,7 @@ Deep Learning, Transfer Learning, Data Augmentation, seismic.
 %\hfill September 17, 2025
 
 \subsection{The problem of recognition}
-The seismic-volcanic signatures are dangerous events that happen unexpectedly, although these present some signals before they happen. In the world, these events are registered continuously by means of seismometers. Afterward, expert geophysicists take these data and classify these signals, task 
+The seismic-volcanic signatures are dangerous events that happen unexpectedly, although these present some signals before they happen. In the world, these events are registered continuously by means of seismometers. Afterward, expert geophysicists take these data and classify these signals, task
 The seismic-volcanic activity has been studied for many years. Nowadays, this type of activity is registered by sensors that record signals in three dimensions. The seismic-volcanic pattern recognition process in Chile is typically done manually, although there are state-of-the-art studies that it makes automatically form \cite{salazar2022multi,salazar2020deep,malfante2018automatic,bicego2012classification,curilem2016pattern, lara2020automatic}. These studies regularly consider one channel of three available, one station, and one volcano.
 In this context, applying Machine Learning (ML) and Deep Learning (DL) techniques to the automatic classification of volcanic seismic events has become an interesting approach compared to traditional methods.
 
@@ -546,14 +546,14 @@ The Lascar volcano is located in the north of Chile (23\textdegree22' S, 67 \tex
   \begin{subfigure}{0.72\textwidth}
     \includegraphics[width=\linewidth]{img/lascar_estaciones.png}
     \caption{} \label{fig:lascar:estations}
-  \end{subfigure}% 
-\caption{a) Location map of the Láscar volcano. b) Red dots indicate the position of seismic stations.} 
+  \end{subfigure}%
+\caption{a) Location map of the Láscar volcano. b) Red dots indicate the position of seismic stations.}
 \label{fig:lascar_map}
 \end{figure*}
 
 
 \subsection{Lascar's database}
-The Lascar database contains 6145 seismic events classified for geophysicist experts belonging to Ckelar. The data corresponds period between Mach to October 2018. In the next table, we show the data distribution.
+The Lascar database contains 6,145 seismic events classified for geophysicist experts belonging to Ckelar. The data corresponds period between Mach to October 2018. In the next table, we show the data distribution.
 \begin{table*}
 \caption{Contribution of events from each station to the Lascar database.} % title of Table
 \centering
@@ -571,6 +571,7 @@ TOTAL & 23 & 0 & 38 & 187 & 576 & 78 & 429 & 217 & 255 & 4,043 & 299 \\
 \hline %inserts single line
 \end{tabular}
 \end{adjustbox}
+\label{table:lascar_database}
 \end{table*}
 
 \begin{table*}
@@ -588,6 +589,7 @@ VT & 44\% & 2,686 & 189 & 5 & 19.6 & 17 & 10 & 12.3 \\
 TOTAL & 100\% & 6,145 & 670 & 5 & 49.9 & 28.0 & 20 & 50.0 \\
 \hline %inserts single line
 \end{tabular}
+\label{table:lascar_statistics}
 \end{table*}
 
 
@@ -595,10 +597,10 @@ TOTAL & 100\% & 6,145 & 670 & 5 & 49.9 & 28.0 & 20 & 50.0 \\
 We proposed a solution based on transfer learning because this helps to speed up training and improve the performance of the deep learning models \cite{titos2019classification,bueno2019volcano}, in addition to having few examples to generate the model again. For the TL, the pre -trained AlexNet\cite{krizhevsky2012imagenet} model was considered.
 The input data are generated spectrograms of the data labeled (waveforms) of each seismic event class. The processing sequence consists of five steps:
 \begin{enumerate}
- \item describe the pre-process that applies to the time series (earthquake); 
- \item detail the generation of spectrograms from the earthquakes labeled; 
- \item use the data augmentation technique to increase the amount of data in training and test data sets; 
- \item the construction of the prediction model; and, finally, 
+ \item describe the pre-process that applies to the time series (earthquake);
+ \item detail the generation of spectrograms from the earthquakes labeled;
+ \item use the data augmentation technique to increase the amount of data in training and test data sets;
+ \item the construction of the prediction model; and, finally,
  \item estimate the performance of the model.
 \end{enumerate}
 The next paragraphs, each step is explained.
@@ -607,7 +609,7 @@ The next paragraphs, each step is explained.
 	\item The spectrograms were calculated applying a short-time Fourier transform with formula
 $$
 S[x(t)](n,k)=\left|\sum_{m=0}^{N-1}x(m)\cdot w(m-n)\cdot e^{i2\pi mk}\right|^2$$
-Where x(t) and y(t) represent the seismic signal and short-time Fourier transform sliding window. The sliding window size was set to 1 with a 95% overlap. The spectrograms generated are images RGB of 224x224 pixels.
+Where x(t) and y(t) represent the seismic signal and short-time Fourier transform sliding window. The sliding window size was set to 1 with a 95\% overlap. The spectrograms generated are images RGB of $224\times224$ pixels.
 	\item Data augmentation techniques are considered to avoid unbalanced dataset, and for that reason to avoid biased models. Many data augmentation techniques were implemented, and these will be presented in the next section.
 	\item The pre-trained model AlexNet\cite{krizhevsky2012imagenet} was considered for the being retrained over spectrograms, using the scheme of transfer learning.
 	\item The model performance is evaluated for metrics described in the next sections. The metrics is implemented on the TorchMetrics python toolbox\footnote{\href{https://lightning.ai/docs/torchmetrics/stable}{\color{blue}https://lightning.ai/docs/torchmetrics/stable}}.
@@ -638,7 +640,7 @@ When applying this technique, the combination of the percentage rotation value, 
 
 
 \subsubsection{Jittering}
-Jittering is a technique for data augmentation that is utilized in time series analysis\cite{iwana2021empirical,iglesias2023data}. One of the simplest yet most effective transformation-based methods is how it is described. Jittering involves adding noise to a time series. 
+Jittering is a technique for data augmentation that is utilized in time series analysis\cite{iwana2021empirical,iglesias2023data}. One of the simplest yet most effective transformation-based methods is how it is described. Jittering involves adding noise to a time series.
 Mathematically, an original time series $x={x_1,...,x_t,...,x_T}$ is transformed into $x'={x_1+\epsilon_1,...,x_t+\epsilon_t,...,x_T+\epsilon_T}$ by adding noise at each time step $t$, where $\epsilon$ is typically Gaussian noise, distributed according to $N(\theta,\sigma^2)$. The standard deviation $\sigma$ of the added noise is a hyperparameter that must be predetermined\cite{iwana2021empirical}.
 Jittering assumes that the time series patterns of a particular dataset are typically noisy. Sensor, audio, or electroencephalogram (EEG) data could all be included in this statement. Jittering was used with wearable sensor data for Parkinson's disease monitoring.
 \begin{figure*}
@@ -650,7 +652,7 @@ Jittering assumes that the time series patterns of a particular dataset are typi
 
 
 \subsubsection{Drifting}
-One issue with both online and offline settings is the drift, which is the change in the data distribution over time. Random walk is used to simulate data drift. In mathematics, a random walk is classified as a stochastic or random process that depicts a path that comprises a succession of random steps in a mathematical space, such as integers or real. The integer number line $\mathrm{Z}$ is a basic example of a random walk, which begins at $\theta$, moves 1, or moves -1 with equal probability at each step. A random move of $+a$ or $–a$ with equal probability can be observed on any vector space, such as the real space. The real number $a\epsilon\mathrm{R}$ is the magnitude of the random walk[52].
+One issue with both online and offline settings is the drift, which is the change in the data distribution over time. Random walk is used to simulate data drift. In mathematics, a random walk is classified as a stochastic or random process that depicts a path that comprises a succession of random steps in a mathematical space, such as integers or real. The integer number line $\mathrm{Z}$ is a basic example of a random walk, which begins at $\theta$, moves 1, or moves -1 with equal probability at each step. A random move of $+a$ or $–a$ with equal probability can be observed on any vector space, such as the real space. The real number $a\epsilon\mathrm{R}$ is the magnitude of the random walk\cite{fields2019mitigating}.
 Let's say d defines a path starting at position $d_1=\phi(\tau)$. A random walk is modeled by the following expression:
 $$d_t=d_{t-1}+\phi(\tau)$$
 where $\phi$ is the random variable that describes the probability law for taking the next step and $\tau$ is the time interval between subsequent steps. Finally, an original time series $x={x_1,...,x_t,...,x_T}$ is transformed into $x\prime={x_1+d_1,...,x_t+d_t,...,x_T+d_T}$.
@@ -663,7 +665,7 @@ Drifting can be used to create more robust training data sets and make the model
 \end{figure*}
 
 \subsubsection{Genetic Algorithms}
-Genetic Algorithms (GA) are described as a class within Evolutionary Algorithms (EA), inspired by the process of evolution by natural selection. Their main goal is to generate high quality solutions to problems, based on bio-inspired operators such as selection, crossover and mutation[53]. In [54], genetic algorithms have been applied in data augmentation on time series of centers of pressure for the detection of neuropathies.
+Genetic Algorithms (GA) are described as a class within Evolutionary Algorithms (EA), inspired by the process of evolution by natural selection. Their main goal is to generate high quality solutions to problems, based on bio-inspired operators such as selection, crossover and mutation\cite{nethravathi2017augmentation}. In \cite{villegas2024data}, genetic algorithms have been applied in data augmentation on time series of centers of pressure for the detection of neuropathies.
 Inspired by GA operators, a seismogram data augmentation technique was developed, which works as follows:
 \begin{itemize}
  \item Selection: Involves selecting real seismograms of the same class, without repeating, to use as parents.
@@ -685,8 +687,8 @@ Inspired by GA operators, a seismogram data augmentation technique was developed
 \end{figure*}
 
 \subsubsection{SpecAugment}
-SpecAugment is a data augmentation technique designed for Automatic Speech Recognition (ASR).  Its purpose is to help the network learn useful features that are robust to certain time warping, partial loss of frequency information and partial loss of small signal segments.  It is a simple and computationally inexpensive method, since it acts directly on the log-mel spectrogram as if it were an image, which can be applied online during training[55].
-SpecAugment policies consist of frequency masking, time masking and time warping[56][57]. 
+SpecAugment is a data augmentation technique designed for Automatic Speech Recognition (ASR).  Its purpose is to help the network learn useful features that are robust to certain time warping, partial loss of frequency information and partial loss of small signal segments.  It is a simple and computationally inexpensive method, since it acts directly on the log-mel spectrogram as if it were an image, which can be applied online during training\cite{park2019specaugment}.
+SpecAugment policies consist of frequency masking, time masking and time warping\cite{park2020specaugment,soni2024generalized}.
 We apply SpecAugment on spectrograms considering frequency and time masking policies, as well as temporal warping.
 \begin{figure*}
 \centering
@@ -697,7 +699,7 @@ We apply SpecAugment on spectrograms considering frequency and time masking poli
 
 
 \subsubsection{Interpolation AEs}
-Autoencoders can interpolate in certain situations by decoding the convex combination of the latent codes of two data points and producing an output that semantically blends the features of the data points[58].
+Autoencoders can interpolate in certain situations by decoding the convex combination of the latent codes of two data points and producing an output that semantically blends the features of the data points\cite{berthelot2018understanding}.
 First, an input $x\epsilon\mathrm{R}^{d_x}$ is passed through an "encoder" $z=f_\theta(x)$ parametrized by $\theta$ to obtain a latent code $z\epsilon\mathrm{R}^{d_z}$. The latent code is then passed through a "decoder" $\hat{x}=g_\phi(z)$ parametrized by $\phi$ to produce an approximate reconstruction $\hat{x}\epsilon\mathrm{R}^{d_x}$ of the input $x$. We consider the case where $f_\theta$ and $g_\phi$ are implemented as multi-layer neural networks. The encoder and decoder are trained simultaneously (i.e. with respect to $\theta$ and $\phi$) to minimize some notion of distance between the input $x$ and the output $\hat{x}$, for example the squared $L_2$ distance $\left\|x-\hat{x}\right\|^2$.
 Interpolating using an autoencoder describes the process of using the decoder $g_\phi$ to decode a mixture of two latent codes. Typically, the latent codes are combined via a convex combination, so that interpolation amounts to computing $x_\alpha=g_\phi(\alpha z_1+(1-\alpha) z_2)$ for some $\alpha\epsilon[0,1]$ where $z_1=f_\theta(x_1)$ and $z_2=f_\theta(x_2)$ are the latent codes corresponding to data points $x_1$ and $x_2$.
 \begin{figure*}
@@ -723,20 +725,21 @@ Among the different classification metrics, we can mention:
 }
 \textbf{~} &  & Predicted & \\
  \hline
- &  & 
+ &  &
   Positive~(P)
-   & 
+   &
   Negative~(N)
   \\
   \hline
-Actual & 
+Actual &
   Positive (P)
    & True positive (TP) & False negative (FN)\\
- & 
+ &
   Negative (N)
    & False positive (FP) & True negative (TN)\\
   \hline
 \end{tblr}
+\label{table:confusion_matrix}
 \end{table}
 Where TP are true positives, TN are true negatives, FP are false positives and FN are false negatives.
  \item Recall (Sensitivity): Calculates the real quantity that the model is able to identify.
@@ -753,35 +756,35 @@ $$Specificity=\frac{TN}{TN+FP}$$
 
 
 \subsection{Evaluation metrics for data augmentation}
-Data augmentation techniques have become a widely strategy adopted for improve the generalization capacity of deep neural networks. However, a very important aspect is the concepts of similarity and diversity in the data [36]. The similarity captures the resemblance between the original and augmented data, and the diversity measure the variation in complexity between the original and augmented data.
+Data augmentation techniques have become a widely strategy adopted for improve the generalization capacity of deep neural networks. However, a very important aspect is the concepts of similarity and diversity in the data \cite{yang2024investigating}. The similarity captures the resemblance between the original and augmented data, and the diversity measure the variation in complexity between the original and augmented data.
 
 
 \subsubsection{Fréchet Inception Distance (FID)}
-The Fréchet Inception Distance is a primary metric for evaluating the quality of images generated by Generative Adversarial Networks (GANs)[37]. The main objective of the FID is to quantify the similarity between generated and real images[38]. It is considered an improvement over previous metrics such as the Inception Score (IS), as the FID uses statistics from real world samples for comparison, unlike the IS, which does not[39].
-The key idea behind the FID is to embed real and generated images into a vision-relevant feature space and then calculate a distance between the distributions of these two embeddings. In practice, this feature space is typically the penultimate layer (pool3, with 2048 features) of an Inception-V3 classifier network pre-trained on ImageNet[39].
-$$FID(\mu_r,\Sigma_r,\mu_g,\Sigma_g )=\left\|\mu_r-\mu_g \right\|_2^2+Tr(\Sigma_r+\Sigma_g-2(\Sigma_r \Sigma_g)^{\frac{1}{2}})$$
-where $(\mu_r,\Sigma_r)$ and $(\mu_g,\Sigma_g)$ denote the sample main and covariance of the embeddings of the real and generated data, respectively, and $Tr(\cdot)$ indicates the matrix trace[39].
-The theoretical range of the FID is $[0, \infty)$, since it is a distance measure. Lower FID scores indicate better image quality[42]. Theoretically, an FID of 0 means that the feature distributions of the generated and real images are identical (in terms of mean and covariance according to the Gaussian approximation)[38].
-FID has been found to correlate reasonably well with human judgments of the fidelity of generated images[38].
+The Fréchet Inception Distance is a primary metric for evaluating the quality of images generated by Generative Adversarial Networks (GANs)\cite{guven2024image}. The main objective of the FID is to quantify the similarity between generated and real images\cite{heusel2017gans}. It is considered an improvement over previous metrics such as the Inception Score (IS), as the FID uses statistics from real world samples for comparison, unlike the IS, which does not\cite{kynkäänniemi2023roleimagenetclassesfrechet}.
+The key idea behind the FID is to embed real and generated images into a vision-relevant feature space and then calculate a distance between the distributions of these two embeddings. In practice, this feature space is typically the penultimate layer (pool3, with 2048 features) of an Inception-V3 classifier network pre-trained on ImageNet\cite{kynkäänniemi2023roleimagenetclassesfrechet}.
+\[FID(\mu_r,\Sigma_r,\mu_g,\Sigma_g )=\left\|\mu_r-\mu_g \right\|_2^2+Tr(\Sigma_r+\Sigma_g-2(\Sigma_r \Sigma_g)^{\frac{1}{2}})\]
+where $(\mu_r,\Sigma_r)$ and $(\mu_g,\Sigma_g)$ denote the sample main and covariance of the embeddings of the real and generated data, respectively, and $Tr(\cdot)$ indicates the matrix trace\cite{kynkäänniemi2023roleimagenetclassesfrechet}.
+The theoretical range of the FID is $[0, \infty)$, since it is a distance measure. Lower FID scores indicate better image quality\cite{wang2019improvingmmdgantrainingrepulsive}. Theoretically, an FID of 0 means that the feature distributions of the generated and real images are identical (in terms of mean and covariance according to the Gaussian approximation)\cite{heusel2017gans}.
+FID has been found to correlate reasonably well with human judgments of the fidelity of generated images\cite{heusel2017gans}.
 
 
 \subsubsection{Kernel Inception Distance (KID)}
-The squared Maximum Mean Discrepancy (MMD) measurement is used by KID to determine the difference between the feature representations of real and generated images. The features are derived from the Inception network. Unlike the Fréchet Inception Distance[38], KID's unbiased estimator increases its reliability, particularly when there are less test images than the dimensions of the inception features. The lower KID signifies that there are more visual similarities between real and generated images[43].
-KID use a polynomial kernel $k(x,y)=(\frac{1}{d}x^T\cdot y+1)^3$ where d is the dimension of the Inception representation vector, and x and y are two feature vectors. The kernel $K(x,y)=k(\phi(x),\phi(y))$ can be used as an MMD for input images, and images can be converted to Inception representations through $\phi$ mapping[44].
-Since it's a distance metric, a KID value of 0 indicates a perfect match between the two feature distributions being compared (the one from the real images and the one from the generated ones). Theoretically, if the distributions are identical, the distance is zero. A key mathematical advantage of the KID is that it has a simple, unbiased estimator, unlike the FID[44].
+The squared Maximum Mean Discrepancy (MMD) measurement is used by KID to determine the difference between the feature representations of real and generated images. The features are derived from the Inception network. Unlike the Fréchet Inception Distance\cite{heusel2017gans}, KID's unbiased estimator increases its reliability, particularly when there are less test images than the dimensions of the inception features. The lower KID signifies that there are more visual similarities between real and generated images\cite{kim2019ugatit}.
+KID use a polynomial kernel $k(x,y)=(\frac{1}{d}x^T\cdot y+1)^3$ where d is the dimension of the Inception representation vector, and x and y are two feature vectors. The kernel $K(x,y)=k(\phi(x),\phi(y))$ can be used as an MMD for input images, and images can be converted to Inception representations through $\phi$ mapping\cite{binkowski2018demystifying}.
+Since it's a distance metric, a KID value of 0 indicates a perfect match between the two feature distributions being compared (the one from the real images and the one from the generated ones). Theoretically, if the distributions are identical, the distance is zero. A key mathematical advantage of the KID is that it has a simple, unbiased estimator, unlike the FID\cite{binkowski2018demystifying}.
 
 \subsubsection{Multi-Scale Structural Similarity (MS-SSIM)}
-MS-SSIM is a multi-scale improve version of SSIM that tries to eliminate aspects of an image that are not crucial for human perception[47][48]. The SSIM calculation (the basis of MS-SSIM) compares three principal components: luminance (intensity), contrast, and structure. It uses simple statistical moments such as the mean and standard deviation in local windows to obtain a similarity score.
+MS-SSIM is a multi-scale improve version of SSIM that tries to eliminate aspects of an image that are not crucial for human perception\cite{wang2003multiscale,ma2016group}. The SSIM calculation (the basis of MS-SSIM) compares three principal components: luminance (intensity), contrast, and structure. It uses simple statistical moments such as the mean and standard deviation in local windows to obtain a similarity score.
 $$MS-SSIM(x,y)=\left[l_M (x,y)\right]^{\alpha_M}\cdot \prod_{j=1}^{M}\left[c_j(x,y)\right]^{\beta_j}\cdot \left[s_j (x,y)\right]^{\gamma_j}$$
-Where $l_M (x,y)$ represents the luminance component between images $x$ and $y$, $c_j(x,y)$ denotes the contrast component at scale $j$, and $s_j(x,y)$ reflects the structural similarity in scale $j$. The parameters $\alpha_M$, $\beta_j$, and $\gamma_j$ define the relative importance of the luminance, contrast, and structure components, respectively. Lastly, $M$ signifies the number of scales employed in the MS-SSIM calculation[46].
-The range of MS-SSIM values is between 0 and 1, and images with higher MS-SSIM values are perceived as more similar[45], with 1 indicating perfect similarity. Lower MS-SSIM scores indicate higher diversity[40][42].
-Unlike metrics such as FID (Fréchet Inception Distance) or KID (Kernel Inception Distance), the MS-SSIM does not require a pre-trained Inception network[49]. For this reason, is not recommended to use the IS, KID or FID because they already use weights from the inception network, which are valid for images similar to those in the ImageNet dataset. These metrics cannot be used as over fingerprint datasets because are not part of the ImageNet dataset[49]. 
-FID indicate better image quality. Lower MS-SSIM scores indicate higher diversity[40]. Smaller FID and KID values indicate more realistic images on image translation[41].
+Where $l_M (x,y)$ represents the luminance component between images $x$ and $y$, $c_j(x,y)$ denotes the contrast component at scale $j$, and $s_j(x,y)$ reflects the structural similarity in scale $j$. The parameters $\alpha_M$, $\beta_j$, and $\gamma_j$ define the relative importance of the luminance, contrast, and structure components, respectively. Lastly, $M$ signifies the number of scales employed in the MS-SSIM calculation\cite{arsenio2025recovering}.
+The range of MS-SSIM values is between 0 and 1, and images with higher MS-SSIM values are perceived as more similar\cite{odena2017conditional}, with 1 indicating perfect similarity. Lower MS-SSIM scores indicate higher diversity\cite{guo2019autoembedding,wang2019improvingmmdgantrainingrepulsive}.
+Unlike metrics such as FID (Fréchet Inception Distance) or KID (Kernel Inception Distance), the MS-SSIM does not require a pre-trained Inception network\cite{fahim2020alightweight}. For this reason, is not recommended to use the IS, KID or FID because they already use weights from the inception network, which are valid for images similar to those in the ImageNet dataset. These metrics cannot be used as over fingerprint datasets because are not part of the ImageNet dataset\cite{fahim2020alightweight}.
+FID indicate better image quality. Lower MS-SSIM scores indicate higher diversity\cite{guo2019autoembedding}. Smaller FID and KID values indicate more realistic images on image translation\cite{torbunov2023rethinking}.
 Because our spectrograms dataset is not part of ImageNet dataset, we used the MS-SSIM score.
 
 
 \section{Results}
-We had unbalanced data, with 3\% (HY), 9\% (LP), 36\% (TC), 8\% (TR) and 44\% (VT), see Table 2. We generate new data means, data augmentation techniques such as Rotation, Jittering, Drifting, Scaling, Flipping, Genetic Algorithms, and SpecAugment. We designed a lot of experiments based on each data augmentation method (Table 3). Each new balanced dataset was considered for Transfer Learning with the AlexNet pre-trained model. On the other hand, we trained several models of Deep Learning, ad hoc, with new balanced datasets.
+We had unbalanced data, with 3\% (HY), 9\% (LP), 36\% (TC), 8\% (TR) and 44\% (VT), see Table \ref{table:lascar_statistics}. We generate new data means, data augmentation techniques such as Rotation, Jittering, Drifting, Scaling, Flipping, Genetic Algorithms, and SpecAugment. We designed a lot of experiments based on each data augmentation method (Table \ref{table:training_statistic}). Each new balanced dataset was considered for Transfer Learning with the AlexNet pre-trained model. On the other hand, we trained several models of Deep Learning, ad hoc, with new balanced datasets.
 
 \subsection{Real}
 The original unbalanced dataset of 6,145 events is considered, which was divided into the proportions of 80/20, for training and testing the model, respectively. This experiment will show the influence of an unbalanced dataset on the accuracy of the probabilistic model.
@@ -791,11 +794,11 @@ In addition, another balanced dataset of 13,430 purely artificial events were ge
 The parameters used for the rotation were in the rotation range of 5\% to 25\%, and with random rotation axis (start, center, end), without repetition.
 \subsection{Jittering}
 The original unbalanced dataset of 6,145 events is considered, and data augmentation is applied to the dataset to balance it by increasing examples from underrepresented classes, resulting in a dataset of 13,430 events.
-The parameters used are Gaussian noise with a distribution of $N(\mu=0,\sigma=0.2)$. A balanced dataset of 13,430 events was also generated entirely from artificial data. 
+The parameters used are Gaussian noise with a distribution of $N(\mu=0,\sigma=0.2)$. A balanced dataset of 13,430 events was also generated entirely from artificial data.
 \subsection{Drifting}
 The original unbalanced dataset of 6,145 events is considered, to which the data augmentation technique is applied in such a way that the dataset is balanced by increasing examples from underrepresented classes, resulting in a dataset of 13,430 events.
 The parameters used are random values from defined real intervals $[a,b]$. A balanced dataset of 13,430 events was also generated entirely from artificial data.
-\subsection{Genetic Algorithm)}
+\subsection{Genetic Algorithm}
 Using the data augmentation technique of Genetic Algorithms, a balanced dataset of 13,430 artificial events was generated, 2,686 examples for each event. Different values of the signal proportion parameters of the parent events, as well as the number of crossing segments in the technique, are considered for the generation of the new dataset. This dataset will show the effectiveness of this data augmentation technique in building the model.
 In this type of data augmentation technique, there are two variants:
 \begin{itemize}
@@ -872,6 +875,7 @@ Dataset & Data type & Data Augmentation & Balanced dataset & Epochs & Total data
 \hline %inserts single line
 \end{tabular}
 \end{adjustbox}
+\label{table:training_statistic}
 \end{table*}
 
 \begin{table*}
@@ -879,290 +883,8 @@ Dataset & Data type & Data Augmentation & Balanced dataset & Epochs & Total data
 \centering
 \begin{adjustbox}{width=\textwidth}
 \begin{tblr}{
-  cell{1}{1} = {r=2}{},
-  cell{1}{2} = {r=2}{},
-  cell{1}{3} = {r=2}{},
-  cell{1}{4} = {r=2}{},
-  cell{1}{5} = {r=2}{},
-  cell{1}{6} = {r=2}{},
-  cell{1}{7} = {r=2}{},
-  cell{1}{8} = {r=2}{},
-  cell{1}{9} = {c=5}{c},
-  cell{3}{3} = {r},
-  cell{3}{4} = {r},
-  cell{3}{5} = {r},
-  cell{3}{6} = {r},
-  cell{3}{7} = {r},
-  cell{3}{8} = {r},
-  cell{3}{9} = {r},
-  cell{3}{10} = {r},
-  cell{3}{11} = {r},
-  cell{3}{12} = {r},
-  cell{3}{13} = {r},
-  cell{4}{3} = {r},
-  cell{4}{4} = {r},
-  cell{4}{5} = {r},
-  cell{4}{6} = {r},
-  cell{4}{7} = {r},
-  cell{4}{8} = {r},
-  cell{4}{9} = {r},
-  cell{4}{10} = {r},
-  cell{4}{11} = {r},
-  cell{4}{12} = {r},
-  cell{4}{13} = {r},
-  cell{5}{3} = {r},
-  cell{5}{4} = {r},
-  cell{5}{5} = {r},
-  cell{5}{6} = {r},
-  cell{5}{7} = {r},
-  cell{5}{8} = {r},
-  cell{5}{9} = {r},
-  cell{5}{10} = {r},
-  cell{5}{11} = {r},
-  cell{5}{12} = {r},
-  cell{5}{13} = {r},
-  cell{6}{3} = {r},
-  cell{6}{4} = {r},
-  cell{6}{5} = {r},
-  cell{6}{6} = {r},
-  cell{6}{7} = {r},
-  cell{6}{8} = {r},
-  cell{6}{9} = {r},
-  cell{6}{10} = {r},
-  cell{6}{11} = {r},
-  cell{6}{12} = {r},
-  cell{6}{13} = {r},
-  cell{7}{3} = {r},
-  cell{7}{4} = {r},
-  cell{7}{5} = {r},
-  cell{7}{6} = {r},
-  cell{7}{7} = {r},
-  cell{7}{8} = {r},
-  cell{7}{9} = {r},
-  cell{7}{10} = {r},
-  cell{7}{11} = {r},
-  cell{7}{12} = {r},
-  cell{7}{13} = {r},
-  cell{8}{3} = {r},
-  cell{8}{4} = {r},
-  cell{8}{5} = {r},
-  cell{8}{6} = {r},
-  cell{8}{7} = {r},
-  cell{8}{8} = {r},
-  cell{8}{9} = {r},
-  cell{8}{10} = {r},
-  cell{8}{11} = {r},
-  cell{8}{12} = {r},
-  cell{8}{13} = {r},
-  cell{9}{3} = {r},
-  cell{9}{4} = {r},
-  cell{9}{5} = {r},
-  cell{9}{6} = {r},
-  cell{9}{7} = {r},
-  cell{9}{8} = {r},
-  cell{9}{9} = {r},
-  cell{9}{10} = {r},
-  cell{9}{11} = {r},
-  cell{9}{12} = {r},
-  cell{9}{13} = {r},
-  cell{10}{3} = {r},
-  cell{10}{4} = {r},
-  cell{10}{5} = {r},
-  cell{10}{6} = {r},
-  cell{10}{7} = {r},
-  cell{10}{8} = {r},
-  cell{10}{9} = {r},
-  cell{10}{10} = {r},
-  cell{10}{11} = {r},
-  cell{10}{12} = {r},
-  cell{10}{13} = {r},
-  cell{11}{3} = {r},
-  cell{11}{4} = {r},
-  cell{11}{5} = {r},
-  cell{11}{6} = {r},
-  cell{11}{7} = {r},
-  cell{11}{8} = {r},
-  cell{11}{9} = {r},
-  cell{11}{10} = {r},
-  cell{11}{11} = {r},
-  cell{11}{12} = {r},
-  cell{11}{13} = {r},
-  cell{12}{3} = {r},
-  cell{12}{4} = {r},
-  cell{12}{5} = {r},
-  cell{12}{6} = {r},
-  cell{12}{7} = {r},
-  cell{12}{8} = {r},
-  cell{12}{9} = {r},
-  cell{12}{10} = {r},
-  cell{12}{11} = {r},
-  cell{12}{12} = {r},
-  cell{12}{13} = {r},
-  cell{13}{3} = {r},
-  cell{13}{4} = {r},
-  cell{13}{5} = {r},
-  cell{13}{6} = {r},
-  cell{13}{7} = {r},
-  cell{13}{8} = {r},
-  cell{13}{9} = {r},
-  cell{13}{10} = {r},
-  cell{13}{11} = {r},
-  cell{13}{12} = {r},
-  cell{13}{13} = {r},
-  cell{14}{3} = {r},
-  cell{14}{4} = {r},
-  cell{14}{5} = {r},
-  cell{14}{6} = {r},
-  cell{14}{7} = {r},
-  cell{14}{8} = {r},
-  cell{14}{9} = {r},
-  cell{14}{10} = {r},
-  cell{14}{11} = {r},
-  cell{14}{12} = {r},
-  cell{14}{13} = {r},
-  cell{15}{3} = {r},
-  cell{15}{4} = {r},
-  cell{15}{5} = {r},
-  cell{15}{6} = {r},
-  cell{15}{7} = {r},
-  cell{15}{8} = {r},
-  cell{15}{9} = {r},
-  cell{15}{10} = {r},
-  cell{15}{11} = {r},
-  cell{15}{12} = {r},
-  cell{15}{13} = {r},
-  cell{16}{3} = {r},
-  cell{16}{4} = {r},
-  cell{16}{5} = {r},
-  cell{16}{6} = {r},
-  cell{16}{7} = {r},
-  cell{16}{8} = {r},
-  cell{16}{9} = {r},
-  cell{16}{10} = {r},
-  cell{16}{11} = {r},
-  cell{16}{12} = {r},
-  cell{16}{13} = {r},
-  cell{17}{3} = {r},
-  cell{17}{4} = {r},
-  cell{17}{5} = {r},
-  cell{17}{6} = {r},
-  cell{17}{7} = {r},
-  cell{17}{8} = {r},
-  cell{17}{9} = {r},
-  cell{17}{10} = {r},
-  cell{17}{11} = {r},
-  cell{17}{12} = {r},
-  cell{17}{13} = {r},
-  cell{18}{3} = {r},
-  cell{18}{4} = {r},
-  cell{18}{5} = {r},
-  cell{18}{6} = {r},
-  cell{18}{7} = {r},
-  cell{18}{8} = {r},
-  cell{18}{9} = {r},
-  cell{18}{10} = {r},
-  cell{18}{11} = {r},
-  cell{18}{12} = {r},
-  cell{18}{13} = {r},
-  cell{19}{3} = {r},
-  cell{19}{4} = {r},
-  cell{19}{5} = {r},
-  cell{19}{6} = {r},
-  cell{19}{7} = {r},
-  cell{19}{8} = {r},
-  cell{19}{9} = {r},
-  cell{19}{10} = {r},
-  cell{19}{11} = {r},
-  cell{19}{12} = {r},
-  cell{19}{13} = {r},
-  cell{20}{3} = {r},
-  cell{20}{4} = {r},
-  cell{20}{5} = {r},
-  cell{20}{6} = {r},
-  cell{20}{7} = {r},
-  cell{20}{8} = {r},
-  cell{20}{9} = {r},
-  cell{20}{10} = {r},
-  cell{20}{11} = {r},
-  cell{20}{12} = {r},
-  cell{20}{13} = {r},
-  cell{21}{3} = {r},
-  cell{21}{4} = {r},
-  cell{21}{5} = {r},
-  cell{21}{6} = {r},
-  cell{21}{7} = {r},
-  cell{21}{8} = {r},
-  cell{21}{9} = {r},
-  cell{21}{10} = {r},
-  cell{21}{11} = {r},
-  cell{21}{12} = {r},
-  cell{21}{13} = {r},
-  cell{22}{3} = {r},
-  cell{22}{4} = {r},
-  cell{22}{5} = {r},
-  cell{22}{6} = {r},
-  cell{22}{7} = {r},
-  cell{22}{8} = {r},
-  cell{22}{9} = {r},
-  cell{22}{10} = {r},
-  cell{22}{11} = {r},
-  cell{22}{12} = {r},
-  cell{22}{13} = {r},
-  cell{23}{3} = {r},
-  cell{23}{4} = {r},
-  cell{23}{5} = {r},
-  cell{23}{6} = {r},
-  cell{23}{7} = {r},
-  cell{23}{8} = {r},
-  cell{23}{9} = {r},
-  cell{23}{10} = {r},
-  cell{23}{11} = {r},
-  cell{23}{12} = {r},
-  cell{23}{13} = {r},
-  cell{24}{3} = {r},
-  cell{24}{4} = {r},
-  cell{24}{5} = {r},
-  cell{24}{6} = {r},
-  cell{24}{7} = {r},
-  cell{24}{8} = {r},
-  cell{24}{9} = {r},
-  cell{24}{10} = {r},
-  cell{24}{11} = {r},
-  cell{24}{12} = {r},
-  cell{24}{13} = {r},
-  cell{25}{3} = {r},
-  cell{25}{4} = {r},
-  cell{25}{5} = {r},
-  cell{25}{6} = {r},
-  cell{25}{7} = {r},
-  cell{25}{8} = {r},
-  cell{25}{9} = {r},
-  cell{25}{10} = {r},
-  cell{25}{11} = {r},
-  cell{25}{12} = {r},
-  cell{25}{13} = {r},
-  cell{26}{3} = {r},
-  cell{26}{4} = {r},
-  cell{26}{5} = {r},
-  cell{26}{6} = {r},
-  cell{26}{7} = {r},
-  cell{26}{8} = {r},
-  cell{26}{9} = {r},
-  cell{26}{10} = {r},
-  cell{26}{11} = {r},
-  cell{26}{12} = {r},
-  cell{26}{13} = {r},
-  cell{27}{3} = {r},
-  cell{27}{4} = {r},
-  cell{27}{5} = {r},
-  cell{27}{6} = {r},
-  cell{27}{7} = {r},
-  cell{27}{8} = {r},
-  cell{27}{9} = {r},
-  cell{27}{10} = {r},
-  cell{27}{11} = {r},
-  cell{27}{12} = {r},
-  cell{27}{13} = {r},
+  cell{1}{1} = {r=2}{}, cell{1}{2} = {r=2}{}, cell{1}{3} = {r=2}{}, cell{1}{4} = {r=2}{}, cell{1}{5} = {r=2}{}, cell{1}{6} = {r=2}{}, cell{1}{7} = {r=2}{}, cell{1}{8} = {r=2}{}, cell{1}{9} = {c=5}{c}, cell{3}{3} = {r}, cell{3}{4} = {r}, cell{3}{5} = {r}, cell{3}{6} = {r}, cell{3}{7} = {r}, cell{3}{8} = {r}, cell{3}{9} = {r}, cell{3}{10} = {r}, cell{3}{11} = {r}, cell{3}{12} = {r}, cell{3}{13} = {r}, cell{4}{3} = {r}, cell{4}{4} = {r}, cell{4}{5} = {r}, cell{4}{6} = {r}, cell{4}{7} = {r}, cell{4}{8} = {r}, cell{4}{9} = {r}, cell{4}{10} = {r}, cell{4}{11} = {r}, cell{4}{12} = {r}, cell{4}{13} = {r}, cell{5}{3} = {r}, cell{5}{4} = {r}, cell{5}{5} = {r}, cell{5}{6} = {r}, cell{5}{7} = {r}, cell{5}{8} = {r}, cell{5}{9} = {r}, cell{5}{10} = {r}, cell{5}{11} = {r}, cell{5}{12} = {r}, cell{5}{13} = {r}, cell{6}{3} = {r}, cell{6}{4} = {r}, cell{6}{5} = {r}, cell{6}{6} = {r}, cell{6}{7} = {r}, cell{6}{8} = {r}, cell{6}{9} = {r}, cell{6}{10} = {r}, cell{6}{11} = {r}, cell{6}{12} = {r}, cell{6}{13} = {r}, cell{7}{3} = {r}, cell{7}{4} = {r}, cell{7}{5} = {r}, cell{7}{6} = {r}, cell{7}{7} = {r}, cell{7}{8} = {r}, cell{7}{9} = {r}, cell{7}{10} = {r}, cell{7}{11} = {r}, cell{7}{12} = {r}, cell{7}{13} = {r}, cell{8}{3} = {r}, cell{8}{4} = {r}, cell{8}{5} = {r}, cell{8}{6} = {r}, cell{8}{7} = {r}, cell{8}{8} = {r}, cell{8}{9} = {r}, cell{8}{10} = {r}, cell{8}{11} = {r}, cell{8}{12} = {r}, cell{8}{13} = {r}, cell{9}{3} = {r}, cell{9}{4} = {r},
+  cell{9}{5} = {r}, cell{9}{6} = {r}, cell{9}{7} = {r}, cell{9}{8} = {r}, cell{9}{9} = {r}, cell{9}{10} = {r}, cell{9}{11} = {r}, cell{9}{12} = {r}, cell{9}{13} = {r}, cell{10}{3} = {r}, cell{10}{4} = {r}, cell{10}{5} = {r}, cell{10}{6} = {r}, cell{10}{7} = {r}, cell{10}{8} = {r}, cell{10}{9} = {r}, cell{10}{10} = {r}, cell{10}{11} = {r}, cell{10}{12} = {r}, cell{10}{13} = {r}, cell{11}{3} = {r}, cell{11}{4} = {r}, cell{11}{5} = {r}, cell{11}{6} = {r}, cell{11}{7} = {r}, cell{11}{8} = {r}, cell{11}{9} = {r}, cell{11}{10} = {r}, cell{11}{11} = {r}, cell{11}{12} = {r}, cell{11}{13} = {r}, cell{12}{3} = {r}, cell{12}{4} = {r}, cell{12}{5} = {r}, cell{12}{6} = {r}, cell{12}{7} = {r}, cell{12}{8} = {r}, cell{12}{9} = {r}, cell{12}{10} = {r}, cell{12}{11} = {r}, cell{12}{12} = {r}, cell{12}{13} = {r}, cell{13}{3} = {r}, cell{13}{4} = {r}, cell{13}{5} = {r}, cell{13}{6} = {r}, cell{13}{7} = {r}, cell{13}{8} = {r}, cell{13}{9} = {r}, cell{13}{10} = {r}, cell{13}{11} = {r}, cell{13}{12} = {r}, cell{13}{13} = {r}, cell{14}{3} = {r}, cell{14}{4} = {r}, cell{14}{5} = {r}, cell{14}{6} = {r}, cell{14}{7} = {r}, cell{14}{8} = {r}, cell{14}{9} = {r}, cell{14}{10} = {r}, cell{14}{11} = {r}, cell{14}{12} = {r}, cell{14}{13} = {r}, cell{15}{3} = {r}, cell{15}{4} = {r}, cell{15}{5} = {r}, cell{15}{6} = {r}, cell{15}{7} = {r}, cell{15}{8} = {r}, cell{15}{9} = {r}, cell{15}{10} = {r}, cell{15}{11} = {r}, cell{15}{12} = {r}, cell{15}{13} = {r}, cell{16}{3} = {r}, cell{16}{4} = {r}, cell{16}{5} = {r}, cell{16}{6} = {r}, cell{16}{7} = {r}, cell{16}{8} = {r}, cell{16}{9} = {r}, cell{16}{10} = {r}, cell{16}{11} = {r}, cell{16}{12} = {r}, cell{16}{13} = {r}, cell{17}{3} = {r}, cell{17}{4} = {r}, cell{17}{5} = {r}, cell{17}{6} = {r}, cell{17}{7} = {r}, cell{17}{8} = {r}, cell{17}{9} = {r}, cell{17}{10} = {r}, cell{17}{11} = {r}, cell{17}{12} = {r}, cell{17}{13} = {r}, cell{18}{3} = {r}, cell{18}{4} = {r}, cell{18}{5} = {r}, cell{18}{6} = {r}, cell{18}{7} = {r}, cell{18}{8} = {r}, cell{18}{9} = {r}, cell{18}{10} = {r}, cell{18}{11} = {r}, cell{18}{12} = {r}, cell{18}{13} = {r}, cell{19}{3} = {r}, cell{19}{4} = {r}, cell{19}{5} = {r}, cell{19}{6} = {r}, cell{19}{7} = {r}, cell{19}{8} = {r}, cell{19}{9} = {r}, cell{19}{10} = {r}, cell{19}{11} = {r}, cell{19}{12} = {r}, cell{19}{13} = {r}, cell{20}{3} = {r}, cell{20}{4} = {r}, cell{20}{5} = {r}, cell{20}{6} = {r}, cell{20}{7} = {r}, cell{20}{8} = {r}, cell{20}{9} = {r}, cell{20}{10} = {r}, cell{20}{11} = {r}, cell{20}{12} = {r}, cell{20}{13} = {r}, cell{21}{3} = {r}, cell{21}{4} = {r}, cell{21}{5} = {r}, cell{21}{6} = {r}, cell{21}{7} = {r}, cell{21}{8} = {r}, cell{21}{9} = {r}, cell{21}{10} = {r}, cell{21}{11} = {r}, cell{21}{12} = {r}, cell{21}{13} = {r}, cell{22}{3} = {r}, cell{22}{4} = {r}, cell{22}{5} = {r}, cell{22}{6} = {r}, cell{22}{7} = {r}, cell{22}{8} = {r}, cell{22}{9} = {r}, cell{22}{10} = {r}, cell{22}{11} = {r}, cell{22}{12} = {r}, cell{22}{13} = {r}, cell{23}{3} = {r}, cell{23}{4} = {r}, cell{23}{5} = {r}, cell{23}{6} = {r}, cell{23}{7} = {r}, cell{23}{8} = {r}, cell{23}{9} = {r}, cell{23}{10} = {r}, cell{23}{11} = {r}, cell{23}{12} = {r}, cell{23}{13} = {r}, cell{24}{3} = {r}, cell{24}{4} = {r}, cell{24}{5} = {r}, cell{24}{6} = {r}, cell{24}{7} = {r}, cell{24}{8} = {r}, cell{24}{9} = {r}, cell{24}{10} = {r}, cell{24}{11} = {r}, cell{24}{12} = {r}, cell{24}{13} = {r}, cell{25}{3} = {r}, cell{25}{4} = {r}, cell{25}{5} = {r}, cell{25}{6} = {r}, cell{25}{7} = {r}, cell{25}{8} = {r}, cell{25}{9} = {r}, cell{25}{10} = {r}, cell{25}{11} = {r}, cell{25}{12} = {r}, cell{25}{13} = {r}, cell{26}{3} = {r}, cell{26}{4} = {r}, cell{26}{5} = {r}, cell{26}{6} = {r}, cell{26}{7} = {r}, cell{26}{8} = {r}, cell{26}{9} = {r},   cell{26}{10} = {r}, cell{26}{11} = {r}, cell{26}{12} = {r}, cell{26}{13} = {r}, cell{27}{3} = {r}, cell{27}{4} = {r}, cell{27}{5} = {r}, cell{27}{6} = {r}, cell{27}{7} = {r}, cell{27}{8} = {r}, cell{27}{9} = {r}, cell{27}{10} = {r}, cell{27}{11} = {r}, cell{27}{12} = {r}, cell{27}{13} = {r},
 }
 \hline\hline %inserts double horizontal lines
 \textbf{ }
@@ -1214,6 +936,7 @@ Dataset & Data augmentation & Accuracy & F1 & Recall & Precision & Cohen Kappa &
 \hline %inserts single line
 \end{tblr}
 \end{adjustbox}
+\label{table:training_performance}
 \end{table*}
 
 \begin{table*}
@@ -1221,290 +944,7 @@ Dataset & Data augmentation & Accuracy & F1 & Recall & Precision & Cohen Kappa &
 \centering
 \begin{adjustbox}{width=\textwidth}
 \begin{tblr}{
-  cell{1}{1} = {r=2}{},
-  cell{1}{2} = {r=2}{},
-  cell{1}{3} = {r=2}{},
-  cell{1}{4} = {r=2}{},
-  cell{1}{5} = {r=2}{},
-  cell{1}{6} = {r=2}{},
-  cell{1}{7} = {r=2}{},
-  cell{1}{8} = {r=2}{},
-  cell{1}{9} = {c=5}{c},
-  cell{3}{3} = {r},
-  cell{3}{4} = {r},
-  cell{3}{5} = {r},
-  cell{3}{6} = {r},
-  cell{3}{7} = {r},
-  cell{3}{8} = {r},
-  cell{3}{9} = {r},
-  cell{3}{10} = {r},
-  cell{3}{11} = {r},
-  cell{3}{12} = {r},
-  cell{3}{13} = {r},
-  cell{4}{3} = {r},
-  cell{4}{4} = {r},
-  cell{4}{5} = {r},
-  cell{4}{6} = {r},
-  cell{4}{7} = {r},
-  cell{4}{8} = {r},
-  cell{4}{9} = {r},
-  cell{4}{10} = {r},
-  cell{4}{11} = {r},
-  cell{4}{12} = {r},
-  cell{4}{13} = {r},
-  cell{5}{3} = {r},
-  cell{5}{4} = {r},
-  cell{5}{5} = {r},
-  cell{5}{6} = {r},
-  cell{5}{7} = {r},
-  cell{5}{8} = {r},
-  cell{5}{9} = {r},
-  cell{5}{10} = {r},
-  cell{5}{11} = {r},
-  cell{5}{12} = {r},
-  cell{5}{13} = {r},
-  cell{6}{3} = {r},
-  cell{6}{4} = {r},
-  cell{6}{5} = {r},
-  cell{6}{6} = {r},
-  cell{6}{7} = {r},
-  cell{6}{8} = {r},
-  cell{6}{9} = {r},
-  cell{6}{10} = {r},
-  cell{6}{11} = {r},
-  cell{6}{12} = {r},
-  cell{6}{13} = {r},
-  cell{7}{3} = {r},
-  cell{7}{4} = {r},
-  cell{7}{5} = {r},
-  cell{7}{6} = {r},
-  cell{7}{7} = {r},
-  cell{7}{8} = {r},
-  cell{7}{9} = {r},
-  cell{7}{10} = {r},
-  cell{7}{11} = {r},
-  cell{7}{12} = {r},
-  cell{7}{13} = {r},
-  cell{8}{3} = {r},
-  cell{8}{4} = {r},
-  cell{8}{5} = {r},
-  cell{8}{6} = {r},
-  cell{8}{7} = {r},
-  cell{8}{8} = {r},
-  cell{8}{9} = {r},
-  cell{8}{10} = {r},
-  cell{8}{11} = {r},
-  cell{8}{12} = {r},
-  cell{8}{13} = {r},
-  cell{9}{3} = {r},
-  cell{9}{4} = {r},
-  cell{9}{5} = {r},
-  cell{9}{6} = {r},
-  cell{9}{7} = {r},
-  cell{9}{8} = {r},
-  cell{9}{9} = {r},
-  cell{9}{10} = {r},
-  cell{9}{11} = {r},
-  cell{9}{12} = {r},
-  cell{9}{13} = {r},
-  cell{10}{3} = {r},
-  cell{10}{4} = {r},
-  cell{10}{5} = {r},
-  cell{10}{6} = {r},
-  cell{10}{7} = {r},
-  cell{10}{8} = {r},
-  cell{10}{9} = {r},
-  cell{10}{10} = {r},
-  cell{10}{11} = {r},
-  cell{10}{12} = {r},
-  cell{10}{13} = {r},
-  cell{11}{3} = {r},
-  cell{11}{4} = {r},
-  cell{11}{5} = {r},
-  cell{11}{6} = {r},
-  cell{11}{7} = {r},
-  cell{11}{8} = {r},
-  cell{11}{9} = {r},
-  cell{11}{10} = {r},
-  cell{11}{11} = {r},
-  cell{11}{12} = {r},
-  cell{11}{13} = {r},
-  cell{12}{3} = {r},
-  cell{12}{4} = {r},
-  cell{12}{5} = {r},
-  cell{12}{6} = {r},
-  cell{12}{7} = {r},
-  cell{12}{8} = {r},
-  cell{12}{9} = {r},
-  cell{12}{10} = {r},
-  cell{12}{11} = {r},
-  cell{12}{12} = {r},
-  cell{12}{13} = {r},
-  cell{13}{3} = {r},
-  cell{13}{4} = {r},
-  cell{13}{5} = {r},
-  cell{13}{6} = {r},
-  cell{13}{7} = {r},
-  cell{13}{8} = {r},
-  cell{13}{9} = {r},
-  cell{13}{10} = {r},
-  cell{13}{11} = {r},
-  cell{13}{12} = {r},
-  cell{13}{13} = {r},
-  cell{14}{3} = {r},
-  cell{14}{4} = {r},
-  cell{14}{5} = {r},
-  cell{14}{6} = {r},
-  cell{14}{7} = {r},
-  cell{14}{8} = {r},
-  cell{14}{9} = {r},
-  cell{14}{10} = {r},
-  cell{14}{11} = {r},
-  cell{14}{12} = {r},
-  cell{14}{13} = {r},
-  cell{15}{3} = {r},
-  cell{15}{4} = {r},
-  cell{15}{5} = {r},
-  cell{15}{6} = {r},
-  cell{15}{7} = {r},
-  cell{15}{8} = {r},
-  cell{15}{9} = {r},
-  cell{15}{10} = {r},
-  cell{15}{11} = {r},
-  cell{15}{12} = {r},
-  cell{15}{13} = {r},
-  cell{16}{3} = {r},
-  cell{16}{4} = {r},
-  cell{16}{5} = {r},
-  cell{16}{6} = {r},
-  cell{16}{7} = {r},
-  cell{16}{8} = {r},
-  cell{16}{9} = {r},
-  cell{16}{10} = {r},
-  cell{16}{11} = {r},
-  cell{16}{12} = {r},
-  cell{16}{13} = {r},
-  cell{17}{3} = {r},
-  cell{17}{4} = {r},
-  cell{17}{5} = {r},
-  cell{17}{6} = {r},
-  cell{17}{7} = {r},
-  cell{17}{8} = {r},
-  cell{17}{9} = {r},
-  cell{17}{10} = {r},
-  cell{17}{11} = {r},
-  cell{17}{12} = {r},
-  cell{17}{13} = {r},
-  cell{18}{3} = {r},
-  cell{18}{4} = {r},
-  cell{18}{5} = {r},
-  cell{18}{6} = {r},
-  cell{18}{7} = {r},
-  cell{18}{8} = {r},
-  cell{18}{9} = {r},
-  cell{18}{10} = {r},
-  cell{18}{11} = {r},
-  cell{18}{12} = {r},
-  cell{18}{13} = {r},
-  cell{19}{3} = {r},
-  cell{19}{4} = {r},
-  cell{19}{5} = {r},
-  cell{19}{6} = {r},
-  cell{19}{7} = {r},
-  cell{19}{8} = {r},
-  cell{19}{9} = {r},
-  cell{19}{10} = {r},
-  cell{19}{11} = {r},
-  cell{19}{12} = {r},
-  cell{19}{13} = {r},
-  cell{20}{3} = {r},
-  cell{20}{4} = {r},
-  cell{20}{5} = {r},
-  cell{20}{6} = {r},
-  cell{20}{7} = {r},
-  cell{20}{8} = {r},
-  cell{20}{9} = {r},
-  cell{20}{10} = {r},
-  cell{20}{11} = {r},
-  cell{20}{12} = {r},
-  cell{20}{13} = {r},
-  cell{21}{3} = {r},
-  cell{21}{4} = {r},
-  cell{21}{5} = {r},
-  cell{21}{6} = {r},
-  cell{21}{7} = {r},
-  cell{21}{8} = {r},
-  cell{21}{9} = {r},
-  cell{21}{10} = {r},
-  cell{21}{11} = {r},
-  cell{21}{12} = {r},
-  cell{21}{13} = {r},
-  cell{22}{3} = {r},
-  cell{22}{4} = {r},
-  cell{22}{5} = {r},
-  cell{22}{6} = {r},
-  cell{22}{7} = {r},
-  cell{22}{8} = {r},
-  cell{22}{9} = {r},
-  cell{22}{10} = {r},
-  cell{22}{11} = {r},
-  cell{22}{12} = {r},
-  cell{22}{13} = {r},
-  cell{23}{3} = {r},
-  cell{23}{4} = {r},
-  cell{23}{5} = {r},
-  cell{23}{6} = {r},
-  cell{23}{7} = {r},
-  cell{23}{8} = {r},
-  cell{23}{9} = {r},
-  cell{23}{10} = {r},
-  cell{23}{11} = {r},
-  cell{23}{12} = {r},
-  cell{23}{13} = {r},
-  cell{24}{3} = {r},
-  cell{24}{4} = {r},
-  cell{24}{5} = {r},
-  cell{24}{6} = {r},
-  cell{24}{7} = {r},
-  cell{24}{8} = {r},
-  cell{24}{9} = {r},
-  cell{24}{10} = {r},
-  cell{24}{11} = {r},
-  cell{24}{12} = {r},
-  cell{24}{13} = {r},
-  cell{25}{3} = {r},
-  cell{25}{4} = {r},
-  cell{25}{5} = {r},
-  cell{25}{6} = {r},
-  cell{25}{7} = {r},
-  cell{25}{8} = {r},
-  cell{25}{9} = {r},
-  cell{25}{10} = {r},
-  cell{25}{11} = {r},
-  cell{25}{12} = {r},
-  cell{25}{13} = {r},
-  cell{26}{3} = {r},
-  cell{26}{4} = {r},
-  cell{26}{5} = {r},
-  cell{26}{6} = {r},
-  cell{26}{7} = {r},
-  cell{26}{8} = {r},
-  cell{26}{9} = {r},
-  cell{26}{10} = {r},
-  cell{26}{11} = {r},
-  cell{26}{12} = {r},
-  cell{26}{13} = {r},
-  cell{27}{3} = {r},
-  cell{27}{4} = {r},
-  cell{27}{5} = {r},
-  cell{27}{6} = {r},
-  cell{27}{7} = {r},
-  cell{27}{8} = {r},
-  cell{27}{9} = {r},
-  cell{27}{10} = {r},
-  cell{27}{11} = {r},
-  cell{27}{12} = {r},
-  cell{27}{13} = {r},
+  cell{1}{1} = {r=2}{},  cell{1}{2} = {r=2}{},  cell{1}{3} = {r=2}{},  cell{1}{4} = {r=2}{},  cell{1}{5} = {r=2}{},  cell{1}{6} = {r=2}{},  cell{1}{7} = {r=2}{},  cell{1}{8} = {r=2}{},  cell{1}{9} = {c=5}{c},  cell{3}{3} = {r},  cell{3}{4} = {r},  cell{3}{5} = {r},  cell{3}{6} = {r},  cell{3}{7} = {r},  cell{3}{8} = {r},  cell{3}{9} = {r},  cell{3}{10} = {r},  cell{3}{11} = {r},  cell{3}{12} = {r},  cell{3}{13} = {r},  cell{4}{3} = {r},  cell{4}{4} = {r},  cell{4}{5} = {r},  cell{4}{6} = {r},  cell{4}{7} = {r},  cell{4}{8} = {r},  cell{4}{9} = {r},  cell{4}{10} = {r},  cell{4}{11} = {r},  cell{4}{12} = {r},  cell{4}{13} = {r},  cell{5}{3} = {r},  cell{5}{4} = {r},  cell{5}{5} = {r},  cell{5}{6} = {r},  cell{5}{7} = {r},  cell{5}{8} = {r},  cell{5}{9} = {r},  cell{5}{10} = {r},  cell{5}{11} = {r},  cell{5}{12} = {r},  cell{5}{13} = {r},  cell{6}{3} = {r},  cell{6}{4} = {r},  cell{6}{5} = {r},  cell{6}{6} = {r},  cell{6}{7} = {r},  cell{6}{8} = {r},  cell{6}{9} = {r},  cell{6}{10} = {r},  cell{6}{11} = {r},  cell{6}{12} = {r},  cell{6}{13} = {r},  cell{7}{3} = {r},  cell{7}{4} = {r},  cell{7}{5} = {r},  cell{7}{6} = {r},  cell{7}{7} = {r},  cell{7}{8} = {r},  cell{7}{9} = {r},  cell{7}{10} = {r},  cell{7}{11} = {r},  cell{7}{12} = {r},  cell{7}{13} = {r},  cell{8}{3} = {r},  cell{8}{4} = {r},  cell{8}{5} = {r},  cell{8}{6} = {r},  cell{8}{7} = {r},  cell{8}{8} = {r},  cell{8}{9} = {r},  cell{8}{10} = {r},  cell{8}{11} = {r},  cell{8}{12} = {r},  cell{8}{13} = {r},  cell{9}{3} = {r},  cell{9}{4} = {r},  cell{9}{5} = {r},  cell{9}{6} = {r},  cell{9}{7} = {r},  cell{9}{8} = {r},  cell{9}{9} = {r},  cell{9}{10} = {r},  cell{9}{11} = {r},  cell{9}{12} = {r},  cell{9}{13} = {r},  cell{10}{3} = {r},  cell{10}{4} = {r},  cell{10}{5} = {r},  cell{10}{6} = {r},  cell{10}{7} = {r},  cell{10}{8} = {r},  cell{10}{9} = {r},  cell{10}{10} = {r},  cell{10}{11} = {r},  cell{10}{12} = {r},  cell{10}{13} = {r},  cell{11}{3} = {r},  cell{11}{4} = {r},  cell{11}{5} = {r},  cell{11}{6} = {r},  cell{11}{7} = {r},  cell{11}{8} = {r},  cell{11}{9} = {r},  cell{11}{10} = {r},  cell{11}{11} = {r},  cell{11}{12} = {r},  cell{11}{13} = {r},  cell{12}{3} = {r},  cell{12}{4} = {r},  cell{12}{5} = {r},  cell{12}{6} = {r},  cell{12}{7} = {r},  cell{12}{8} = {r},  cell{12}{9} = {r},  cell{12}{10} = {r},  cell{12}{11} = {r},  cell{12}{12} = {r},  cell{12}{13} = {r},  cell{13}{3} = {r},  cell{13}{4} = {r},  cell{13}{5} = {r},  cell{13}{6} = {r},  cell{13}{7} = {r},  cell{13}{8} = {r},  cell{13}{9} = {r},  cell{13}{10} = {r},  cell{13}{11} = {r},  cell{13}{12} = {r},  cell{13}{13} = {r},  cell{14}{3} = {r},  cell{14}{4} = {r},  cell{14}{5} = {r},  cell{14}{6} = {r},  cell{14}{7} = {r},  cell{14}{8} = {r},  cell{14}{9} = {r},  cell{14}{10} = {r},  cell{14}{11} = {r},  cell{14}{12} = {r},  cell{14}{13} = {r},  cell{15}{3} = {r},  cell{15}{4} = {r},  cell{15}{5} = {r},  cell{15}{6} = {r},  cell{15}{7} = {r},  cell{15}{8} = {r},  cell{15}{9} = {r},  cell{15}{10} = {r},  cell{15}{11} = {r},  cell{15}{12} = {r},  cell{15}{13} = {r},  cell{16}{3} = {r},  cell{16}{4} = {r},  cell{16}{5} = {r},  cell{16}{6} = {r},  cell{16}{7} = {r},  cell{16}{8} = {r},  cell{16}{9} = {r},  cell{16}{10} = {r},  cell{16}{11} = {r},  cell{16}{12} = {r},  cell{16}{13} = {r},  cell{17}{3} = {r},  cell{17}{4} = {r},  cell{17}{5} = {r},  cell{17}{6} = {r},  cell{17}{7} = {r},  cell{17}{8} = {r},  cell{17}{9} = {r},  cell{17}{10} = {r},  cell{17}{11} = {r},  cell{17}{12} = {r},  cell{17}{13} = {r},  cell{18}{3} = {r},  cell{18}{4} = {r},  cell{18}{5} = {r},  cell{18}{6} = {r},  cell{18}{7} = {r},  cell{18}{8} = {r},  cell{18}{9} = {r},  cell{18}{10} = {r},  cell{18}{11} = {r},  cell{18}{12} = {r},  cell{18}{13} = {r},  cell{19}{3} = {r},  cell{19}{4} = {r},  cell{19}{5} = {r},  cell{19}{6} = {r},  cell{19}{7} = {r},  cell{19}{8} = {r},  cell{19}{9} = {r},  cell{19}{10} = {r},  cell{19}{11} = {r},  cell{19}{12} = {r},  cell{19}{13} = {r},  cell{20}{3} = {r},  cell{20}{4} = {r},  cell{20}{5} = {r},  cell{20}{6} = {r},  cell{20}{7} = {r},  cell{20}{8} = {r},  cell{20}{9} = {r},  cell{20}{10} = {r},  cell{20}{11} = {r},  cell{20}{12} = {r},  cell{20}{13} = {r},  cell{21}{3} = {r},  cell{21}{4} = {r},  cell{21}{5} = {r},  cell{21}{6} = {r},  cell{21}{7} = {r},  cell{21}{8} = {r},  cell{21}{9} = {r},  cell{21}{10} = {r},  cell{21}{11} = {r},  cell{21}{12} = {r},  cell{21}{13} = {r},  cell{22}{3} = {r},  cell{22}{4} = {r},  cell{22}{5} = {r},  cell{22}{6} = {r},  cell{22}{7} = {r},  cell{22}{8} = {r},  cell{22}{9} = {r},  cell{22}{10} = {r},  cell{22}{11} = {r},  cell{22}{12} = {r},  cell{22}{13} = {r},  cell{23}{3} = {r},  cell{23}{4} = {r},  cell{23}{5} = {r},  cell{23}{6} = {r},  cell{23}{7} = {r},  cell{23}{8} = {r},  cell{23}{9} = {r},  cell{23}{10} = {r},  cell{23}{11} = {r},  cell{23}{12} = {r},  cell{23}{13} = {r},  cell{24}{3} = {r},  cell{24}{4} = {r},  cell{24}{5} = {r},  cell{24}{6} = {r},  cell{24}{7} = {r},  cell{24}{8} = {r},  cell{24}{9} = {r},  cell{24}{10} = {r},  cell{24}{11} = {r},  cell{24}{12} = {r},  cell{24}{13} = {r},  cell{25}{3} = {r},  cell{25}{4} = {r},  cell{25}{5} = {r},  cell{25}{6} = {r},  cell{25}{7} = {r},  cell{25}{8} = {r},  cell{25}{9} = {r},  cell{25}{10} = {r},  cell{25}{11} = {r},  cell{25}{12} = {r},  cell{25}{13} = {r},  cell{26}{3} = {r},  cell{26}{4} = {r},  cell{26}{5} = {r},  cell{26}{6} = {r},  cell{26}{7} = {r},  cell{26}{8} = {r},  cell{26}{9} = {r},  cell{26}{10} = {r},  cell{26}{11} = {r},  cell{26}{12} = {r},  cell{26}{13} = {r},  cell{27}{3} = {r},  cell{27}{4} = {r},  cell{27}{5} = {r},  cell{27}{6} = {r},  cell{27}{7} = {r},  cell{27}{8} = {r},  cell{27}{9} = {r},  cell{27}{10} = {r},  cell{27}{11} = {r},  cell{27}{12} = {r},  cell{27}{13} = {r},
 }
 \hline\hline %inserts double horizontal lines
 \textbf{ }
@@ -1555,6 +995,7 @@ Dataset & Data augmentation & Accuracy & F1 & Recall & Precision & Cohen Kappa &
 \hline %inserts single line
 \end{tblr}
 \end{adjustbox}
+\label{table:testing_real_dataset}
 \end{table*}
 
 \begin{figure*}
@@ -1571,7 +1012,7 @@ Dataset & Data augmentation & Accuracy & F1 & Recall & Precision & Cohen Kappa &
 \end{figure*}
 
 
-The experimental evidence showed the data augmentation techniques' importance in the precision of deep learning models since models trained without considering data augmentation techniques presented low precision (Table 4).
+The experimental evidence showed the data augmentation techniques' importance in the precision of deep learning models since models trained without considering data augmentation techniques presented low precision (Table \ref{table:training_statistic}).
 For comparing our models with the state-of-art, we consider performance metrics for accuracy, precision, recall, specificity, F1.
 
 \begin{table*}
@@ -1579,462 +1020,7 @@ For comparing our models with the state-of-art, we consider performance metrics 
 \centering
 \begin{adjustbox}{width=\textwidth}
 \begin{tblr}{
-  row{2} = {c},
-  cell{1}{1} = {r=2}{},
-  cell{1}{2} = {r=2}{},
-  cell{1}{3} = {c=6}{c},
-  cell{1}{9} = {c=6}{c},
-  cell{1}{15} = {c=6}{c},
-  cell{3}{3} = {r},
-  cell{3}{4} = {r},
-  cell{3}{5} = {r},
-  cell{3}{6} = {r},
-  cell{3}{7} = {r},
-  cell{3}{8} = {r},
-  cell{3}{9} = {r},
-  cell{3}{10} = {r},
-  cell{3}{11} = {r},
-  cell{3}{12} = {r},
-  cell{3}{13} = {r},
-  cell{3}{14} = {r},
-  cell{3}{15} = {r},
-  cell{3}{16} = {r},
-  cell{3}{17} = {r},
-  cell{3}{18} = {r},
-  cell{3}{19} = {r},
-  cell{3}{20} = {r},
-  cell{4}{3} = {r},
-  cell{4}{4} = {r},
-  cell{4}{5} = {r},
-  cell{4}{6} = {r},
-  cell{4}{7} = {r},
-  cell{4}{8} = {r},
-  cell{4}{9} = {r},
-  cell{4}{10} = {r},
-  cell{4}{11} = {r},
-  cell{4}{12} = {r},
-  cell{4}{13} = {r},
-  cell{4}{14} = {r},
-  cell{4}{15} = {r},
-  cell{4}{16} = {r},
-  cell{4}{17} = {r},
-  cell{4}{18} = {r},
-  cell{4}{19} = {r},
-  cell{4}{20} = {r},
-  cell{5}{3} = {r},
-  cell{5}{4} = {r},
-  cell{5}{5} = {r},
-  cell{5}{6} = {r},
-  cell{5}{7} = {r},
-  cell{5}{8} = {r},
-  cell{5}{9} = {r},
-  cell{5}{10} = {r},
-  cell{5}{11} = {r},
-  cell{5}{12} = {r},
-  cell{5}{13} = {r},
-  cell{5}{14} = {r},
-  cell{5}{15} = {r},
-  cell{5}{16} = {r},
-  cell{5}{17} = {r},
-  cell{5}{18} = {r},
-  cell{5}{19} = {r},
-  cell{5}{20} = {r},
-  cell{6}{3} = {r},
-  cell{6}{4} = {r},
-  cell{6}{5} = {r},
-  cell{6}{6} = {r},
-  cell{6}{7} = {r},
-  cell{6}{8} = {r},
-  cell{6}{9} = {r},
-  cell{6}{10} = {r},
-  cell{6}{11} = {r},
-  cell{6}{12} = {r},
-  cell{6}{13} = {r},
-  cell{6}{14} = {r},
-  cell{6}{15} = {r},
-  cell{6}{16} = {r},
-  cell{6}{17} = {r},
-  cell{6}{18} = {r},
-  cell{6}{19} = {r},
-  cell{6}{20} = {r},
-  cell{7}{3} = {r},
-  cell{7}{4} = {r},
-  cell{7}{5} = {r},
-  cell{7}{6} = {r},
-  cell{7}{7} = {r},
-  cell{7}{8} = {r},
-  cell{7}{9} = {r},
-  cell{7}{10} = {r},
-  cell{7}{11} = {r},
-  cell{7}{12} = {r},
-  cell{7}{13} = {r},
-  cell{7}{14} = {r},
-  cell{7}{15} = {r},
-  cell{7}{16} = {r},
-  cell{7}{17} = {r},
-  cell{7}{18} = {r},
-  cell{7}{19} = {r},
-  cell{7}{20} = {r},
-  cell{8}{3} = {r},
-  cell{8}{4} = {r},
-  cell{8}{5} = {r},
-  cell{8}{6} = {r},
-  cell{8}{7} = {r},
-  cell{8}{8} = {r},
-  cell{8}{9} = {r},
-  cell{8}{10} = {r},
-  cell{8}{11} = {r},
-  cell{8}{12} = {r},
-  cell{8}{13} = {r},
-  cell{8}{14} = {r},
-  cell{8}{15} = {r},
-  cell{8}{16} = {r},
-  cell{8}{17} = {r},
-  cell{8}{18} = {r},
-  cell{8}{19} = {r},
-  cell{8}{20} = {r},
-  cell{9}{3} = {r},
-  cell{9}{4} = {r},
-  cell{9}{5} = {r},
-  cell{9}{6} = {r},
-  cell{9}{7} = {r},
-  cell{9}{8} = {r},
-  cell{9}{9} = {r},
-  cell{9}{10} = {r},
-  cell{9}{11} = {r},
-  cell{9}{12} = {r},
-  cell{9}{13} = {r},
-  cell{9}{14} = {r},
-  cell{9}{15} = {r},
-  cell{9}{16} = {r},
-  cell{9}{17} = {r},
-  cell{9}{18} = {r},
-  cell{9}{19} = {r},
-  cell{9}{20} = {r},
-  cell{10}{3} = {r},
-  cell{10}{4} = {r},
-  cell{10}{5} = {r},
-  cell{10}{6} = {r},
-  cell{10}{7} = {r},
-  cell{10}{8} = {r},
-  cell{10}{9} = {r},
-  cell{10}{10} = {r},
-  cell{10}{11} = {r},
-  cell{10}{12} = {r},
-  cell{10}{13} = {r},
-  cell{10}{14} = {r},
-  cell{10}{15} = {r},
-  cell{10}{16} = {r},
-  cell{10}{17} = {r},
-  cell{10}{18} = {r},
-  cell{10}{19} = {r},
-  cell{10}{20} = {r},
-  cell{11}{3} = {r},
-  cell{11}{4} = {r},
-  cell{11}{5} = {r},
-  cell{11}{6} = {r},
-  cell{11}{7} = {r},
-  cell{11}{8} = {r},
-  cell{11}{9} = {r},
-  cell{11}{10} = {r},
-  cell{11}{11} = {r},
-  cell{11}{12} = {r},
-  cell{11}{13} = {r},
-  cell{11}{14} = {r},
-  cell{11}{15} = {r},
-  cell{11}{16} = {r},
-  cell{11}{17} = {r},
-  cell{11}{18} = {r},
-  cell{11}{19} = {r},
-  cell{11}{20} = {r},
-  cell{12}{3} = {r},
-  cell{12}{4} = {r},
-  cell{12}{5} = {r},
-  cell{12}{6} = {r},
-  cell{12}{7} = {r},
-  cell{12}{8} = {r},
-  cell{12}{9} = {r},
-  cell{12}{10} = {r},
-  cell{12}{11} = {r},
-  cell{12}{12} = {r},
-  cell{12}{13} = {r},
-  cell{12}{14} = {r},
-  cell{12}{15} = {r},
-  cell{12}{16} = {r},
-  cell{12}{17} = {r},
-  cell{12}{18} = {r},
-  cell{12}{19} = {r},
-  cell{12}{20} = {r},
-  cell{13}{3} = {r},
-  cell{13}{4} = {r},
-  cell{13}{5} = {r},
-  cell{13}{6} = {r},
-  cell{13}{7} = {r},
-  cell{13}{8} = {r},
-  cell{13}{9} = {r},
-  cell{13}{10} = {r},
-  cell{13}{11} = {r},
-  cell{13}{12} = {r},
-  cell{13}{13} = {r},
-  cell{13}{14} = {r},
-  cell{13}{15} = {r},
-  cell{13}{16} = {r},
-  cell{13}{17} = {r},
-  cell{13}{18} = {r},
-  cell{13}{19} = {r},
-  cell{13}{20} = {r},
-  cell{14}{3} = {r},
-  cell{14}{4} = {r},
-  cell{14}{5} = {r},
-  cell{14}{6} = {r},
-  cell{14}{7} = {r},
-  cell{14}{8} = {r},
-  cell{14}{9} = {r},
-  cell{14}{10} = {r},
-  cell{14}{11} = {r},
-  cell{14}{12} = {r},
-  cell{14}{13} = {r},
-  cell{14}{14} = {r},
-  cell{14}{15} = {r},
-  cell{14}{16} = {r},
-  cell{14}{17} = {r},
-  cell{14}{18} = {r},
-  cell{14}{19} = {r},
-  cell{14}{20} = {r},
-  cell{15}{3} = {r},
-  cell{15}{4} = {r},
-  cell{15}{5} = {r},
-  cell{15}{6} = {r},
-  cell{15}{7} = {r},
-  cell{15}{8} = {r},
-  cell{15}{9} = {r},
-  cell{15}{10} = {r},
-  cell{15}{11} = {r},
-  cell{15}{12} = {r},
-  cell{15}{13} = {r},
-  cell{15}{14} = {r},
-  cell{15}{15} = {r},
-  cell{15}{16} = {r},
-  cell{15}{17} = {r},
-  cell{15}{18} = {r},
-  cell{15}{19} = {r},
-  cell{15}{20} = {r},
-  cell{16}{3} = {r},
-  cell{16}{4} = {r},
-  cell{16}{5} = {r},
-  cell{16}{6} = {r},
-  cell{16}{7} = {r},
-  cell{16}{8} = {r},
-  cell{16}{9} = {r},
-  cell{16}{10} = {r},
-  cell{16}{11} = {r},
-  cell{16}{12} = {r},
-  cell{16}{13} = {r},
-  cell{16}{14} = {r},
-  cell{16}{15} = {r},
-  cell{16}{16} = {r},
-  cell{16}{17} = {r},
-  cell{16}{18} = {r},
-  cell{16}{19} = {r},
-  cell{16}{20} = {r},
-  cell{17}{3} = {r},
-  cell{17}{4} = {r},
-  cell{17}{5} = {r},
-  cell{17}{6} = {r},
-  cell{17}{7} = {r},
-  cell{17}{8} = {r},
-  cell{17}{9} = {r},
-  cell{17}{10} = {r},
-  cell{17}{11} = {r},
-  cell{17}{12} = {r},
-  cell{17}{13} = {r},
-  cell{17}{14} = {r},
-  cell{17}{15} = {r},
-  cell{17}{16} = {r},
-  cell{17}{17} = {r},
-  cell{17}{18} = {r},
-  cell{17}{19} = {r},
-  cell{17}{20} = {r},
-  cell{18}{3} = {r},
-  cell{18}{4} = {r},
-  cell{18}{5} = {r},
-  cell{18}{6} = {r},
-  cell{18}{7} = {r},
-  cell{18}{8} = {r},
-  cell{18}{9} = {r},
-  cell{18}{10} = {r},
-  cell{18}{11} = {r},
-  cell{18}{12} = {r},
-  cell{18}{13} = {r},
-  cell{18}{14} = {r},
-  cell{18}{15} = {r},
-  cell{18}{16} = {r},
-  cell{18}{17} = {r},
-  cell{18}{18} = {r},
-  cell{18}{19} = {r},
-  cell{18}{20} = {r},
-  cell{19}{3} = {r},
-  cell{19}{4} = {r},
-  cell{19}{5} = {r},
-  cell{19}{6} = {r},
-  cell{19}{7} = {r},
-  cell{19}{8} = {r},
-  cell{19}{9} = {r},
-  cell{19}{10} = {r},
-  cell{19}{11} = {r},
-  cell{19}{12} = {r},
-  cell{19}{13} = {r},
-  cell{19}{14} = {r},
-  cell{19}{15} = {r},
-  cell{19}{16} = {r},
-  cell{19}{17} = {r},
-  cell{19}{18} = {r},
-  cell{19}{19} = {r},
-  cell{19}{20} = {r},
-  cell{20}{3} = {r},
-  cell{20}{4} = {r},
-  cell{20}{5} = {r},
-  cell{20}{6} = {r},
-  cell{20}{7} = {r},
-  cell{20}{8} = {r},
-  cell{20}{9} = {r},
-  cell{20}{10} = {r},
-  cell{20}{11} = {r},
-  cell{20}{12} = {r},
-  cell{20}{13} = {r},
-  cell{20}{14} = {r},
-  cell{20}{15} = {r},
-  cell{20}{16} = {r},
-  cell{20}{17} = {r},
-  cell{20}{18} = {r},
-  cell{20}{19} = {r},
-  cell{20}{20} = {r},
-  cell{21}{3} = {r},
-  cell{21}{4} = {r},
-  cell{21}{5} = {r},
-  cell{21}{6} = {r},
-  cell{21}{7} = {r},
-  cell{21}{8} = {r},
-  cell{21}{9} = {r},
-  cell{21}{10} = {r},
-  cell{21}{11} = {r},
-  cell{21}{12} = {r},
-  cell{21}{13} = {r},
-  cell{21}{14} = {r},
-  cell{21}{15} = {r},
-  cell{21}{16} = {r},
-  cell{21}{17} = {r},
-  cell{21}{18} = {r},
-  cell{21}{19} = {r},
-  cell{21}{20} = {r},
-  cell{22}{3} = {r},
-  cell{22}{4} = {r},
-  cell{22}{5} = {r},
-  cell{22}{6} = {r},
-  cell{22}{7} = {r},
-  cell{22}{8} = {r},
-  cell{22}{9} = {r},
-  cell{22}{10} = {r},
-  cell{22}{11} = {r},
-  cell{22}{12} = {r},
-  cell{22}{13} = {r},
-  cell{22}{14} = {r},
-  cell{22}{15} = {r},
-  cell{22}{16} = {r},
-  cell{22}{17} = {r},
-  cell{22}{18} = {r},
-  cell{22}{19} = {r},
-  cell{22}{20} = {r},
-  cell{23}{3} = {r},
-  cell{23}{4} = {r},
-  cell{23}{5} = {r},
-  cell{23}{6} = {r},
-  cell{23}{7} = {r},
-  cell{23}{8} = {r},
-  cell{23}{9} = {r},
-  cell{23}{10} = {r},
-  cell{23}{11} = {r},
-  cell{23}{12} = {r},
-  cell{23}{13} = {r},
-  cell{23}{14} = {r},
-  cell{23}{15} = {r},
-  cell{23}{16} = {r},
-  cell{23}{17} = {r},
-  cell{23}{18} = {r},
-  cell{23}{19} = {r},
-  cell{23}{20} = {r},
-  cell{24}{3} = {r},
-  cell{24}{4} = {r},
-  cell{24}{5} = {r},
-  cell{24}{6} = {r},
-  cell{24}{7} = {r},
-  cell{24}{8} = {r},
-  cell{24}{9} = {r},
-  cell{24}{10} = {r},
-  cell{24}{11} = {r},
-  cell{24}{12} = {r},
-  cell{24}{13} = {r},
-  cell{24}{14} = {r},
-  cell{24}{15} = {r},
-  cell{24}{16} = {r},
-  cell{24}{17} = {r},
-  cell{24}{18} = {r},
-  cell{24}{19} = {r},
-  cell{24}{20} = {r},
-  cell{25}{3} = {r},
-  cell{25}{4} = {r},
-  cell{25}{5} = {r},
-  cell{25}{6} = {r},
-  cell{25}{7} = {r},
-  cell{25}{8} = {r},
-  cell{25}{9} = {r},
-  cell{25}{10} = {r},
-  cell{25}{11} = {r},
-  cell{25}{12} = {r},
-  cell{25}{13} = {r},
-  cell{25}{14} = {r},
-  cell{25}{15} = {r},
-  cell{25}{16} = {r},
-  cell{25}{17} = {r},
-  cell{25}{18} = {r},
-  cell{25}{19} = {r},
-  cell{25}{20} = {r},
-  cell{26}{3} = {r},
-  cell{26}{4} = {r},
-  cell{26}{5} = {r},
-  cell{26}{6} = {r},
-  cell{26}{7} = {r},
-  cell{26}{8} = {r},
-  cell{26}{9} = {r},
-  cell{26}{10} = {r},
-  cell{26}{11} = {r},
-  cell{26}{12} = {r},
-  cell{26}{13} = {r},
-  cell{26}{14} = {r},
-  cell{26}{15} = {r},
-  cell{26}{16} = {r},
-  cell{26}{17} = {r},
-  cell{26}{18} = {r},
-  cell{26}{19} = {r},
-  cell{26}{20} = {r},
-  cell{27}{3} = {r},
-  cell{27}{4} = {r},
-  cell{27}{5} = {r},
-  cell{27}{6} = {r},
-  cell{27}{7} = {r},
-  cell{27}{8} = {r},
-  cell{27}{9} = {r},
-  cell{27}{10} = {r},
-  cell{27}{11} = {r},
-  cell{27}{12} = {r},
-  cell{27}{13} = {r},
-  cell{27}{14} = {r},
-  cell{27}{15} = {r},
-  cell{27}{16} = {r},
-  cell{27}{17} = {r},
-  cell{27}{18} = {r},
-  cell{27}{19} = {r},
-  cell{27}{20} = {r},
+  row{2} = {c},  cell{1}{1} = {r=2}{},  cell{1}{2} = {r=2}{},  cell{1}{3} = {c=6}{c},  cell{1}{9} = {c=6}{c},  cell{1}{15} = {c=6}{c},  cell{3}{3} = {r},  cell{3}{4} = {r},  cell{3}{5} = {r},  cell{3}{6} = {r},  cell{3}{7} = {r},  cell{3}{8} = {r},  cell{3}{9} = {r},  cell{3}{10} = {r},  cell{3}{11} = {r},  cell{3}{12} = {r},  cell{3}{13} = {r},  cell{3}{14} = {r},  cell{3}{15} = {r},  cell{3}{16} = {r},  cell{3}{17} = {r},  cell{3}{18} = {r},  cell{3}{19} = {r},  cell{3}{20} = {r},  cell{4}{3} = {r},  cell{4}{4} = {r},  cell{4}{5} = {r},  cell{4}{6} = {r},  cell{4}{7} = {r},  cell{4}{8} = {r},  cell{4}{9} = {r},  cell{4}{10} = {r},  cell{4}{11} = {r},  cell{4}{12} = {r},  cell{4}{13} = {r},  cell{4}{14} = {r},  cell{4}{15} = {r},  cell{4}{16} = {r},  cell{4}{17} = {r},  cell{4}{18} = {r},  cell{4}{19} = {r},  cell{4}{20} = {r},  cell{5}{3} = {r},  cell{5}{4} = {r},  cell{5}{5} = {r},  cell{5}{6} = {r},  cell{5}{7} = {r},  cell{5}{8} = {r},  cell{5}{9} = {r},  cell{5}{10} = {r},  cell{5}{11} = {r},  cell{5}{12} = {r},  cell{5}{13} = {r},  cell{5}{14} = {r},  cell{5}{15} = {r},  cell{5}{16} = {r},  cell{5}{17} = {r},  cell{5}{18} = {r},  cell{5}{19} = {r},  cell{5}{20} = {r},  cell{6}{3} = {r},  cell{6}{4} = {r},  cell{6}{5} = {r},  cell{6}{6} = {r},  cell{6}{7} = {r},  cell{6}{8} = {r},  cell{6}{9} = {r},  cell{6}{10} = {r},  cell{6}{11} = {r},  cell{6}{12} = {r},  cell{6}{13} = {r},  cell{6}{14} = {r},  cell{6}{15} = {r},  cell{6}{16} = {r},  cell{6}{17} = {r},  cell{6}{18} = {r},  cell{6}{19} = {r},  cell{6}{20} = {r},  cell{7}{3} = {r},  cell{7}{4} = {r},  cell{7}{5} = {r},  cell{7}{6} = {r},  cell{7}{7} = {r},  cell{7}{8} = {r},  cell{7}{9} = {r},  cell{7}{10} = {r},  cell{7}{11} = {r},  cell{7}{12} = {r},  cell{7}{13} = {r},  cell{7}{14} = {r},  cell{7}{15} = {r},  cell{7}{16} = {r},  cell{7}{17} = {r},  cell{7}{18} = {r},  cell{7}{19} = {r},  cell{7}{20} = {r},  cell{8}{3} = {r},  cell{8}{4} = {r},  cell{8}{5} = {r},  cell{8}{6} = {r},  cell{8}{7} = {r},  cell{8}{8} = {r},  cell{8}{9} = {r},  cell{8}{10} = {r},  cell{8}{11} = {r},  cell{8}{12} = {r},  cell{8}{13} = {r},  cell{8}{14} = {r},  cell{8}{15} = {r},  cell{8}{16} = {r},  cell{8}{17} = {r},  cell{8}{18} = {r},  cell{8}{19} = {r},  cell{8}{20} = {r},  cell{9}{3} = {r},  cell{9}{4} = {r},  cell{9}{5} = {r},  cell{9}{6} = {r},  cell{9}{7} = {r},  cell{9}{8} = {r},  cell{9}{9} = {r},  cell{9}{10} = {r},  cell{9}{11} = {r},  cell{9}{12} = {r},  cell{9}{13} = {r},  cell{9}{14} = {r},  cell{9}{15} = {r},  cell{9}{16} = {r},  cell{9}{17} = {r},  cell{9}{18} = {r},  cell{9}{19} = {r},  cell{9}{20} = {r},  cell{10}{3} = {r},  cell{10}{4} = {r},  cell{10}{5} = {r},  cell{10}{6} = {r},  cell{10}{7} = {r},  cell{10}{8} = {r},  cell{10}{9} = {r},  cell{10}{10} = {r},  cell{10}{11} = {r},  cell{10}{12} = {r},  cell{10}{13} = {r},  cell{10}{14} = {r},  cell{10}{15} = {r},  cell{10}{16} = {r},  cell{10}{17} = {r},  cell{10}{18} = {r},  cell{10}{19} = {r},  cell{10}{20} = {r},  cell{11}{3} = {r},  cell{11}{4} = {r},  cell{11}{5} = {r},  cell{11}{6} = {r},  cell{11}{7} = {r},  cell{11}{8} = {r},  cell{11}{9} = {r},  cell{11}{10} = {r},  cell{11}{11} = {r},  cell{11}{12} = {r},  cell{11}{13} = {r},  cell{11}{14} = {r},  cell{11}{15} = {r},  cell{11}{16} = {r},  cell{11}{17} = {r},  cell{11}{18} = {r},  cell{11}{19} = {r},  cell{11}{20} = {r},  cell{12}{3} = {r},  cell{12}{4} = {r},  cell{12}{5} = {r},  cell{12}{6} = {r},  cell{12}{7} = {r},  cell{12}{8} = {r},  cell{12}{9} = {r},  cell{12}{10} = {r},  cell{12}{11} = {r},  cell{12}{12} = {r},  cell{12}{13} = {r},  cell{12}{14} = {r},  cell{12}{15} = {r},  cell{12}{16} = {r},  cell{12}{17} = {r},  cell{12}{18} = {r},  cell{12}{19} = {r},  cell{12}{20} = {r},  cell{13}{3} = {r},  cell{13}{4} = {r},  cell{13}{5} = {r},  cell{13}{6} = {r},  cell{13}{7} = {r},  cell{13}{8} = {r},  cell{13}{9} = {r},  cell{13}{10} = {r},  cell{13}{11} = {r},  cell{13}{12} = {r},  cell{13}{13} = {r},  cell{13}{14} = {r},  cell{13}{15} = {r},  cell{13}{16} = {r},  cell{13}{17} = {r},  cell{13}{18} = {r},  cell{13}{19} = {r},  cell{13}{20} = {r},  cell{14}{3} = {r},  cell{14}{4} = {r},  cell{14}{5} = {r},  cell{14}{6} = {r},  cell{14}{7} = {r},  cell{14}{8} = {r},  cell{14}{9} = {r},  cell{14}{10} = {r},  cell{14}{11} = {r},  cell{14}{12} = {r},  cell{14}{13} = {r},  cell{14}{14} = {r},  cell{14}{15} = {r},  cell{14}{16} = {r},  cell{14}{17} = {r},  cell{14}{18} = {r},  cell{14}{19} = {r},  cell{14}{20} = {r},  cell{15}{3} = {r},  cell{15}{4} = {r},  cell{15}{5} = {r},  cell{15}{6} = {r},  cell{15}{7} = {r},  cell{15}{8} = {r},  cell{15}{9} = {r},  cell{15}{10} = {r},  cell{15}{11} = {r},  cell{15}{12} = {r},  cell{15}{13} = {r},  cell{15}{14} = {r},  cell{15}{15} = {r},  cell{15}{16} = {r},  cell{15}{17} = {r},  cell{15}{18} = {r},  cell{15}{19} = {r},  cell{15}{20} = {r},  cell{16}{3} = {r},  cell{16}{4} = {r},  cell{16}{5} = {r},  cell{16}{6} = {r},  cell{16}{7} = {r},  cell{16}{8} = {r},  cell{16}{9} = {r},  cell{16}{10} = {r},  cell{16}{11} = {r},  cell{16}{12} = {r},  cell{16}{13} = {r},  cell{16}{14} = {r},  cell{16}{15} = {r},  cell{16}{16} = {r},  cell{16}{17} = {r},  cell{16}{18} = {r},  cell{16}{19} = {r},  cell{16}{20} = {r},  cell{17}{3} = {r},  cell{17}{4} = {r},  cell{17}{5} = {r},  cell{17}{6} = {r},  cell{17}{7} = {r},  cell{17}{8} = {r},  cell{17}{9} = {r},  cell{17}{10} = {r},  cell{17}{11} = {r},  cell{17}{12} = {r},  cell{17}{13} = {r},  cell{17}{14} = {r},  cell{17}{15} = {r},  cell{17}{16} = {r},  cell{17}{17} = {r},  cell{17}{18} = {r},  cell{17}{19} = {r},  cell{17}{20} = {r},  cell{18}{3} = {r},  cell{18}{4} = {r},  cell{18}{5} = {r},  cell{18}{6} = {r},  cell{18}{7} = {r},  cell{18}{8} = {r},  cell{18}{9} = {r},  cell{18}{10} = {r},  cell{18}{11} = {r},  cell{18}{12} = {r},  cell{18}{13} = {r},  cell{18}{14} = {r},  cell{18}{15} = {r},  cell{18}{16} = {r},  cell{18}{17} = {r},  cell{18}{18} = {r},  cell{18}{19} = {r},  cell{18}{20} = {r},  cell{19}{3} = {r},  cell{19}{4} = {r},  cell{19}{5} = {r},  cell{19}{6} = {r},  cell{19}{7} = {r},  cell{19}{8} = {r},  cell{19}{9} = {r},  cell{19}{10} = {r},  cell{19}{11} = {r},  cell{19}{12} = {r},  cell{19}{13} = {r},  cell{19}{14} = {r},  cell{19}{15} = {r},  cell{19}{16} = {r},  cell{19}{17} = {r},  cell{19}{18} = {r},  cell{19}{19} = {r},  cell{19}{20} = {r},  cell{20}{3} = {r},  cell{20}{4} = {r},  cell{20}{5} = {r},  cell{20}{6} = {r},  cell{20}{7} = {r},  cell{20}{8} = {r},  cell{20}{9} = {r},  cell{20}{10} = {r},  cell{20}{11} = {r},  cell{20}{12} = {r},  cell{20}{13} = {r},  cell{20}{14} = {r},  cell{20}{15} = {r},  cell{20}{16} = {r},  cell{20}{17} = {r},  cell{20}{18} = {r},  cell{20}{19} = {r},  cell{20}{20} = {r},  cell{21}{3} = {r},  cell{21}{4} = {r},  cell{21}{5} = {r},  cell{21}{6} = {r},  cell{21}{7} = {r},  cell{21}{8} = {r},  cell{21}{9} = {r},  cell{21}{10} = {r},  cell{21}{11} = {r},  cell{21}{12} = {r},  cell{21}{13} = {r},  cell{21}{14} = {r},  cell{21}{15} = {r},  cell{21}{16} = {r},  cell{21}{17} = {r},  cell{21}{18} = {r},  cell{21}{19} = {r},  cell{21}{20} = {r},  cell{22}{3} = {r},  cell{22}{4} = {r},  cell{22}{5} = {r},  cell{22}{6} = {r},  cell{22}{7} = {r},  cell{22}{8} = {r},  cell{22}{9} = {r},  cell{22}{10} = {r},  cell{22}{11} = {r},  cell{22}{12} = {r},  cell{22}{13} = {r},  cell{22}{14} = {r},  cell{22}{15} = {r},  cell{22}{16} = {r},  cell{22}{17} = {r},  cell{22}{18} = {r},  cell{22}{19} = {r},  cell{22}{20} = {r},  cell{23}{3} = {r},  cell{23}{4} = {r},  cell{23}{5} = {r},  cell{23}{6} = {r},  cell{23}{7} = {r},  cell{23}{8} = {r},  cell{23}{9} = {r},  cell{23}{10} = {r},  cell{23}{11} = {r},  cell{23}{12} = {r},  cell{23}{13} = {r},  cell{23}{14} = {r},  cell{23}{15} = {r},  cell{23}{16} = {r},  cell{23}{17} = {r},  cell{23}{18} = {r},  cell{23}{19} = {r},  cell{23}{20} = {r},  cell{24}{3} = {r},  cell{24}{4} = {r},  cell{24}{5} = {r},  cell{24}{6} = {r},  cell{24}{7} = {r},  cell{24}{8} = {r},  cell{24}{9} = {r},  cell{24}{10} = {r},  cell{24}{11} = {r},  cell{24}{12} = {r},  cell{24}{13} = {r},  cell{24}{14} = {r},  cell{24}{15} = {r},  cell{24}{16} = {r},  cell{24}{17} = {r},  cell{24}{18} = {r},  cell{24}{19} = {r},  cell{24}{20} = {r},  cell{25}{3} = {r},  cell{25}{4} = {r},  cell{25}{5} = {r},  cell{25}{6} = {r},  cell{25}{7} = {r},  cell{25}{8} = {r},  cell{25}{9} = {r},  cell{25}{10} = {r},  cell{25}{11} = {r},  cell{25}{12} = {r},  cell{25}{13} = {r},  cell{25}{14} = {r},  cell{25}{15} = {r},  cell{25}{16} = {r},  cell{25}{17} = {r},  cell{25}{18} = {r},  cell{25}{19} = {r},  cell{25}{20} = {r},  cell{26}{3} = {r},  cell{26}{4} = {r},  cell{26}{5} = {r},  cell{26}{6} = {r},  cell{26}{7} = {r},  cell{26}{8} = {r},  cell{26}{9} = {r},  cell{26}{10} = {r},  cell{26}{11} = {r},  cell{26}{12} = {r},  cell{26}{13} = {r},  cell{26}{14} = {r},  cell{26}{15} = {r},  cell{26}{16} = {r},  cell{26}{17} = {r},  cell{26}{18} = {r},  cell{26}{19} = {r},  cell{26}{20} = {r},  cell{27}{3} = {r},  cell{27}{4} = {r},  cell{27}{5} = {r},  cell{27}{6} = {r},  cell{27}{7} = {r},  cell{27}{8} = {r},  cell{27}{9} = {r},  cell{27}{10} = {r},  cell{27}{11} = {r},  cell{27}{12} = {r},  cell{27}{13} = {r},  cell{27}{14} = {r},  cell{27}{15} = {r},  cell{27}{16} = {r},  cell{27}{17} = {r},  cell{27}{18} = {r},  cell{27}{19} = {r},  cell{27}{20} = {r},
 }
 \hline\hline %inserts double horizontal lines
 Dataset & Data augmentation & {Fréchet Inception Distance\\(FID)
@@ -2086,6 +1072,7 @@ Dataset & Data augmentation & {Fréchet Inception Distance\\(FID)
 \hline %inserts single line
 \end{tblr}
 \end{adjustbox}
+\label{table:similarity_diversity_metrics}
 \end{table*}
 
 \begin{table*}
@@ -2147,17 +1134,17 @@ I & Interpolation AE Signal percent(40\%-60\%) & xxiv, xv \\
 
 
 \section{Discussion}
-The various experiments in this research show the performance of the probabilistic model on unbalanced datasets. Specifically, dataset (i) produced a model biased towards the LP, TC and VT events (Table 4).
-It can be seen that balanced datasets generate higher performance models, since they expand the examples of the event feature space. The models were then tested on real data, showing competitive levels of classification in most cases. Transfer learning allowed deep learning models to be generated in less time (Table 4).
-In Table 4 and Table 5. we can see that drifting data augmentation technique achieves best result in almost all of pre trained models. This can be because drifting technique covers best the data space. The best case is drifting (xi) with a drift range 0.0001 - 0.001 with an accuracy of 97.6\%, model trained over entirely artificial dataset. The next interesting result is the rotation (iii) with a range of 5\% - 25\% that achieves an accuracy of 94.2\% over another artificial dataset. In both previous cases, the F1 score metrics are similar in their accuracy respective. Although both models were generated from entirely artificial data, they show good performance in addition to the tests on real data, with accuracies of 97.2\% for (xi) and 93.7\% for (iii) (Table 5), although the highest accuracy value is recorded in (x) with 98.3\% with real and artificial data.
-It can be observed that the dataset composed of real and artificial data (x) generated by drifting in the range of 0.0001-0.001 reaches an accuracy of 93.8\%. Then the dataset of artificial data (ix) generated by drifting in range 0.001-0.01, reaches an accuracy of 93.5\%. Then we have the artificial data dataset (xxv) generated by Autoencoder Interpolation in the range 40\%-60\%, it obtains an accuracy of 93.1\% (Table 4). These models also show good performance in tests with real data, with accuracies of 98.3\% for (x), 93.7\% for (ix) and 80.7\% for (xxv) (Table 5). Only the last model has a large distance between training and test accuracy on real data.
-To obtain a generalized dataset, data from several stations were considered to generate a multi-station generalized probabilistic model. Furthermore, it was observed that models trained with completely artificial data achieved high recognition accuracy with real data in most cases (Table 5).
-Figure 11 shows that drifting, rotation, interpolation, and specification have slightly better accuracy values than the other techniques. In general, the trained models perform better when tested on real data than during training.
-Regarding the similarity and diversity metrics, it can be seen that the MS-SSIM values for the rotation and drifting techniques are similar, although the former shows more diversity, depending on the generation parameters (Table 6).
+The various experiments in this research show the performance of the probabilistic model on unbalanced datasets. Specifically, dataset (i) produced a model biased towards the LP, TC and VT events (Table \ref{table:training_performance}).
+It can be seen that balanced datasets generate higher performance models, since they expand the examples of the event feature space. The models were then tested on real data, showing competitive levels of classification in most cases. Transfer learning allowed deep learning models to be generated in less time (Table \ref{table:training_performance}).
+In Table \ref{table:training_performance} and Table \ref{table:testing_real_dataset}. we can see that drifting data augmentation technique achieves best result in almost all of pre trained models. This can be because drifting technique covers best the data space. The best case is drifting (xi) with a drift range 0.0001 - 0.001 with an accuracy of 97.6\%, model trained over entirely artificial dataset. The next interesting result is the rotation (iii) with a range of 5\% - 25\% that achieves an accuracy of 94.2\% over another artificial dataset. In both previous cases, the F1 score metrics are similar in their accuracy respective. Although both models were generated from entirely artificial data, they show good performance in addition to the tests on real data, with accuracies of 97.2\% for (xi) and 93.7\% for (iii) (Table \ref{table:testing_real_dataset}), although the highest accuracy value is recorded in (x) with 98.3\% with real and artificial data.
+It can be observed that the dataset composed of real and artificial data (x) generated by drifting in the range of 0.0001-0.001 reaches an accuracy of 93.8\%. Then the dataset of artificial data (ix) generated by drifting in range 0.001-0.01, reaches an accuracy of 93.5\%. Then we have the artificial data dataset (xxv) generated by Autoencoder Interpolation in the range 40\%-60\%, it obtains an accuracy of 93.1\% (Table \ref{table:training_performance}). These models also show good performance in tests with real data, with accuracies of 98.3\% for (x), 93.7\% for (ix) and 80.7\% for (xxv) (Table \ref{table:testing_real_dataset}). Only the last model has a large distance between training and test accuracy on real data.
+To obtain a generalized dataset, data from several stations were considered to generate a multi-station generalized probabilistic model. Furthermore, it was observed that models trained with completely artificial data achieved high recognition accuracy with real data in most cases (Table \ref{table:testing_real_dataset}).
+Figure \ref{fig:da_training_test} shows that drifting, rotation, interpolation, and specification have slightly better accuracy values than the other techniques. In general, the trained models perform better when tested on real data than during training.
+Regarding the similarity and diversity metrics, it can be seen that the MS-SSIM values for the rotation and drifting techniques are similar, although the former shows more diversity, depending on the generation parameters (Table \ref{table:similarity_diversity_metrics}).
 It can also be seen that Jittering shows higher diversity in (v) and (iv), with MS-SSIM values of 0.26 and 0.29, respectively.
 The most similar are Interpolation (xxv) and Drifting (vi), with MS-SSIM values of 0.42 and 0.41, respectively.
-Figure 12 shows the concentration of points in terms of the value of the MS-SSIM similarity metric vs. the accuracy of the model training. Only two distant points are seen, the dataset with only real data (i), which is distant due to having a low accuracy because it is an unbalanced dataset. Another distant point is the drifting dataset (vii) with a range of 0.01-0.1 because it shows more similarity. Zooming in on Figure 13, it can be seen that almost all the datasets have the same level of diversity, including the real dataset, but the artificial Jittering dataset (v) presents more diversity. Comparing artificial datasets with real and artificial datasets, within the same DA method, it can be seen that the artificial datasets present more diversity and training performance with Jittering, SpecAugment (xx)(xxi), and Rotation.
-In Figure 14, the most artificial real datasets present better diversity and testing accuracy values than the artificial datasets in the same DA method, and they are Drifting (x)(xi), rotation (ii)(iii), SpecAugment (xvii)(xviii), Drifting (viii)(ix).
+Figure \ref{fig:da_training_msssim} shows the concentration of points in terms of the value of the MS-SSIM similarity metric vs. the accuracy of the model training. Only two distant points are seen, the dataset with only real data (i), which is distant due to having a low accuracy because it is an unbalanced dataset. Another distant point is the drifting dataset (vii) with a range of 0.01-0.1 because it shows more similarity. Zooming in on Figure \ref{fig:da_training_msssim_zoom}, it can be seen that almost all the datasets have the same level of diversity, including the real dataset, but the artificial Jittering dataset (v) presents more diversity. Comparing artificial datasets with real and artificial datasets, within the same DA method, it can be seen that the artificial datasets present more diversity and training performance with Jittering, SpecAugment (xx)(xxi), and Rotation.
+In Figure \ref{fig:da_test_msssim}, the most artificial real datasets present better diversity and testing accuracy values than the artificial datasets in the same DA method, and they are Drifting (x)(xi), rotation (ii)(iii), SpecAugment (xvii)(xviii), Drifting (viii)(ix).
 
 
 
@@ -2181,7 +1168,7 @@ In Figure 14, the most artificial real datasets present better diversity and tes
 %\begin{figure}[!t]
 %\centering
 %\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
+% where an .eps filename suffix will be assumed under latex,
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 % via \DeclareGraphicsExtensions.
 %\caption{Simulation results for the network.}
@@ -2197,7 +1184,7 @@ In Figure 14, the most artificial real datasets present better diversity and tes
 % The subfigure \label commands are set within each subfloat command,
 % and the \label for the overall figure must come after \caption.
 % \hfil is used as a separator to get equal spacing.
-% Watch out that the combined width of all the subfigures on a 
+% Watch out that the combined width of all the subfigures on a
 % line do not exceed the text width or a line break will occur.
 %
 %\begin{figure*}[!t]
@@ -2254,7 +1241,7 @@ In Figure 14, the most artificial real datasets present better diversity and tes
 % in-text middle ("here") positioning is typically not used, but it
 % is allowed and encouraged for Computer Society conferences (but
 % not Computer Society journals). Most IEEE journals/conferences use
-% top floats exclusively. 
+% top floats exclusively.
 % Note that, LaTeX2e, unlike IEEE journals/conferences, places
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
@@ -2267,7 +1254,7 @@ It can be seen that the developed models and data augmentation methods are compe
 \begin{itemize}
  \item Data from multiple stations at Lascar volcano allowed us to build more generalized probabilistic models, avoiding bias when considering a single station.
  \item Data augmentation techniques are important to improve the performance metrics of deep learning models, as they allow more examples to be generated within the feature space of seismic events.
- \item Similarity and diversity metrics allowed us to analyze the characteristics of the various techniques implemented. 
+ \item Similarity and diversity metrics allowed us to analyze the characteristics of the various techniques implemented.
  \item Transfer learning helped generate models much faster than training them from scratch.
 \end{itemize}
 
@@ -2344,7 +1331,7 @@ The authors would like to thank...
 
 
 % biography section
-% 
+%
 % If you have an EPS/PDF photo (graphicx package needed) extra braces are
 % needed around the contents of the optional argument to biography to prevent
 % the LaTeX parser from getting confused when it sees the complicated
