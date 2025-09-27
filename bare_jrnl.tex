@@ -116,6 +116,7 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{subcaption}
+\usepackage{multirow}
 
 %\hypersetup{
 %  colorlinks=true,
@@ -398,19 +399,30 @@
 % was not built to handle multiple paragraphs
 %
 
+<<<<<<< HEAD
+\author{Franz~Yupanqui~Machaca\textsuperscript{a,b,c}, Claudio~Meneses~Villegas\textsuperscript{d}, and Pablo~Salazar~Reinoso\textsuperscript{b,e}
+  \\
+=======
 \author{Franz~Yupanqui~Machaca\textsuperscript{a,b,c}, Pablo~Salazar~Reinoso\textsuperscript{b,d}, and
   Claudio~Meneses~Villegas\textsuperscript{e}\\
+>>>>>>> bf6c9c54f44e7a7aebbb34a47468a340c95727ee
   \vspace{1mm}
   \begin{flushleft}
-  \small\textsuperscript{a}Programa de Doctorado en Ingeniería Sustentable, Universidad Católica del Norte, \iffalse Avenida Angamos 0610, 1270709 \fi Antofagasta, Chile\\
+  \small\textsuperscript{a}PhD in Sustainable Engineering, Universidad Católica del Norte, \iffalse Avenida Angamos 0610, 1270709 \fi Antofagasta, Chile\\
   \textsuperscript{b}Millennium Institute on Volcanic Risk Research – Ckelar Volcanoes, \iffalse Avenida Angamos 0610, 1270709 \fi Antofagasta, Chile\\
   \textsuperscript{c}4D Perceptio, La Paz, Bolivia\\
+<<<<<<< HEAD
+  \textsuperscript{d}Department of Computing and Systems Engineering, Universidad Católica del Norte, \iffalse Avenida Angamos 0610, 1270709 \fi 
+  Antofagasta, Chile\\
+  \textsuperscript{e}Department of Geological Sciences, Universidad Católica del Norte, \iffalse Avenida Angamos 0610, 1270709 \fi Antofagasta, Chile\\
+=======
   \textsuperscript{d}Department of Geological Sciences, Universidad Católica del Norte, \iffalse Avenida Angamos 0610, 1270709 \fi Antofagasta, Chile\\
   \textsuperscript{e}Department of Computing and Systems Engineering, Universidad Católica del Norte, \iffalse Avenida Angamos 0610, 1270709 \fi Antofagasta, Chile\\
+>>>>>>> bf6c9c54f44e7a7aebbb34a47468a340c95727ee
   \end{flushleft}
   \thanks{F. Yupanqui Machaca, \color{blue}\href{mailto:frayup@gmail.com}{frayup@gmail.com} }
-  \thanks{P. Salazar Reinoso, \color{blue}\href{mailto:pasalaz@ucn.cl}{pasalaz@ucn.cl} }
   \thanks{C. Meneses Villegas, \color{blue}\href{mailto:cmeneses@ucn.cl}{cmeneses@ucn.cl} }
+  \thanks{P. Salazar Reinoso, \color{blue}\href{mailto:pasalaz@ucn.cl}{pasalaz@ucn.cl} }
   \thanks{Manuscript received April 19, 2005; revised September 17, 2025.}
 }
 
@@ -496,7 +508,7 @@ Deep Learning, Transfer Learning, Data Augmentation, Machine learning classifica
 
 
 
-\section{Introduction}
+\section{Introduction} \label{introduction}
 % The very first letter is a 2 line initial drop letter followed
 % by the rest of the first word in caps.
 %
@@ -521,29 +533,36 @@ Deep Learning, Transfer Learning, Data Augmentation, Machine learning classifica
 %\hfill September 17, 2025
 
 \subsection{The problem of recognition}
-The seismic-volcanic signatures are dangerous events that happen unexpectedly, although these present some signals before they happen. In the world, these events are registered continuously by means of seismometers. Afterward, expert geophysicists take these data and classify these signals, task
-The seismic-volcanic activity has been studied for many years. Nowadays, this type of activity is registered by sensors that record signals in three dimensions. The seismic-volcanic pattern recognition process in Chile is typically done manually, although there are state-of-the-art studies that it makes automatically form \cite{salazar2022multi,salazar2020deep,malfante2018automatic,bicego2012classification,curilem2016pattern, lara2020automatic}. These studies regularly consider one channel of three available, one station, and one volcano.
-In this context, applying Machine Learning (ML) and Deep Learning (DL) techniques to the automatic classification of volcanic seismic events has become an interesting approach compared to traditional methods.
+The signatures are not dangerous, the volcanic and seismic events may be dangerous events that happen unexpectedly, although these present some signals before they happen. In the world, these events are registered continuously by means of seismometers. Afterward, expert geophysicists take these data and classify them.\\
+The seismic-volcanic activity has been studied for many years. Nowadays, this type of activity is registered by sensors that record signals in three dimensions. The seismic-volcanic pattern recognition process is typically done manually, although there are state-of-the-art studies that make the process in a semi-automatic o automatic form \cite{salazar2022multi,salazar2020deep,malfante2018automatic,bicego2012classification,curilem2016pattern, lara2020automatic}. These studies regularly consider one of the three available channels, one among several stations, and one volcano.
+In this context, classical machine learning (ML) and deep learning (DL) algorithms applied to the automatic classification of seismic-volcanic signatures is becoming an emerging research field, to overcome the limitations of manual classification.\\
+This article proposes and applies a series of data augmentation (DA) techniques to volcanic seismic events, analyzing their impact on the performance of event classification models.  A database of events collected from the Láscar volcano over an 8-month period and labelled by CKELAR-VOLCANES experts was considered. Five classes (see Table \ref{table:lascar_database}) were included according to the classification given by CKELAR-VOLCANES; see also \cite{salazar2022multi}. Given the nature of the seismic phenomena that occur in and around the volcano, the database is unbalanced, requiring a data balancing technique, which is why DA techniques were considered.
+DA techniques were applied to generate two types of datasets: real and augmented data that balance the dataset, and datasets with fully augmented data. Similarity and diversity metrics were applied to the data generated by DA techniques in order to analyse these characteristics. Classification models were trained using DL and Transfer Learning (TL) techniques. The models were evaluated using precision, accuracy, recall, F1 score, and confusion matrix metrics.\\
+Each seismic event is represented by its respective spectrogram, so that these images are processed. Using the Transfer Learning strategy, event classification models are trained, considering the pre-trained AlexNet deep artificial neural network.
+Event classification models are trained on the different datasets generated by the different Data Augmentation techniques, reviewing their performance.\\
+The results of the experiments are presented in terms of performance metrics, comparing the impact of each data augmentation method on the classification of seismic-volcanic events. The evaluation includes both models trained on real and augmented data, as well as models trained on entirely augmented datasets. The influence of similarity and diversity metrics on model generalization is also analyzed.\\
+The paper is organized into the following sections. The most recent bibliography on the subject is presented in Section \ref{literaturereview}. Section \ref{methodology} is devoted to methodology. The methods used are presented in Section \ref{methods}. The main results are shown in Section \ref{results}. Section \ref{discussion} offers a discussion on the results of the paper, and conclusions are presented in Section \ref{conclusion}.
 
+\section{Literature review} \label{literaturereview}
 \subsection{A summary of methods used in classificaction of volcanic seismic events}
-In the analysis and treatment of seismic-volcanic time signals, transformations are regularly considered that allow us to represent the observations in the domains of: time, frequency and cepstral\cite{malfante2018automatic,lara2020automatic}, which consider statistical measures, information theory, among others. Among the methods used for the analysis of this type of signals we have the Hidden Markov model (HMM)\cite{bicego2012classification,beyreuther2012constructing, carniel2014characterization} with its improvements such as the Hidden Semi-Markov Models (HSMM), the Continuous Wavelet Transform (CWT)\cite{beyreuther2012constructing} in the detection of singularities, Gaussian Mixture Model (GMM)\cite{langer2009synopsis}, and others (HMM-based generative embedding)\cite{bicego2012classification}.
+In the analysis and treatment of seismic-volcanic time signals, transformations are usually applied in order to represent the time domain observations in terms of the frequency and cepstral domains, and using statistical and information theory metrics, among others \cite{malfante2018automatic,lara2020automatic}, which consider statistical measures, information theory, among others. Among the methods used for the analysis of this type of signals the more recurrent are the Hidden Markov model (HMM)\cite{bicego2012classification,beyreuther2012constructing, carniel2014characterization} with its improvements such as the Hidden Semi-Markov Models (HSMM), the Continuous Wavelet Transform (CWT)\cite{beyreuther2012constructing} in the detection of singularities, Gaussian Mixture Model (GMM)\cite{langer2009synopsis}, and others, such as the HMM-based generative embedding \cite{bicego2012classification}.
 Currently, there are several works that propose the automatic classification of seismic-volcanic signals that consider supervised Machine Learning (ML) methods such as Support Vector Machines (SVM)\cite{malfante2018automatic,curilem2016pattern,giacco2009support,langer2009synopsis,lara2020automatic,curilem2018improving,malfante2018machine}; Multilayer Perceptron(MLP)\cite{giacco2009support,langer2009synopsis,lara2020automatic}; Random Forest\cite{malfante2018automatic,lara2020automatic,titos2019classification}; Linear Discriminant Analysis\cite{lara2020automatic}; Convolutional Neural Networks (CNN)\cite{titos2019classification,salazar2020deep,curilem2018using}; Temporal Convolutional Neural Network(TCN)\cite{titos2019classification,rodriguez2021bayesian}; Bayesian Neural Networks\cite{bueno2019volcano}; Tensor Learning Framework with Multilinear Principal Component Analysis(MPCA) and Support Tensor Machine(STM)\cite{peixoto2021tensor} techniques on multichannel and multistation data; Scalable Variational Inference for Gaussian Process (SVGP) and Deep Gaussian Processes (DGP)\cite{lopez2020acontribution}; Bag of Words in seismic document classification as a set of seismic words\cite{bicego2015volcano}.
 With unsupervised methods we have Kohonen Self-Organizing Map (SOM)\cite{langer2009synopsis,esposito2008unsupervised}, Cluster Analysis(CA)\cite{langer2009synopsis}, Balanced iterative reducing and clustering using hierarchies(BIRCH)\cite{duque2020exploring}.
 Transfer Learning (TL) was applied in the classification of volcanic seismic events using CNN\cite{mythesismaster,titos2019classification}.
-Deep Learning (DL) has been applied to seismic-volcanic signal classification, experimenting with different CNN\cite{mythesismaster} and RNN architectures\cite{salazar2020deep,ferreira2023deep,canario2020indepth}, and through Deep Gaussian Processes (DGP)\cite{lopez2020acontribution}.
-Recurrent Neural Networks (RNNs) provide real-time tracking capabilities of volcanic activity, even if the seismic sources change over time. It has been applied to seismic-volcanic signal classification, testing several architectures\cite{salazar2020deep}. In detection and classification, the following RNN architectures have been applied: vanilla-RNN, Long Short-Term Memory (LSTM), and Gated-Recurrent Unit (GRU)\cite{titos2018detection}; in \cite{rodriguez2021bayesian} vanilla-RNN and LSTM, in addition to identifying the degree of specialization of the neurons.
-Autoencoder (AE) is an excellent unsupervised learning algorithm. AE is considered a nonlinear compression structure to reduce the signal size, dimensionality reduction, towards another latent dimension. In \cite{mythesismaster} various AE architectures generated reconstructed and encoded seismic events, which were classified using different DL and TL model architectures. In \cite{rodriguez2021bayesian} AE is applied to obtain the segmentation mask of the seismic event.
-Data Augmentation (DA), which basically deals with the generation of new data from existing data, following some rules and restrictions so that they are considered equally valid as the originals. Amplitude deformation, frequency deformation, noise addition, and horizontal shift were applied to seismic signals \cite{curilem2018using}. In \cite{salazar2022multi} the importance of DA to avoid biased models in the classification of seismic-volcanic events was shown.
-In reference to volcanic seismic data, most works consider a single station channel for the classification of volcanic seismic events, but there are already some works that consider several channels and stations \cite{lara2020automatic,curilem2016pattern,maggi2017implementation,ferreira2023deep}. In addition, it is shown that the multi-station scheme is more precise than the single station \cite{titos2019classification,ferreira2023deep}.
+Deep Learning (DL) has been applied to seismic-volcanic signal classification, experimenting with different CNN\cite{mythesismaster} and Recurrent Neural Networks(RNN) architectures\cite{salazar2020deep,ferreira2023deep,canario2020indepth}, and through Deep Gaussian Processes (DGP)\cite{lopez2020acontribution}.
+RNNs provide real-time tracking capabilities of volcanic activity, even if the seismic sources change over time. It has been applied to seismic-volcanic signal classification, testing several architectures\cite{salazar2020deep}. In detection and classification, the following RNN architectures have been applied: vanilla-RNN, Long Short-Term Memory (LSTM), and Gated-Recurrent Unit (GRU)\cite{titos2018detection}; in \cite{rodriguez2021bayesian} vanilla-RNN and LSTM, in addition to identifying the degree of specialization of the neurons.
+Autoencoder (AE) is an excellent unsupervised learning algorithm. AE is considered a nonlinear compression structure to reduce the signal size, dimensionality reduction, towards another latent dimension. In \cite{mythesismaster} various AE architectures generated reconstructed and encoded seismic events, which were classified using different DL and TL model architectures. In \cite{rodriguez2021bayesian} AEs are applied to obtain the segmentation mask of the seismic event.
+DA basically involves generating new valid data from existing data, following certain rules and restrictions. Amplitude deformation, frequency deformation, noise addition, and horizontal shift were applied to seismic signals \cite{curilem2018using}. In \cite{salazar2022multi} the importance of DA to avoid biased models in the classification of seismic-volcanic events was shown.
+In reference to volcanic seismic data, most works consider a single station channel for the classification of volcanic seismic events, but other works consider several channels and stations \cite{lara2020automatic,curilem2016pattern,maggi2017implementation,ferreira2023deep}. However, \cite{titos2019classification} and \cite{ferreira2023deep} show that using a multi station scheme is more precise than a single station approach.
 
 
-\section{Methodology}
+\section{Methodology} \label{methodology}
 Currently, Machine Learning is already used for the Recognition of seismic-volcanic signal patterns.
 In fact, our previous researches developed\cite{mythesismaster,salazar2022multi} models that have implemented a new methodology for classifying these types of seismic signals by Deep Learning, Transfer Learning, and spectrograms. The rotation technique was used as a data augmentation technique for avoiding imbalanced data.
 The current research on recognizing seismic-volcanic signal patterns will consider data from the three Chilean volcanos. The Millennium Institute on Volcanic Risk Research – Ckelar Volcanoes\footnote{\href{https://ckelar.org}{\color{blue}https://ckelar.org}} monitors many of these volcanos by seismic stations provided with triaxial sensors.
 
 \subsection{Lascar volcano}
-The Lascar volcano is located in the north of Chile (23\textdegree22' S, 67 \textdegree44' W; 5592 m a.s.l.), 270 km NE from Antofagasta and 70 km SE from San Pedro de Atacama. The Millennium Institute for Volcanic Risk Research (CKELAR) has been monitoring the area using a network of 11 three-component seismic stations. Short-period 2 Hz seismometers have been continuously monitoring at 200 Hz. The database of signals was built using only the Z channel.
+The Lascar volcano is located in the north of Chile (23\textdegree22' S, 67 \textdegree44' W; 5592 m a.s.l.), 270 km NE from Antofagasta and 70 km SE from San Pedro de Atacama. CKELAR-VOLCANES has been monitoring the area using a network of 11 three-component seismic stations. Short-period 2 Hz seismometers have been continuously monitoring at 200 Hz. The database of signals was built using only the Z channel.
 \begin{figure*}
   \begin{subfigure}{0.27\textwidth}
     \footnotesize
@@ -562,21 +581,22 @@ The Lascar volcano is located in the north of Chile (23\textdegree22' S, 67 \tex
 
 
 \subsection{Lascar's database}
-The Lascar database contains 6,145 seismic events classified for geophysicist experts belonging to Ckelar. The data corresponds period between Mach to October 2018. In the next table, we show the data distribution.
+The Lascar database contains 6,145 seismic events classified for geophysicist experts belonging to CKELAR-VOLCANES. The data corresponds period between Mach to October 2018. In the next table, we show the data distribution.
 \begin{table*}
 \caption{Contribution of events from each station to the Lascar database.} % title of Table
 \centering
 \begin{adjustbox}{width=\textwidth}
-\begin{tabular}{lrrrrrrrrrrr}
+\begin{tabular}{lrrrrrrrrrrrr}
 \hline\hline %inserts double horizontal lines
-Event\textbackslash{}Station & LC01 & LC02 & LC03 & LC04 & LC05 & LC06 & LC07 & LC08 & LC09 & LC10 & B2DA \\
+Event\textbackslash{}Station & LC01 & LC02 & LC03 & LC04 & LC05 & LC06 & LC07 & LC08 & LC09 & LC10 & B2DA & Total \\
 \hline % inserts single horizontal line
-HY & 0 & 0 & 0 & 7 & 45 & 4 & 0 & 3 & 12 & 136 & 6 \\
-LP & 11 & 0 & 4 & 2 & 142 & 28 & 5 & 60 & 23 & 195 & 107 \\
-TC & 9 & 0 & 11 & 97 & 284 & 36 & 157 & 127 & 144 & 1,171 & 162 \\
-TR & 1 & 0 & 5 & 29 & 21 & 4 & 61 & 13 & 35 & 292 & 10 \\
-VT & 2 & 0 & 18 & 52 & 84 & 6 & 206 & 14 & 41 & 2,249 & 14 \\
-TOTAL & 23 & 0 & 38 & 187 & 576 & 78 & 429 & 217 & 255 & 4,043 & 299 \\
+HY & 0 & 0 & 0 & 7 & 45 & 4 & 0 & 3 & 12 & 136 & 6 & 213 \\
+LP & 11 & 0 & 4 & 2 & 142 & 28 & 5 & 60 & 23 & 195 & 107 & 577 \\
+TC & 9 & 0 & 11 & 97 & 284 & 36 & 157 & 127 & 144 & 1,171 & 162 & 2,198 \\
+TR & 1 & 0 & 5 & 29 & 21 & 4 & 61 & 13 & 35 & 292 & 10 & 471 \\
+VT & 2 & 0 & 18 & 52 & 84 & 6 & 206 & 14 & 41 & 2,249 & 14 & 2,686 \\
+\hline %inserts single line
+TOTAL & 23 & 0 & 38 & 187 & 576 & 78 & 429 & 217 & 255 & 4,043 & 299 & 6,145 \\
 \hline %inserts single line
 \end{tabular}
 \end{adjustbox}
@@ -595,6 +615,7 @@ LP & 9\% & 577 & 600 & 9 & 82.3 & 67 & 25 & 63.5 \\
 TC & 36\% & 2,198 & 670 & 9 & 78.5 & 65 & 20 & 56.2 \\
 TR & 8\% & 471 & 216 & 9 & 46.2 & 31 & 20 & 33.8 \\
 VT & 44\% & 2,686 & 189 & 5 & 19.6 & 17 & 10 & 12.3 \\
+\hline %inserts single line
 TOTAL & 100\% & 6,145 & 670 & 5 & 49.9 & 28.0 & 20 & 50.0 \\
 \hline %inserts single line
 \end{tabular}
@@ -602,7 +623,7 @@ TOTAL & 100\% & 6,145 & 670 & 5 & 49.9 & 28.0 & 20 & 50.0 \\
 \end{table*}
 
 
-\section{Methods}
+\section{Methods} \label{methods}
 We proposed a solution based on transfer learning because this helps to speed up training and improve the performance of the deep learning models \cite{titos2019classification,bueno2019volcano}, in addition to having few examples to generate the model again. For the TL, the pre -trained AlexNet\cite{krizhevsky2012imagenet} model was considered.
 The input data are generated spectrograms of the data labeled (waveforms) of each seismic event class. The processing sequence consists of five steps:
 \begin{enumerate}
@@ -728,26 +749,22 @@ Among the different classification metrics, we can mention:
 \caption{Confusion matrix.}
 \centering
 \begin{tblr}{
-  cell{1}{1} = {c=2,r=2}{}, cell{1}{3} = {c=2}{}, cell{3}{1} = {r=2}{},
+  cell{1}{3} = {c=2}{c},
+  cell{2}{3} = {c},
+  cell{2}{4} = {c},
+  cell{3}{1} = {r=2}{},
+  hline{2} = {3-4}{},
+  hline{3,5} = {-}{},
 }
-\textbf{~} &  & Predicted & \\
- \hline
- &  &
-  Positive~(P)
-   &
-  Negative~(N)
-  \\
-  \hline
-Actual &
-  Positive (P)
-   & True positive (TP) & False negative (FN)\\
- &
-  Negative (N)
-   & False positive (FP) & True negative (TN)\\
-  \hline
+% \hline
+ &  & Predicted & \\
+ &  & Positive (P) & Negative (N)\\
+Actual & Positive (P) & True positive (TP) & False negative (FN)\\
+ & Negative (N) & False positive (FP) & True negative (TN)\\
 \end{tblr}
 \label{table:confusion_matrix}
 \end{table}
+
 Where TP are true positives, TN are true negatives, FP are false positives and FN are false negatives.
  \item Recall (Sensitivity): Calculates the real quantity that the model is able to identify.
 $$Recall=\frac{TP}{TP+FN}$$
@@ -967,7 +984,7 @@ Dataset & Data augmentation & Accuracy & F1 & Recall & Precision & Cohen Kappa &
 
 
 
-\section{Results}
+\section{Results} \label{results}
 We had unbalanced data, with 3\% (HY), 9\% (LP), 36\% (TC), 8\% (TR) and 44\% (VT), see Table \ref{table:lascar_statistics}. We generate new data means, data augmentation techniques such as Rotation, Jittering, Drifting, Scaling, Flipping, Genetic Algorithms, and SpecAugment. We designed a lot of experiments based on each data augmentation method (Table \ref{table:training_statistic}). Each new balanced dataset was considered for Transfer Learning with the AlexNet pre-trained model. On the other hand, we trained several models of Deep Learning, ad hoc, with new balanced datasets.
 
 \subsection{Real}
@@ -1089,25 +1106,29 @@ Dataset & Data augmentation & {Fréchet Inception Distance\\(FID)
 \begin{table*}
 \caption{Relationship between Data Augmentation and Dataset.}
 \centering
-\begin{tabular}{clclll}
-\hline\hline %inserts double horizontal lines
-Code & \multicolumn{1}{c}{Data augmentation} & Dataset \\
+\begin{tabular}{clcc}
+\hline\hline %inserts double horizontal lines  
+  \multirow{2}{*}{Code} & \multirow{2}{*}{Data augmentation} & \multicolumn{2}{c}{ Datasets } \\
+  \cline{3-4} % inserts single horizontal line
+ &  & 
+  Real + Augmented
+   & 
+  Augmented
+   \\
 \hline % inserts single horizontal line
-N & Real dataset & i \\
-R & Rotation (5\%-25\%) & ii, iii \\
-J & Jittering (0.2) & iv, v \\
-D & Drifting (0.01-0.1) & vi, vii \\
-DD & Drifting (0.001-0.01) & viii, ix \\
-DDD & Drifting (0.0001-0.001) & x, xi \\
-G & Genetic Algorithm Segment Size(5s) Crossover Segments(3) & xii, xiii \\
-GG & Genetic Algorithm Segment Size(5s) Crossover Segments(5) & xiv, xv \\
-H & Genetic Algorithm Signal Percent(40\%) Crossover Segments(10) & xvi, xvii \\
-HH & Genetic Algorithm Signal Percent(45\%) Crossover Segments(10) & xviii, xix \\
-S & SpecAugment Frequency Percent(0\%-10\%) Frequency Masks(2) Time
-  Percent(0\%-10\%) Time Marks(2) & xx, xxi \\
-SS & SpecAugment Frequency Percent(0\%-15\%) Frequency Masks(2) Time
-  Percent(0\%-15\%) Time Marks(2) & xxii, xxiii \\
-I & Interpolation AE Signal percent(40\%-60\%) & xxiv, xv \\
+N & Real dataset & i & ~ \\
+R & Rotation (5\%-25\%) & ii & iii \\
+J & Jittering (0.2) & iv & v \\
+D & Drifting (0.01-0.1) & vi & vii \\
+DD & Drifting (0.001-0.01) & viii & ix \\
+DDD & Drifting (0.0001-0.001) & x & xi \\
+G & Genetic Algorithm Segment Size(5s) Crossover Segments(3) & xii & xiii \\
+GG & Genetic Algorithm Segment Size(5s) Crossover Segments(5) & xiv & xv \\
+H & Genetic Algorithm Signal Percent(40\%) Crossover Segments(10) & xvi & xvii \\
+HH & Genetic Algorithm Signal Percent(45\%) Crossover Segments(10) & xviii & xix \\
+S & SpecAugment Frequency Percent(0\%-10\%) Frequency Masks(2) Time Percent(0\%-10\%) Time Marks(2) & xx & xxi \\
+SS & SpecAugment Frequency Percent(0\%-15\%) Frequency Masks(2) Time Percent(0\%-15\%) Time Marks(2) & xxii & xxiii \\
+I & Interpolation AE Signal percent(40\%-60\%) & xxiv & xv \\
 \hline %inserts single line
 \end{tabular}
 \label{table:code_dataset}
@@ -1143,19 +1164,26 @@ I & Interpolation AE Signal percent(40\%-60\%) & xxiv, xv \\
 \label{fig:da_test_msssim}
 \end{figure*}
 
+\begin{figure*}
+\centering
+{\includegraphics[width=0.7\textwidth,keepaspectratio]{img/relation_index.png}}
+\caption{Index that relates model training accuracy (higher is better), model testing accuracy on real data (higher is better), and the value of the MS-SSIM metric (lower is better). \textcolor{dotgreen}{\textbf{Green}} shape indicates real dataset, \textcolor{dotred}{\textbf{red}} indicate datasets with real and augmented data, and \textcolor{dotsky}{\textbf{turquoise}} are entirely augmented datasets. The codes are described in Table \ref{table:code_dataset}.}
+\label{fig:relation_index}
+\end{figure*}
 
-\section{Discussion}
+\section{Discussion} \label{discussion}
 The various experiments in this research show the performance of the probabilistic model on unbalanced datasets. Specifically, dataset (i) produced a model biased towards the LP, TC and VT events (Table \ref{table:training_performance}).
 It can be seen that balanced datasets generate higher performance models, since they expand the examples of the event feature space. The models were then tested on real data, showing competitive levels of classification in most cases. Transfer learning allowed deep learning models to be generated in less time (Table \ref{table:training_performance}).
-In Table \ref{table:training_performance} and Table \ref{table:testing_real_dataset}. we can see that drifting data augmentation technique achieves best result in almost all of pre trained models. This can be because drifting technique covers best the data space. The best case is drifting (xi) with a drift range 0.0001 - 0.001 with an accuracy of 97.6\%, model trained over entirely augmented dataset. The next interesting result is the rotation (iii) with a range of 5\% - 25\% that achieves an accuracy of 94.2\% over another augmented dataset. In both previous cases, the F1 score metrics are similar in their accuracy respective. Although both models were generated from entirely augmented data, they show good performance in addition to the tests on real data, with accuracies of 97.2\% for (xi) and 93.7\% for (iii) (Table \ref{table:testing_real_dataset}), although the highest accuracy value is recorded in (x) with 98.3\% with real and augmented data.
-It can be observed that the dataset composed of real and augmented data (x) generated by drifting in the range of 0.0001-0.001 reaches an accuracy of 93.8\%. Then the dataset of augmented data (ix) generated by drifting in range 0.001-0.01, reaches an accuracy of 93.5\%. Then we have the augmented data dataset (xxv) generated by Autoencoder Interpolation in the range 40\%-60\%, it obtains an accuracy of 93.1\% (Table \ref{table:training_performance}). These models also show good performance in tests with real data, with accuracies of 98.3\% for (x), 93.7\% for (ix) and 80.7\% for (xxv) (Table \ref{table:testing_real_dataset}). Only the last model has a large distance between training and test accuracy on real data.
+In Table \ref{table:training_performance} and Table \ref{table:testing_real_dataset}. we can see that drifting data augmentation technique achieves best result in almost all of pre trained models. This can be because drifting technique covers best the data space. The best case is drifting (xi) with a drift range 0.0001-0.001 with an accuracy of 97.6\%, model trained over entirely augmented dataset. The next interesting result is the rotation (iii) with a range of 5\% - 25\% that achieves an accuracy of 94.2\% over another augmented dataset. In both previous cases, the F1 score metrics are similar in their accuracy respective. Although both models were generated from entirely augmented data, they show good performance in addition to the tests on real data, with accuracies of 97.2\% for (xi) and 93.7\% for (iii) (Table \ref{table:testing_real_dataset}), although the highest accuracy value is recorded in (x) with 98.3\% with real and augmented data.
+It can be observed that the dataset composed of real and augmented data (x) generated by drifting in the range of 0.0001-0.001 reaches an accuracy of 93.8\%. Then the dataset of augmented data (ix) generated by drifting in range 0.001-0.01, reaches an accuracy of 93.5\%. Then we have the augmented data dataset (xxv) generated by Autoencoder Interpolation in the range 40\%-60\%, it obtains an accuracy of 93.1\% (Table \ref{table:training_performance}). These models also show good performance in tests with real data, with accuracies of 98.3\% for (x), 93.7\% for (ix) and 80.7\% for (xxv) (Table \ref{table:testing_real_dataset}). Only the last model (xxv) has a large distance between training and test accuracy on real data.
 To obtain a generalized dataset, data from several stations were considered to generate a multi-station generalized probabilistic model. Furthermore, it was observed that models trained with completely augmented data achieved high recognition accuracy with real data in most cases (Table \ref{table:testing_real_dataset}).
-Figure \ref{fig:da_training_test} shows that drifting, rotation, interpolation, and specification have slightly better accuracy values than the other techniques. In general, the trained models perform better when tested on real data than during training.
+Figure \ref{fig:da_training_test} shows that drifting, rotation, interpolation, specaugment and jittering have slightly better accuracy values than the other techniques. In general, the trained models perform better when tested on real data than during training.
 Regarding the similarity and diversity metrics, it can be seen that the MS-SSIM values for the rotation and drifting techniques are similar, although the former shows more diversity, depending on the generation parameters (Table \ref{table:similarity_diversity_metrics}).
 It can also be seen that Jittering shows higher diversity in (v) and (iv), with MS-SSIM values of 0.26 and 0.29, respectively.
-The most similar are Interpolation (xxv) and Drifting (vi), with MS-SSIM values of 0.42 and 0.41, respectively.
+The dataset with the highest similarity and lowest diversity is Drifting (0.01-0.1) (vii) with an MS-SSIM index of 0.78, followed by Interpolation (xxv) and Drift (vi), with MS-SSIM values of 0.42 and 0.41, respectively.
 Figure \ref{fig:da_training_msssim} shows the concentration of points in terms of the value of the MS-SSIM similarity metric vs. the accuracy of the model training. Only two distant points are seen, the dataset with only real data (i), which is distant due to having a low accuracy because it is an unbalanced dataset. Another distant point is the drifting dataset (vii) with a range of 0.01-0.1 because it shows more similarity. Zooming in on Figure \ref{fig:da_training_msssim_zoom}, it can be seen that almost all the datasets have the same level of diversity, including the real dataset, but the augmented Jittering dataset (v) presents more diversity. Comparing augmented datasets with real and augmented datasets, within the same DA method, it can be seen that the augmented datasets present more diversity and training performance with Jittering, SpecAugment (xx)(xxi), and Rotation.
-In Figure \ref{fig:da_test_msssim}, some augmented and real datasets show  better diversity and testing accuracy values than the augmented datasets in the same DA method, and they are Drifting (x)(xi), rotation (ii)(iii), SpecAugment (xxii)(xxiii), Drifting (viii)(ix).
+In Figure \ref{fig:da_test_msssim}, some augmented and real datasets show  better diversity and testing accuracy values than the augmented datasets in the same DA method, and they are Drifting (x)(xi), rotation (ii)(iii), SpecAugment (xxii)(xxiii), Drifting (viii)(ix).\\
+By generating a simple index, knowing that the accuracy of the model training is better when higher, as is the accuracy of the model tests on real data, and that the value of the MS-SSIM metric is better when lower (more diversity), it can be observed (see Figure \ref{fig:relation_index}) that the models trained on the Drifting (x)(xi), Jittering (iv)(v), SpecAugment (xx)(xxi) and rotation (ii)(iii) datasets are more relevant in terms of model accuracy and dataset diversity. On the other hand, we have models with low indices, such as the Drifting dataset (vii), which is disadvantaged by its low diversity, and the real event dataset (i), because it is unbalanced.
 
 
 
@@ -1258,7 +1286,7 @@ In Figure \ref{fig:da_test_msssim}, some augmented and real datasets show  bette
 % \fnbelowfloat command of the stfloats package.
 
 
-\section{Conclusion}
+\section{Conclusion} \label{conclusion}
 In this work, several data augmentation techniques have been described, developed, and applied to seismic-volcanic signals, initially considered to balance the datasets, and subsequently to generate entirely augmented datasets. Deep learning classification models have been trained on these datasets, considering transfer learning with the pre-trained AlexNet model.
 The performance of the trained classification models has been evaluated, and it has been found that data augmentation techniques generate models with better performance.
 It was observed that the trained classification models and the data augmentation methods considered are competitive with the baseline presented in a previous work. In addition to the following results:
@@ -1355,19 +1383,14 @@ A repository on GitHub is available to verify data at: \href{https://github.com/
 earned his Master's degree in Computer Engineering from the Universidad Católica del Norte in Chile in 2023. He is currently pursuing his Ph.D. in Sustainable Engineering at the Universidad Católica del Norte, focusing on the development of advanced algorithms for seismic-volcanic signal recognition. His research interests include deep learning techniques, transfer learning, data augmentation, computational intelligence in signals, data analytics, and more.
 \end{IEEEbiography}
 
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{img/claudio.jpg}}]{Claudio~Meneses~Villegas}
+Biography text here.
+\end{IEEEbiography}
 
-% if you will not have a photo at all:
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{img/pablo.jpg}}]{Pablo~Salazar~Reinoso}
 Biography text here.
 \end{IEEEbiography}
 
-% insert where needed to balance the two columns on the last page with
-% biographies
-%\newpage
-
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{img/claudio.jpg}}]{Claudio~Meneses~Villegas}
-Biography text here.
-\end{IEEEbiography}
 
 % You can push biographies down or up by placing
 % a \vfill before or after them. The appropriate
