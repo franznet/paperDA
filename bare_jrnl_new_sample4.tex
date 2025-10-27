@@ -36,9 +36,9 @@
 
 \author{Franz~Yupanqui~Machaca\,\orcidlink{0000-0003-1149-1370}, \and Pablo~Salazar~Reinoso\,\orcidlink{0000-0002-7496-705X}, \and Claudio~Meneses~Villegas\,\orcidlink{0000-0003-1112-4925}
         % <-this % stops a space
-\thanks{Franz~Yupanqui~Machaca is with the PhD Program in Sustainable Engineering, Universidad Católica del Norte, Antofagasta 1270709, Chile, with the Millennium Institute on Volcanic Risk Research – Ckelar Volcanoes, Antofagasta 1270709, Chile, and also with the 4D Perceptio, La Paz, Bolivia (e-mail: frayup@gmail.com, franz.yupanqui@alumnos.ucn.cl).}
-\thanks{Pablo~Salazar~Reinoso is with the Department of Geological Sciences, Universidad Católica del Norte, Antofagasta 1270709, Chile, and also with the Millennium Institute on Volcanic Risk Research – Ckelar Volcanoes, Antofagasta 1270709, Chile  (e-mail: pasalaz@ucn.cl).}
-\thanks{Claudio~Meneses~Villegas is with the Department of Computing and Systems Engineering, Universidad Católica del Norte, Antofagasta 1270709, Chile  (e-mail: cmeneses@ucn.cl).}
+\thanks{Franz~Yupanqui~Machaca is with the PhD Program in Sustainable Engineering, Universidad Católica del Norte, Antofagasta 1270709, Chile, with the Millennium Institute on Volcanic Risk Research – Ckelar Volcanoes, Antofagasta 1270709, Chile, and also with the 4D Perceptio, La Paz, Bolivia (e-mail: \href{mailto:frayup@gmail.com}{frayup@gmail.com}, franz.yupanqui@alumnos.ucn.cl).}
+\thanks{Pablo~Salazar~Reinoso is with the Department of Geological Sciences, Universidad Católica del Norte, Antofagasta 1270709, Chile, and also with the Millennium Institute on Volcanic Risk Research – Ckelar Volcanoes, Antofagasta 1270709, Chile  (e-mail: \href{mailto:pasalaz@ucn.cl}{pasalaz@ucn.cl}).}
+\thanks{Claudio~Meneses~Villegas is with the Department of Computing and Systems Engineering, Universidad Católica del Norte, Antofagasta 1270709, Chile  (e-mail: \href{mailto:cmeneses@ucn.cl}{cmeneses@ucn.cl}).}
 }
 
 % The paper headers
@@ -53,9 +53,9 @@
 
 \begin{abstract}
 Effective volcano monitoring depends on quickly identifying seismic events to better grasp activity levels and issue timely warnings. Conventional approaches rely on manual analysis, which can lead to bias and demands considerable effort.
-This work pursues to characterize several data augmentation techniques in terms of similarity and diversity metrics, and evaluating their impact on the performance of classification of seismic-volcanic signatures. 
+This work seeks to characterize several data augmentation techniques in terms of similarity and diversity metrics, and evaluate their impact on the performance of classification of seismic-volcanic signatures. 
 These techniques are used to generate diverse datasets on which seismic-volcanic event classification models are trained, to analyze which techniques provide the best classification performance. 
-A primary objective of using data augmentation is to balance the dataset, ensuring greater diversity in the event feature space, and keeping a minimal similarity with the original data.
+A primary objective of using data augmentation is to balance the dataset, ensuring greater diversity in the event feature space, and maintaining a minimal similarity with the original data.
 The generated datasets are categorized into two types: (1) balanced datasets composed of real and augmented data, and 
 (2) balanced datasets composed of only augmented data. Furthermore, applying similarity and diversity metrics to the augmented data reveals that the fully augmented datasets exhibit greater diversity than the real datasets. It is also observed that several of these augmented datasets yield superior performance in the classification models. 
 \end{abstract}
@@ -64,10 +64,11 @@ The generated datasets are categorized into two types: (1) balanced datasets com
 Deep Learning, Transfer Learning, Data Augmentation, Machine Learning classification, Seismic-volcanic signals, FID, KID, MS-SSIM.
 \end{IEEEkeywords}
 
+
 \section{Introduction}\label{introduction}
 \subsection{The problem of recognition}
-The signatures are not dangerous; however, volcanic and seismic events may be dangerous events that occur unexpectedly, although they present some signals before they occur. Globally, these events are continuously registered using seismometers. Afterward, expert geophysicists classify these data.\\
-Seismic-volcanic activity has been studied for many years. Currently, this type of activity is registered by sensors that record signals in three dimensions. The seismic-volcanic pat- tern recognition process is typically done manually, although there are state-of-the-art studies that make the process in a semi-automatic o automatic form \cite{salazar2022multi,salazar2020deep,malfante2018automatic,bicego2012classification,curilem2016pattern, lara2020automatic}. These studies regularly consider one of the three available channels, one of several stations, and one volcano. In this context, classical machine learning (ML) and deep learning (DL) algorithms applied to the automatic classification of seismic-volcanic signatures are becoming an emerging research field to overcome the limitations of manual classification.\\
+\noindent The signatures are not dangerous; however, volcanic and seismic events may be dangerous and occur unexpectedly, although they present some signals before they occur. Globally, these events are continuously registered using seismometers. Afterward, expert geophysicists classify these data.\\
+Seismic-volcanic activity has been studied for many years. Currently, this type of activity is registered by sensors that record signals in three dimensions. The seismic-volcanic pat- tern recognition process is typically done manually, although there are state-of-the-art studies that perform the process in a semi-automatic or automatic manner \cite{salazar2022multi,salazar2020deep,malfante2018automatic,bicego2012classification,curilem2016pattern, lara2020automatic}. These studies regularly consider one of the three available channels, one of several stations, and one volcano. In this context, classical machine learning (ML) and deep learning (DL) algorithms applied to the automatic classification of seismic-volcanic signatures are becoming an emerging research field to overcome the limitations of manual classification.\\
 This study proposes and applies a series of data augmentation (DA) techniques to volcanic seismic events and analyzes their impact on the performance of event classification models. A database of events collected from the Lascar volcano over  an 8-month period and labelled by CKELAR-VOLCANES experts was considered. Five classes (Table \ref{table:lascar_database}) were included according to the classification given by CKELAR-VOLCANES; see also \cite{salazar2022multi}. Given the nature of the seismic phenomena that occur in and around the volcano, the database is unbalanced, requiring a data balancing technique; therefore, DA techniques were considered. DA techniques were applied to generate two types of datasets: real and augmented data that balance the dataset and datasets with fully augmented data. Similarity and diversity metrics were applied to the data generated by the DA techniques to analyze these characteristics. Classification models were trained using DL and Transfer Learning (TL) techniques. The models were evaluated using precision, accuracy, recall, F1 score, and confusion matrix metrics. \\
 Each seismic event is represented by its respective spectrogram, so that these images can be processed. Using the Transfer Learning strategy, event classification models were trained, considering the pre-trained AlexNet deep artificial neural network. Event classification models are trained on different datasets generated by different Data Augmentation techniques, and their performance is reviewed. \\
 The results of the experiments are presented in terms of performance metrics, comparing the impact of each data augmentation method on the classification of seismic-volcanic events. The evaluation included models trained on real and augmented data, as well as models trained on entirely augmented datasets. The influence of similarity and diversity metrics on model generalization was also analyzed.\\
@@ -133,59 +134,39 @@ UNet \& Semantic Segmentation(2024)\cite{espinosa2024framework} & {Nevados del C
 \label{table:stateofart-classification}
 \end{table*}
 
-\subsection{A summary of methods used in classificaction of volcanic seismic events}
-The seismic-volcanic signals are time series that are not stationary and contain information about the physical processes happening in the volcanic system. Magma movement, gas emissions, and rock fracturing are just a few of the sources that generate these signals. Understanding volcanic activity and assessing eruption risks requires the analysis of these signals.
-In the analysis and treatment of seismic-volcanic time signals, transformations are usually applied to represent the time domain observations in terms of the frequency and cepstral domains, and using statistical and information theory metrics, among others \cite{malfante2018automatic,lara2020automatic}, which consider statistical measures and information theory, among others. Among the methods used for the analysis of this type of signal, the more recurrent are the Hidden Markov model (HMM)\cite{bicego2012classification,beyreuther2012constructing, carniel2014characterization} with its improvements, such as the Hidden Semi-Markov Models (HSMM), the Continuous Wavelet Transform (CWT)\cite{beyreuther2012constructing} in the detection of singularities, Gaussian Mixture Model (GMM)\cite{langer2009synopsis}, and others, such as the HMM-based generative embedding \cite{bicego2012classification}. \\
+\subsection{A summary of methods used in classification of volcanic seismic events}
+\noindent The seismic-volcanic signals are time series that are not stationary and contain information about the physical processes occurring in the volcanic system. Magma movement, gas emissions, and rock fracturing are just a few of the sources that generate these signals. Understanding volcanic activity and assessing eruption risks requires the analysis of these signals.
+In the analysis and treatment of seismic-volcanic time signals, transformations are usually applied to represent the time domain observations in terms of the frequency and cepstral domains, and using statistical and information theory metrics, among others \cite{malfante2018automatic,lara2020automatic}. Among the methods used for the analysis of this type of signal, the most common are the Hidden Markov model (HMM)\cite{bicego2012classification,beyreuther2012constructing, carniel2014characterization} with their improvements, such as the Hidden Semi-Markov Models (HSMM), the Continuous Wavelet Transform (CWT)\cite{beyreuther2012constructing} in the detection of singularities, Gaussian Mixture Model (GMM)\cite{langer2009synopsis}, and others, such as the HMM-based generative embedding \cite{bicego2012classification}. \\
 Currently, there are several works that propose the automatic classification of seismic-volcanic signals that consider supervised Machine Learning (ML) methods such as Support Vector Machines (SVM)\cite{malfante2018automatic,curilem2016pattern,giacco2009support,langer2009synopsis,lara2020automatic,curilem2018improving,malfante2018machine}; Multilayer Perceptron(MLP)\cite{giacco2009support,langer2009synopsis,lara2020automatic}; Random Forest\cite{malfante2018automatic,lara2020automatic,titos2019classification}; Linear Discriminant Analysis\cite{lara2020automatic}; Convolutional Neural Networks (CNN)\cite{titos2019classification,salazar2020deep,curilem2018using}; Temporal Convolutional Neural Network(TCN)\cite{titos2019classification,rodriguez2021bayesian}; Bayesian Neural Networks\cite{bueno2019volcano}; Tensor Learning Framework with Multilinear Principal Component Analysis(MPCA) and Support Tensor Machine(STM)\cite{peixoto2021tensor} techniques on multichannel and multistation data; Scalable Variational Inference for Gaussian Process (SVGP) and Deep Gaussian Processes (DGP)\cite{lopez2020acontribution}; Bag of Words in seismic document classification as a set of seismic words\cite{bicego2015volcano}. \\
-With unsupervised methods we have Kohonen Self-Organizing Map (SOM)\cite{langer2009synopsis,esposito2008unsupervised}, Cluster Analysis(CA)\cite{langer2009synopsis}, Balanced iterative reducing and clustering using hierarchies(BIRCH)\cite{duque2020exploring}. \\
+Unsupervised methods include Kohonen Self-Organizing Map (SOM)\cite{langer2009synopsis,esposito2008unsupervised}, Cluster Analysis(CA)\cite{langer2009synopsis}, Balanced iterative reducing and clustering using hierarchies(BIRCH)\cite{duque2020exploring}. \\
 Transfer Learning (TL) was applied in the classification of volcanic seismic events using CNN\cite{mythesismaster,titos2019classification}. \\
 Deep Learning (DL) has been applied to seismic-volcanic signal classification, experimenting with different CNN\cite{mythesismaster} and Recurrent Neural Networks(RNN) architectures\cite{salazar2020deep,ferreira2023deep,canario2020indepth}, and through Deep Gaussian Processes (DGP)\cite{lopez2020acontribution}. \\
 RNNs provide real-time tracking capabilities for volcanic activity, even if the seismic sources change over time. It has been applied to seismic-volcanic signal classification and tested several architectures\cite{salazar2020deep}. In detection and classification, the following RNN architectures have been applied: vanilla-RNN, Long Short-Term Memory (LSTM), and Gated-Recurrent Unit (GRU)\cite{titos2018detection}; in \cite{rodriguez2021bayesian} vanilla-RNN and LSTM, in addition to identifying the degree of specialization of the neurons. \\
 An Autoencoder (AE) is an excellent unsupervised learning algorithm. The AE is considered a nonlinear compression structure that reduces the signal size and dimensionality reduction towards another latent dimension. In \cite{mythesismaster} various AE architectures generated reconstructed and encoded seismic events, which were classified using different DL and TL model architectures. In \cite{rodriguez2021bayesian} AEs were applied to obtain the segmentation mask of a seismic event. \\
 DA involves generating new valid data from existing data following certain rules and restrictions. Amplitude deformation, frequency deformation, noise addition, and horizontal shifts were applied to the seismic signals \cite{curilem2018using}. In \cite{salazar2022multi} the importance of DA in avoiding biased models in the classification of seismic-volcanic events was shown. \\
-In reference to volcanic seismic data, most studies consider a single station channel for the classification of volcanic seismic events, but other studies consider several channels and stations \cite{lara2020automatic,curilem2016pattern,maggi2017implementation,ferreira2023deep}. However, \cite{titos2019classification} and \cite{ferreira2023deep} showed that using a multi-station scheme is more precise than a single-station approach. These state of the art in seismic-volcanic signal classification is summarized in table \ref{table:stateofart-classification}.
-
+In reference to volcanic seismic data, most studies consider a single station channel for the classification of volcanic seismic events, but other studies consider several channels and stations \cite{lara2020automatic,curilem2016pattern,maggi2017implementation,ferreira2023deep}. However, \cite{titos2019classification} and \cite{ferreira2023deep} showed that using a multi-station scheme is more precise than a single-station approach. This state-of-the-art review in seismic-volcanic signal classification is summarized in Table~\ref{table:stateofart-classification}.
 
 
 \section{Methodology}\label{methodology}
-Currently, Machine Learning is used for the recognition of seismic-volcanic signal patterns.
-In fact, our previous research developed\cite{mythesismaster,salazar2022multi} models that implemented a new methodology for classifying these types of seismic signals using Deep Learning, Transfer Learning, and spectrograms. The rotation technique was used as a data augmentation technique to avoid imbalanced data.
-Current research on recognizing seismic-volcanic signal patterns considers data from a single Chilean volcano. The Millennium Institute on Volcanic Risk Research – Ckelar Volcanoes\footnote{\href{https://ckelar.org}{\color{blue}https://ckelar.org}} monitors many of these volcanos by seismic stations provided with triaxial sensors.
+\noindent Currently, Machine Learning is used for the recognition of seismic-volcanic signal patterns.
+In fact, our previous research developed\cite{mythesismaster,salazar2022multi} models that implemented a new methodology for classifying these types of seismic signals using Deep Learning, Transfer Learning, and spectrograms. The rotation technique was used as a data augmentation technique to avoid data imbalance.
+Current research on recognizing seismic-volcanic signal patterns considers data from a single Chilean volcano. The Millennium Institute on Volcanic Risk Research – Ckelar Volcanoes\footnote{\href{https://ckelar.org}{https://ckelar.org}} monitors many of these volcanoes using seismic stations equipped with triaxial sensors.
 
 \subsection{Lascar volcano}
-The Lascar volcano is located in northern Chile (23\textdegree22' S, 67 \textdegree44' W; 5592 m a.s.l.), 270 km NE from Antofagasta and 70 km SE from San Pedro de Atacama. CKELAR-VOLCANES has been monitoring the area using a network of 11 three-component seismic stations. Short-period 2 Hz seismometers were continuously monitored at 200 Hz. A signal database was built using only the Z channel. The stations are distributed around the volcano, as shown in figure \ref{fig:lascar_map}. 
+\noindent The Lascar volcano is located in northern Chile (23\textdegree22' S, 67 \textdegree44' W; 5592 m a.s.l.), 270 km NE from Antofagasta and 70 km SE from San Pedro de Atacama. CKELAR-VOLCANES has been monitoring the area using a network of 11 three-component seismic stations. Short-period 2 Hz seismometers were continuously monitored at 200 Hz. A signal database was built using only the Z channel. The stations are distributed around the volcano, as shown in Figure~\ref{fig:lascar_map}. 
 \begin{figure*}
   \subfloat[]{\includegraphics[width=0.27\linewidth]{img/lascar_ubicacion.jpg}
     \label{fig:lascar_location}} 
   \hfill
   \subfloat[]{\includegraphics[width=0.71\linewidth]{img/lascar_estaciones.png}
     \label{fig:lascar:estations}} 
-\caption{a) Location map of Lascar volcano. b) Red dots indicate the positions of the seismic stations.}
+\caption{a) Location map of Lascar volcano\cite{imgLascarWikimedia}. b) Red dots indicate the positions of the seismic stations.}
 \label{fig:lascar_map}
 \end{figure*}
 
-% \begin{figure*}
-%   \begin{subfigure}{0.27\textwidth}
-%     \footnotesize
-%     \includegraphics[width=\linewidth]{img/lascar_ubicacion.jpg}
-%     \caption{} \label{fig:lascar_location}
-%   \end{subfigure}
-%   \hspace*{\fill}
-%   \begin{subfigure}{0.71\textwidth}
-%     \footnotesize
-%     \includegraphics[width=\linewidth]{img/lascar_estaciones.png}
-%     \caption{} \label{fig:lascar:estations}
-%   \end{subfigure}
-% \caption{a) Location map of Lascar volcano. b) Red dots indicate the positions of the seismic stations.}
-% \label{fig:lascar_map}
-% \end{figure*}
-
-
-
-
 
 \subsection{Lascar's database}
-The Lascar database contains 6,145 seismic events classified by geophysicist experts belonging to CKELAR-VOLCANES. The data correspond to the period between March and October 2018. The tables \ref{table:lascar_database} and \ref{table:lascar_statistics} show the data distribution.
+\noindent The Lascar database contains 6,145 seismic events classified by geophysicist experts belonging to CKELAR-VOLCANES. The data correspond to the period between March and October 2018. The tables \ref{table:lascar_database} and \ref{table:lascar_statistics} show the data distribution.
 \begin{table*}
 \caption{Contribution of events from each station to the Lascar database.}
 \centering
@@ -228,33 +209,33 @@ TOTAL & 100\% & 6,145 & 670 & 5 & 49.9 & 28.0 & 20 & 50.0 \\
 
 
 \section{Methods}\label{methods}
-We proposed a solution based on transfer learning because this helps to speed up training and improve the performance of deep learning models \cite{titos2019classification,bueno2019volcano}, in addition to having few examples to generate the model again. For TL, the pre-trained AlexNet\cite{krizhevsky2012imagenet} model was considered.
+\noindent We proposed a solution based on transfer learning because this helps to speed up training and improve the performance of deep learning models \cite{titos2019classification,bueno2019volcano}, in addition to the limited number of examples available for training the model from scratch. For TL, the pre-trained AlexNet\cite{krizhevsky2012imagenet} model was considered.
 The input data were spectrograms of the data labeled (waveforms) for each seismic event class. The processing sequence consists of five steps.
 \begin{enumerate}
- \item describe the pre-process that applies to the time series (earthquake);
- \item detail the generation of spectrograms from the earthquakes labeled;
- \item use the data augmentation technique to increase the amount of data in training and test data sets;
- \item the construction of the prediction model; and, finally,
- \item estimate the performance of the model.
+ \item describing the pre-process applied to the time series (earthquake);
+ \item detailing the generation of spectrograms from the labeled earthquakes;
+ \item using data augmentation techniques to increase the amount of data in the training and test datasets;
+ \item constructing the prediction model; and, finally,
+ \item estimating the performance of the model.
 \end{enumerate}
 In the following paragraphs, each step is explained.
 \begin{enumerate}
-  \item Pre-processing: The seismometers register data at 200Hz, 500Hz or 100Hz. We resampled at 100 Hz each event. The data were centered at the mean. A Butterworth Highpass filter was applied at 1 Hz. Then, we applied a Butterworth Bandpass filter at frequencies between 1 Hz and 10 Hz. The next step was to normalize the data. This pre-processing task was performed using the ObsPy Python toolbox \cite{beyreuther2010obspy}.
+  \item Pre-processing: The seismometers record data at 200Hz, 500Hz or 100Hz. We resampled each event at 100 Hz. The data were centered at the mean. A Butterworth Highpass filter was applied at 1 Hz. Then, we applied a Butterworth Bandpass filter at frequencies between 1 Hz and 10 Hz. The next step was to normalize the data. This pre-processing task was performed using the ObsPy Python toolbox \cite{beyreuther2010obspy}.
   \item The spectrograms were calculated applying a short-time Fourier transform with formula
   \begin{equation}
     S[x(t)](n,k)=\left|\sum_{m=0}^{N-1}x(m)\cdot w(m-n)\cdot e^{i2\pi mk}\right|^2
   \end{equation}
 where x(t) and y(t) represent the seismic signal and short-time Fourier transform sliding window, respectively. The sliding window size was set to 1 with a 95\% overlap. The generated spectrograms are RGB images of $224\times224$ pixels.
-  \item Data augmentation techniques are considered to avoid unbalanced dataset, and for that reason to avoid biased models. Many data augmentation techniques were implemented, which are presented in the next section.
-  \item The pre-trained model AlexNet\cite{krizhevsky2012imagenet} was considered for the being retrained over spectrograms, using the scheme of transfer learning.
-  \item The model performance is evaluated for metrics described in the next sections. The metrics is implemented on the TorchMetrics Python toolbox\footnote{\href{https://lightning.ai/docs/torchmetrics/stable}{\color{blue}https://lightning.ai/docs/torchmetrics/stable}}.
+  \item Data augmentation techniques were considered to avoid unbalanced datasets and prevent biased models. Many data augmentation techniques were implemented, which are presented in the next section.
+  \item The pre-trained model AlexNet\cite{krizhevsky2012imagenet} was considered for retraining over spectrograms, using the scheme of transfer learning.
+  \item The model performance was evaluated using metrics described in the following sections. The metrics are implemented on the TorchMetrics Python toolbox\footnote{\href{https://lightning.ai/docs/torchmetrics/stable}{https://lightning.ai/docs/torchmetrics/stable}}.
 \end{enumerate}
-Codes for reproducing our method are available at.\footnote{\href{https://github.com/franznet/daseismicsignals}{\color{blue}https://github.com/franznet/daseismicsignals}}
+Codes for reproducing our method are available at.\footnote{\href{https://github.com/franznet/daseismicsignals}{https://github.com/franznet/daseismicsignals}}
 
 
 
 \subsection{Data Similarity}
-Kullback–Leibler divergence (KL divergence) has been used to measure similarities between synthetic and real datasets, and is defined as
+\noindent Kullback–Leibler divergence (KL divergence) has been used to measure similarities between synthetic and real datasets, and is defined as
 \begin{equation}
 D_{KL}(P||Q)=\sum_{i}P(x_i )\cdot log\left(\frac{P(x_i)}{Q(x_i)}\right)
 \end{equation}
@@ -361,7 +342,7 @@ Interpolation with an autoencoder refers to the process of using the decoder $g_
 
 
 \subsection{Model performance - Metrics}
-Machine learning metrics make it possible to quantify the performance of a trained model and to compare it with other generated models or with the current baseline. Evaluating the learning algorithm is a crucial part of any project. While classification accuracy is most commonly used to assess model performance, it is insufficient on its own to provide a complete evaluation. Therefore, various complementary evaluation metrics are considered.
+\noindent Machine learning metrics make it possible to quantify the performance of a trained model and to compare it with other generated models or with the current baseline. Evaluating the learning algorithm is a crucial part of any project. While classification accuracy is most commonly used to assess model performance, it is insufficient on its own to provide a complete evaluation. Therefore, various complementary evaluation metrics are considered.
 Among the different classification metrics, we can mention:
 \begin{itemize}
 \item \textit{Confusion Matrix:} A tabular representation of true labels versus model predictions. Although not a performance metric in itself, it serves as the foundation for deriving many other evaluation measures (Table \ref{table:confusion_matrix}).
@@ -410,13 +391,13 @@ Specificity=\frac{TN}{TN+FP}
 \kappa = \frac{p_0-p_e}{1-p_e}
 \end{equation}
 
-where $p_0$ is the empirical probability of agreement and $p_e$ is the expected agreement when both annotators assign labels randomly\footnote{\href{https://lightning.ai/docs/torchmetrics/stable/classification/cohen_kappa.html}{\color{blue}https://lightning.ai/docs/torchmetrics/stable/classification/cohen\_kappa.html}}.
+where $p_0$ is the empirical probability of agreement and $p_e$ is the expected agreement when both annotators assign labels randomly\footnote{\href{https://lightning.ai/docs/torchmetrics/stable/classification/cohen_kappa.html}{https://lightning.ai/docs/torchmetrics/stable/classification/cohen\_kappa.html}}.
 \end{itemize}
 
 
 \subsection{Evaluation metrics for data augmentation}
-Data augmentation techniques have become a widely adopted strategy for improving the generalization capacity of deep neural networks. An important consideration in this context is the balance between similarity and diversity in the data \cite{yang2024investigating}. Similarity reflects the degree of resemblance between the original and augmented data, whereas diversity captures the variation in complexity introduced through augmentation. 
-These metrics were calculated using the framework Python TorchMetrics\footnote{\href{https://lightning.ai/docs/torchmetrics/stable}{\color{blue}https://lightning.ai/docs/torchmetrics/stable}} de Lightning AI, the creators of PyTorch Lightning.
+\noindent Data augmentation techniques have become a widely adopted strategy for improving the generalization capacity of deep neural networks. An important consideration in this context is the balance between similarity and diversity in the data \cite{yang2024investigating}. Similarity reflects the degree of resemblance between the original and augmented data, whereas diversity captures the variation in complexity introduced through augmentation. 
+These metrics were calculated using the framework Python TorchMetrics\footnote{\href{https://lightning.ai/docs/torchmetrics/stable}{https://lightning.ai/docs/torchmetrics/stable}} de Lightning AI, the creators of PyTorch Lightning.
 
 
 \subsubsection{Fréchet Inception Distance (FID)}
@@ -693,34 +674,34 @@ xxv & Interpolation AE Signal percent(40\%-60\%) & 80.7 & 71.0 & 80.7 & 67.5 & 6
 
 
 \section{Results}\label{results}
-We identified an unbalanced data distribution, comprising 3\% (HY), 9\% (LP), 36\% (TC), 8\% (TR), and 44\% (VT), as shown in table \ref{table:lascar_statistics}. To address this imbalance, we generated new data through various data augmentation techniques, including rotation, jittering, drifting, scaling, flipping, genetic algorithms, SpecAugment, and interpolation. Each data augmentation (DA) technique was applied to balance the existing dataset, resulting in datasets containing 13,430 events (2,686 examples per class). Furthermore, we created balanced datasets consisting solely of augmented data, ensuring an equal number of events, as detailed in table \ref{table:training_statistic}.
-Multiple experiments were designed based on each dataset generated by the respective DA methods (Table \ref{table:training_performance}). For each newly balanced dataset, a deep learning model was trained utilizing a transfer learning strategy with the pre-trained AlexNet model. For each balanced dataset generated using the aforementioned data augmentation techniques, a deep learning model was trained using a transfer learning strategy with the pre-trained AlexNet model. The training process involved 20 epochs, a mini-batch size of 8, and an initial learning rate of 0.00005 with optimization algorithm Adam. The training and validation performance scores for selected experiments are illustrated in figure \ref{fig:da_training}. The trained models were subsequently evaluated using the original unbalanced dataset of 6,145 events, with the results presented in table \ref{table:testing_real_dataset}. Additionally, confusion matrices for selected experiments are depicted in figure \ref{fig:da_confusion_matrix}.
+\noindent We identified an unbalanced data distribution, consisting of 3\% (HY), 9\% (LP), 36\% (TC), 8\% (TR), and 44\% (VT), as shown in Table~\ref{table:lascar_statistics}. To address this imbalance, we generated new data through various data augmentation techniques, such as Rotation, Jittering, Drifting, Scaling, Flipping, Genetic Algorithms, SpecAugment, and Interpolation. Each data augmentation technique was applied to balance the existing dataset, resulting in a dataset containing 13,430 events (2,686 examples per class). Furthermore, we created balanced datasets consisting solely of augmented data, ensuring an equal number of events, as detailed in Table~\ref{table:training_statistic}.
+Multiple experiments were designed based on each dataset generated by the respective DA methods (Table \ref{table:training_performance}). For each resulting balanced dataset, a deep learning model was trained via a transfer learning strategy using the pre-trained AlexNet model. The training process involved 20 epochs, a mini-batch size of 8, and an initial learning rate of 0.00005 and the Adam optimization algorithm. The training and validation performance scores for selected experiments are illustrated in Figure~\ref{fig:da_training}. The trained models were subsequently evaluated using the original unbalanced dataset of 6,145 events, with the results presented in Table~\ref{table:testing_real_dataset}. Additionally, confusion matrices for selected experiments are depicted in Figure~\ref{fig:da_confusion_matrix}.
 
 \subsection{Real}
-The original unbalanced dataset, comprising 6,145 events, was utilized, divided into proportions of 80\% for training and 20\% for testing the model. This experiment aims to highlight the influence of an unbalanced dataset on the accuracy of the probabilistic model.
+\noindent The original unbalanced dataset, comprising 6,145 events, was utilized, divided into proportions of 80\% for training and 20\% for testing the model. This experiment aims to highlight the influence of an unbalanced dataset on the accuracy of the probabilistic model.
 \subsection{Rotation}
-The original unbalanced dataset of 6,145 events has been considered and subsequently balanced using rotation as a data augmentation technique. This approach increases the number of examples from underrepresented classes, resulting in a balanced dataset of 13,430 events. This dataset will demonstrate the effectiveness of this data augmentation technique in constructing a classification model.
+\noindent The original unbalanced dataset of 6,145 events has been considered and subsequently balanced using rotation as a data augmentation technique. This approach increases the number of examples from underrepresented classes, resulting in a balanced dataset of 13,430 events. This dataset will demonstrate the effectiveness of this data augmentation technique in constructing a classification model.
 Additionally, a balanced dataset consisting solely of 13,430 augmented events was generated, with 2,686 examples for each class, for comparative purposes.
 The rotation parameters employed ranged from 5\% to 25\%, utilizing random rotation axes (start, center, and end) without repetition.
 \subsection{Jittering}
-The original unbalanced dataset, comprising 6,145 events, was utilized, and data augmentation techniques were applied to achieve balance by increasing the number of examples from underrepresented classes. This process resulted in a balanced dataset of 13,430 events.
-The parameters employed include Gaussian noise, following a distribution of \(N(\mu=0, \sigma=0.2)\). Additionally, a balanced dataset of 13,430 events was generated entirely from augmented data.
+\noindent The original unbalanced dataset, comprising 6,145 events, was utilized, and data augmentation techniques were applied to achieve balance by increasing the number of examples from underrepresented classes. This process resulted in a balanced dataset of 13,430 events.
+The parameters employed include Gaussian noise, distributed as \(N(\mu=0,\sigma=0.2)\). Additionally, a balanced dataset of 13,430 events was generated entirely from augmented data.
 \subsection{Drifting}
-The original unbalanced dataset of 6,145 events was considered, and the data augmentation technique was applied in a manner that balanced the dataset by increasing examples from underrepresented classes, yielding a total of 13,430 events.
+\noindent The original unbalanced dataset of 6,145 events was considered, and the data augmentation technique was applied in a manner that balanced the dataset by increasing examples from underrepresented classes, yielding a total of 13,430 events.
 The parameters utilized include random values sampled from defined real intervals \([a,b]\). Similarly, a balanced dataset consisting exclusively of 13,430 augmented events was generated.
 \subsection{Genetic Algorithm}
-Utilizing the data augmentation technique of Genetic Algorithms, a balanced dataset of 13,430 augmented events was generated, comprising 2,686 examples for each class. Various values for the signal proportion parameters of the parent events, as well as the number of crossover segments, were considered for generating the new dataset. This dataset aims to demonstrate the effectiveness of this data augmentation technique in developing the model.
+\noindent Utilizing the data augmentation technique of Genetic Algorithms, a balanced dataset of 13,430 augmented events was generated, comprising 2,686 examples for each class. Various values for the signal proportion parameters of the parent events, as well as the number of crossover segments, were considered for generating the new dataset. This dataset aims to demonstrate the effectiveness of this data augmentation technique in developing the model.
 This data augmentation technique includes two variants:
 \begin{itemize}
   \item \textit{Without Time Adjustment:} In this variant, the parents are segmented into the specified number of crossover segments, with crossover occurring at defined times. The parameters used include three crossover segments, each lasting 5 seconds.
   \item \textit{With Time Adjustment:} In this variant, both the number of crossover segments and the signal proportion for the crossover are defined. The segment times are calculated proportionally for both parents.
 \end{itemize}
 \subsection{SpecAugment}
-Using the SpecAugment data augmentation technique, a balanced dataset of 13,430 augmented events was generated, comprising 2,686 examples for each class. This dataset aims to demonstrate the effectiveness of this data augmentation technique in developing the model. To generate the new dataset, different values for the maximum percentage parameters of each time and frequency mask were considered, along with the number of masks applied.
+\noindent Using the SpecAugment data augmentation technique, a balanced dataset of 13,430 augmented events was generated, comprising 2,686 examples for each class. This dataset aims to demonstrate the effectiveness of this data augmentation technique in developing the model. To generate the new dataset, different values for the maximum percentage parameters of each time and frequency mask were considered, along with the number of masks applied.
 The parameters employed include two time and frequency masks, each covering 10\% of the signal.
 \subsection{Interpolation AEs}
-This technique was utilized to generate a balanced dataset of 13,430 purely augmented events.
-For this technique, a randomly selected parameter \(\alpha \in \left[0.4, 0.6\right]\) was used in conjunction with a specifically designed convolutional autoencoder to reconstruct the interpolated signal, as illustrated in figure \ref{fig:cae_interpolation}.
+\noindent This technique was utilized to generate a balanced dataset of 13,430 purely augmented events.
+For this technique, a randomly selected parameter \(\alpha \in \left[0.4, 0.6\right]\) was used in conjunction with a specifically designed convolutional autoencoder to reconstruct the interpolated signal, as illustrated in Figure~\ref{fig:cae_interpolation}.
 
 \begin{figure}[h]
 \centering
@@ -734,22 +715,22 @@ For this technique, a randomly selected parameter \(\alpha \in \left[0.4, 0.6\ri
 \begin{figure*}[!t]
 \centering
 {\includegraphics[width=1.00\textwidth,keepaspectratio]{img/curvas_entrenamiento.png}}
-\caption{Training and validation performance scores using transfer learning with AlexNet. Loss and accuracy in training and testing of the experiment on the dataset: a) Drifting Drift(0.001-0.01)(Real + Augmented)(viii), b) Drifting Drift(0.001-0.01)(Augmented)(ix), c) SpecAugment Frequency Percent(0\%-10\%) Frequency Masks(2) Time Percent(0\%-10\%) Time Marks(2)(Augmented)(xxi), and d) Interpolation AE Signal Percent(40\%-60\%)(Augmented)(xxv).}
+\caption{Training and validation performance scores using transfer learning with AlexNet. Loss and accuracy in training and testing of the experiment on the dataset: a) Drifting Drift(0.001-0.01)(Real+Augmented)(viii), b) Drifting Drift(0.001-0.01)(Augmented)(ix), c) SpecAugment Frequency Percent(0\%-10\%) Frequency Masks(2) Time Percent(0\%-10\%) Time Marks(2)(Augmented)(xxi), and d) Interpolation AE Signal Percent(40\%-60\%)(Augmented)(xxv).}
 \label{fig:da_training}
 \end{figure*}
 
 \begin{figure*}[!t]
 \centering
 {\includegraphics[width=1.00\textwidth,keepaspectratio]{img/matriz_confusion.png}}
-\caption{Normalized and non-normalized confusion matrix of model training using transfer learning with AlexNet on the dataset: a) Drifting Drift(0.001-0.01)(Real + Augmented)(viii), b) Drifting Drift(0.001-0.01)(Augmented)(ix), c) SpecAugment Frequency Percent(0\%-10\%) Frequency Masks(2) Time Percent(0\%-10\%) Time Marks(2)(Augmented)(xxi), and d) Interpolation AE Signal Percent(40\%-60\%)(Augmented)(xxv).}
+\caption{Normalized and non-normalized confusion matrix of model training using transfer learning with AlexNet on the dataset: a) Drifting Drift(0.001-0.01)(Real+Augmented)(viii), b) Drifting Drift(0.001-0.01)(Augmented)(ix), c) SpecAugment Frequency Percent(0\%-10\%) Frequency Masks(2) Time Percent(0\%-10\%) Time Marks(2)(Augmented)(xxi), and d) Interpolation AE Signal Percent(40\%-60\%)(Augmented)(xxv).}
 \label{fig:da_confusion_matrix}
 \end{figure*}
 
-The experimental evidence underscores the importance of data augmentation techniques in enhancing the precision of deep learning models. Models trained without these data augmentation techniques exhibited low precision, as illustrated in table \ref{table:training_statistic}.
+The experimental evidence underscores the importance of data augmentation techniques in enhancing the precision of deep learning models. Models trained without these data augmentation techniques exhibited low precision, as illustrated in Table~\ref{table:training_statistic}.
 To compare our models with the state-of-the-art, we considered performance metrics, including accuracy, precision, recall, specificity, and F1 score.\\
 
 \subsection{Diversity and Similarity Metrics}
-The diversity and similarity metrics are calculated by comparing two datasets and the same event type. This metric is called an \textit{internal} diversity and similarity metric if only the internal data of the dataset are considered for the comparison(Table \ref{table:internal_similarity_diversity_metrics}). Depending on the dataset type, the following cases apply:
+\noindent The diversity and similarity metrics are calculated by comparing two datasets and the same event type. This metric is called an \textit{internal} diversity and similarity metric if only the internal data of the dataset are considered for the comparison(Table \ref{table:internal_similarity_diversity_metrics}). Depending on the dataset type, the following cases apply:
 \begin{itemize}
 \item \textit{Real + augmented:} Since the VT event has sufficient examples and does not require augmented data to balance the dataset, this metric is not calculated for this specific event due to the lack of comparison data. For the other events, the comparison is made between real and augmented data.
 \item \textit{Augmented:} Since all data is augmented, it is divided into two distinct subsets. The subsequent analysis and comparison are then conducted between these two resulting subsets.
@@ -757,8 +738,9 @@ The diversity and similarity metrics are calculated by comparing two datasets an
 It is called an \textit{external} diversity and similarity metric if the comparison is made between two datasets, event by event. The datasets considered for this comparison are the study dataset and the real dataset (Table \ref{table:external_similarity_diversity_metrics}).
 
 \subsection{Performace Score}
-By generating a simple score that accounts for model training accuracy (higher value is better), model test accuracy on real data (higher value is better), and the MS-SSIM metric value (lower value is better, indicating greater diversity), we define the Performance Score ($PS$) as follows:
+\noindent By generating a simple score that accounts for model training accuracy (higher value is better), model test accuracy on real data (higher value is better), and the MS-SSIM metric value (lower value is better, indicating greater diversity), we define the Performance Score ($PS$) as follows:
 \begin{equation}
+\label{eq_ps}
 PS = \frac{A_{tr}+2\cdot A_{te}+(1 - MS\text{-}SSIM)}{4}
 \end{equation}
 where $A_{tr}$ is the model training accuracy, $A_{te}$ is the model test accuracy on real data, and $MS\text{-}SSIM$ is the metric value. All components, $A_{tr}$, $A_{te}$ and $MS\text{-}SSIM$, are defined within the range $\left[0, 1\right]$. The model test accuracy ($A_{te}$) was assigned a higher weight (2x) due to its direct relationship with the model's generalization ability. For the calculation of this score, the \textit{external} MS-SSIM metric was selected because it considers the entire real dataset for its computation.
@@ -950,14 +932,14 @@ xxv & Interpolation AE Signal percent(40\%-60\%) & 0.37 & 0.44 & 0.35 & 0.33 & 0
 \begin{figure}[!t]
 \centering
 {\includegraphics[width=0.49\textwidth,keepaspectratio]{img/entrenamiento_prueba.png}}
-\caption{Accuracy of model training and testing on real data. The \textcolor{dotgreen}{green} shape indicates real dataset with 62.8\% of accuracy (which is not visible because the segment with accuracy$\ge$82\% is displayed), \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in table \ref{table:code_dataset}.}
+\caption{Accuracy of model training and testing on real data. The \textcolor{dotgreen}{green} shape indicates real dataset with 62.8\% of accuracy (which is not visible because the segment with accuracy$\ge$82\% is displayed), \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in Table~\ref{table:code_dataset}.}
 \label{fig:da_training_test}
 \end{figure}
 
 \begin{figure}[!t]
 \centering
 {\includegraphics[width=0.49\textwidth,keepaspectratio]{img/entrenamiento_msssim_interno.png}}
-\caption{Accuracy of model training and internal MS-SSIM metric. The \textcolor{dotgreen}{green} shape indicates real dataset, \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in table \ref{table:code_dataset}.
+\caption{Accuracy of model training and internal MS-SSIM metric. The \textcolor{dotgreen}{green} shape indicates real dataset, \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in Table~\ref{table:code_dataset}.
 }
 \label{fig:da_training_msssim_interno}
 \end{figure}
@@ -965,21 +947,21 @@ xxv & Interpolation AE Signal percent(40\%-60\%) & 0.37 & 0.44 & 0.35 & 0.33 & 0
 \begin{figure}[!t]
 \centering
 {\includegraphics[width=0.49\textwidth,keepaspectratio]{img/entrenamiento_msssim_interno_zoom.png}}
-\caption{Zooming at figure of model training accuracy and internal MS-SSIM metric. The \textcolor{dotgreen}{green} shape indicates real dataset with 62.8\% of accuracy (which is not visible because the segment with accuracy$\ge$82\% is displayed), \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in table \ref{table:code_dataset}.}
+\caption{Zooming at figure of model training accuracy and internal MS-SSIM metric. The \textcolor{dotgreen}{green} shape indicates real dataset with 62.8\% of accuracy (which is not visible because the segment with accuracy$\ge$82\% is displayed), \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in Table~\ref{table:code_dataset}.}
 \label{fig:da_training_msssim_interno_zoom}
 \end{figure}
 
 \begin{figure}[!t]
 \centering
 {\includegraphics[width=0.49\textwidth,keepaspectratio]{img/prueba_msssim_interno.png}}
-\caption{Accuracy of model testing and internal MS-SSIM metric. The \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in table \ref{table:code_dataset}.}
+\caption{Accuracy of model testing and internal MS-SSIM metric. The \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in Table~\ref{table:code_dataset}.}
 \label{fig:da_test_msssim_interno}
 \end{figure}
 
 \begin{figure}[!t]
 \centering
 {\includegraphics[width=0.49\textwidth,keepaspectratio]{img/entrenamiento_msssim_externo.png}}
-\caption{Accuracy of model training and external MS-SSIM metric. The \textcolor{dotgreen}{green} shape indicates real dataset, \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in table \ref{table:code_dataset}.
+\caption{Accuracy of model training and external MS-SSIM metric. The \textcolor{dotgreen}{green} shape indicates real dataset, \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in Table~\ref{table:code_dataset}.
 }
 \label{fig:da_training_msssim_externo}
 \end{figure}
@@ -987,50 +969,49 @@ xxv & Interpolation AE Signal percent(40\%-60\%) & 0.37 & 0.44 & 0.35 & 0.33 & 0
 \begin{figure}[!t]
 \centering
 {\includegraphics[width=0.49\textwidth,keepaspectratio]{img/entrenamiento_msssim_externo_zoom.png}}
-\caption{Zooming at figure of model training accuracy and external MS-SSIM metric. The \textcolor{dotgreen}{green} shape indicates real dataset with 62.8\% of accuracy (which is not visible because the segment with accuracy$\ge$80\% is displayed), \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in table \ref{table:code_dataset}.}
+\caption{Zooming at figure of model training accuracy and external MS-SSIM metric. The \textcolor{dotgreen}{green} shape indicates real dataset with 62.8\% of accuracy (which is not visible because the segment with accuracy$\ge$80\% is displayed), \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in Table~\ref{table:code_dataset}.}
 \label{fig:da_training_msssim_externo_zoom}
 \end{figure}
 
 \begin{figure}[!t]
 \centering
 {\includegraphics[width=0.49\textwidth,keepaspectratio]{img/prueba_msssim_externo.png}}
-\caption{Accuracy of model testing and external MS-SSIM metric. The \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in table \ref{table:code_dataset}.}
+\caption{Accuracy of model testing and external MS-SSIM metric. The \textcolor{dotred}{red} circles indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} squares are entirely augmented datasets. The codes are described in Table~\ref{table:code_dataset}.}
 \label{fig:da_test_msssim_externo}
 \end{figure}
 
 \begin{figure*}[!t]
 \centering
 {\includegraphics[width=0.8\textwidth,keepaspectratio]{img/relation_index.png}}
-\caption{Performance Score (PS) values on the different datasets (higher is better). The \textcolor{dotgreen}{green} bar indicates real dataset, the \textcolor{dotred}{red} bars indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} bars indicate datasets with only augmented data. The codes are described in table \ref{table:code_dataset}.}
+\caption{Performance Score (PS) values on the different datasets (higher is better). The \textcolor{dotgreen}{green} bar indicates real dataset, the \textcolor{dotred}{red} bars indicate datasets with real and augmented data, and \textcolor{dotsky}{turquoise} bars indicate datasets with only augmented data. The codes are described in Table~\ref{table:code_dataset}.}
 \label{fig:relation_index}
 \end{figure*}
 
 
 \section{Discussion}\label{discussion}
-The various experiments conducted in this research highlight the performance of the probabilistic model on unbalanced datasets. Specifically, dataset (i) produced a model biased toward the LP, TC, and VT events, as shown in table \ref{table:training_performance}.
-The results indicate that balanced datasets yield higher-performing models, as they expand the examples within the event feature space. The models were subsequently tested on real data, demonstrating competitive classification levels in most cases. Transfer learning facilitated the development of deep learning models in a reduced timeframe, as evidenced in table \ref{table:training_performance}.
-In tables \ref{table:training_performance} and \ref{table:testing_real_dataset}, it is evident that the Drifting data augmentation technique achieved the best results across nearly all pre-trained models. This success may be attributed to the Drifting technique's ability to effectively cover the data space. The most notable result is from Drifting (xi), which, with a drift range of 0.0001-0.001, achieved an accuracy of 97.6\% over an entirely augmented dataset. An additional noteworthy result is the Rotation (iii) technique, which, with a range of 5\%-25\%, achieved an accuracy of 94.2\% on another augmented dataset.
-In both cases, the F1 score metrics closely correspond to their respective accuracies. Although both models were derived from entirely augmented data, they performed well in real data tests, achieving accuracies of 97.2\% for (xi) and 93.7\% for (iii) (Table \ref{table:testing_real_dataset}). However, the highest accuracy of 98.3\% was recorded for model (x), which utilized both real and augmented data.
-It can be observed that the dataset composed of real and augmented data (x) generated by Drifting in the range of 0.0001-0.001 reaches an accuracy of 93.8\%. Then the dataset of augmented data (ix) generated by Drifting in range 0.001-0.01, reaches an accuracy of 93.5\%. Then we have the augmented data dataset (xxv) generated by Autoencoder Interpolation in the range 40\%-60\%, it obtains an accuracy of 93.1\% (Table \ref{table:training_performance}). These models also show good performance in tests with real data, with accuracies of 98.3\% for (x), 93.7\% for (ix) and 80.7\% for (xxv) (Table \ref{table:testing_real_dataset}). Only the last model (xxv) has a large distance between training and test accuracy on real data.
-To obtain a generalized dataset, data from several stations were considered to generate a multi-station generalized probabilistic model. Furthermore, it was observed that models trained with completely augmented data achieved high recognition accuracy with real data in most cases (Table \ref{table:testing_real_dataset}).
+\noindent The various experiments conducted in this research highlight the performance of the probabilistic model on unbalanced datasets. Specifically, Real dataset (i) produced a model biased toward the LP, TC, and VT events, as shown in Table~\ref{table:training_performance}.
+The results indicate that balanced datasets yield higher-performing models, as they expand the examples within the event feature space. The models were subsequently tested on real data, demonstrating competitive classification levels in most cases. Transfer learning facilitated the development of deep learning models in a reduced timeframe, as evidenced in Table~\ref{table:training_performance}.
+In tables \ref{table:training_performance} and \ref{table:testing_real_dataset}, it is evident that the Drifting data augmentation technique achieved the best results across almost all pre-trained models. This success may be attributed to the Drifting technique's ability to effectively cover the data space. The most notable result is from Drifting (Augmented)(xi), which, with a drift range of 0.0001-0.001, achieved an accuracy of 97.6\% over an entirely augmented dataset. An additional noteworthy result is the Rotation (Augmented)(iii) technique, which, with a range of 5\%-25\%, achieved an accuracy of 94.2\% on another augmented dataset.
+In both cases, the F1 score metrics closely correspond to their respective accuracies. Although both models were derived from entirely augmented data, they also performed well in real data tests, achieving accuracies of 97.2\% for Drifting (Augmented)(xi) and 93.7\% for Rotation (Augmented)(iii) (Table \ref{table:testing_real_dataset}). However, in tests on real data, the Drifting (Real+Augmented)(x) model achieved the highest accuracy (98.3\%), using both real and augmented data. Furthermore, this dataset (Real+Augmented)(x), generated by Drifting in the range of 0.0001 to 0.001, achieved an accuracy of 93.8\% during model training. Then the dataset of augmented data (ix) generated by Drifting in the range 0.001-0.01, reached an accuracy of 93.5\%. Then we have the augmented data dataset (xxv) generated by Autoencoder Interpolation in the range 40\%-60\%, it obtained an accuracy of 93.1\% (Table \ref{table:training_performance}). These models also show good performance in tests with real data, with accuracies of 98.3\% for Drifting (Real+Augmented)(x), 93.7\% for Drifting (Augmented)(ix) and 80.7\% for Interpolation (Augmented)(xxv) (Table \ref{table:testing_real_dataset}). Only the last Interpolation model (Augmented)(xxv) has a large gap between training and test accuracy on real data.
+To obtain a generalized dataset, data from several stations was considered to generate a multi-station generalized probabilistic model. Furthermore, it was observed that models trained with completely augmented data achieved high recognition accuracy with real data in most cases (Table \ref{table:testing_real_dataset}).
 Figure \ref{fig:da_training_test} shows that Drifting, Rotation, Interpolation, SpecAugment and Jittering have slightly better accuracy values than the other techniques. In general, the trained models perform better when tested on real data than during training. \\
 
 Regarding the similarity and diversity metrics, initially in the \textit{internal} MS-SSIM, it can be seen that the values for the Rotation and Drifting techniques are similar, although the former shows more diversity, depending on the generation parameters (Table \ref{table:internal_similarity_diversity_metrics}).
-It can also be observed that Jittering exhibits higher diversity in datasets (v) and (iv), with MS-SSIM values of 0.26 and 0.29, respectively.
-The dataset with the highest similarity and lowest diversity is Drifting (0.01-0.1) (vii), which has an MS-SSIM index of 0.78. This is followed by Interpolation (xxv) and Drifting (vi), with MS-SSIM values of 0.42 and 0.41, respectively.
-Figure \ref{fig:da_training_msssim_interno} illustrates the concentration of points representing the MS-SSIM similarity metric against the accuracy of model training. Notably, two distant points are evident: the dataset comprising only real data (i), which has low accuracy due to being unbalanced, and the drifting dataset (vii) with a range of 0.01-0.1, which shows higher similarity. Expanding on this, figure \ref{fig:da_training_msssim_interno_zoom}, it is clear that almost all datasets demonstrate similar levels of diversity, including the real dataset; however, the augmented Jittering dataset (v) shows greater diversity.
-When comparing augmented datasets with real and augmented datasets within the same data augmentation (DA) method, it can be noted that augmented datasets exhibit more diversity and superior training performance, especially with Jittering, SpecAugment (xx, xxii), and Rotation.
-In figure \ref{fig:da_test_msssim_interno}, certain augmented and real datasets demonstrate better diversity and testing accuracy values compared to their counterparts within the same DA method. Notable examples include Drifting (x, xi), Rotation (ii, iii), and SpecAugment (xxii, xxiii).\\
+It can also be observed that Jittering exhibits higher diversity in datasets (Augmented)(v) and (Real+Augmented)(iv), with MS-SSIM values of 0.26 and 0.29, respectively.
+The dataset with the highest similarity and lowest diversity is Drifting (0.01-0.1)(Augmented)(vii), which has an MS-SSIM index of 0.78. This is followed by Interpolation (Augmented)(xxv) and Drifting (Real+Augmented)(vi), with MS-SSIM values of 0.42 and 0.41, respectively.
+Figure \ref{fig:da_training_msssim_interno} illustrates the concentration of points representing the MS-SSIM similarity metric versus the accuracy of model training. Notably, two distant points are evident: the dataset comprising only real data (i), which has low accuracy due to being unbalanced, and the Drifting dataset (Augmented)(vii) with a range of 0.01-0.1, which shows higher similarity. Zooming in on this in Figure~\ref{fig:da_training_msssim_interno_zoom}, it is clear that almost all datasets demonstrate similar levels of diversity, including the real dataset; however, the augmented Jittering dataset (v) shows greater diversity.
+When comparing datasets composed only of augmented data with those containing both real and augmented data (using the same data augmentation method), the former, in addition to presenting greater or similar diversity, lead to superior training performance, especially with Jittering (Augmented)(v), SpecAugment (Augmented)(xxi) and Rotation (Augmented)(iii).
+In Figure~\ref{fig:da_test_msssim_interno}, certain augmented and real datasets demonstrate better diversity and testing accuracy values compared to their counterparts within the same DA method. Notable examples include Drifting (x, xi), Rotation (ii, iii), and SpecAugment (xxii, xxiii).\\
 
-Regarding the \textit{external} similarity and diversity metrics, table \ref{table:external_similarity_diversity_metrics} shows that the real dataset exhibits perfect similarity (Figure~\ref{fig:da_training_msssim_externo}). This result is expected since the dataset is being compared against itself.
-Figure \ref{fig:da_training_msssim_externo_zoom} illustrates the distribution of points according to the MS-SSIM metric plotted against the model's training accuracy. The point corresponding to the real dataset (i) is noticeable, displaying low accuracy due to its imbalance and perfect similarity. Two distinct groups are also observable:
+Regarding the \textit{external} similarity and diversity metrics, Table~\ref{table:external_similarity_diversity_metrics} shows that the Real dataset exhibits perfect similarity (Figure~\ref{fig:da_training_msssim_externo}). This result is expected since the dataset is being compared against itself.
+Figure \ref{fig:da_training_msssim_externo_zoom} illustrates the distribution of points according to the MS-SSIM metric plotted against the model's training accuracy. The point corresponding to the Real dataset (i) is noticeable, displaying low accuracy due to its imbalance and perfect similarity. Two distinct groups are also observable:
 \begin{itemize}
-\item The first group comprises datasets that combine real and augmented data, exhibiting MS-SSIM values in the range of 0.5 to 0.55. Two cases fall outside of this range: the Drifting dataset (vi), which shows the greatest similarity with an MS-SSIM value of 0.552, and the Jittering dataset (iv), which shows the greatest diversity for this group, with a value of 0.49.
-\item The second group corresponds to the fully augmented datasets, which demonstrate greater diversity than the first group. The MS-SSIM value for this group ranges from 0.3 to 0.4. Two cases fall outside this range: the Drifting dataset (vii), with an MS-SSIM value of 0.401, representing the least diversity within the group, and the Jittering dataset (v), with a value of 0.28, which shows the greatest diversity for this group and of all.
+\item The first group comprises datasets that combine real and augmented data, exhibiting MS-SSIM values in the range of 0.5 to 0.55. Two cases fall outside of this range: the Drifting dataset (Real+Augmented)(vi), which shows the greatest similarity with an MS-SSIM value of 0.552, and the Jittering dataset (Real+Augmented)(iv), which shows the greatest diversity for this group, with a value of 0.49.
+\item The second group corresponds to the fully augmented datasets, which demonstrate greater diversity than the first group. The MS-SSIM value for this group ranges from 0.3 to 0.4. Two cases fall outside this range: the Drifting dataset (Augmented)(vii), with an MS-SSIM value of 0.401, representing the least diversity within the group, and the Jittering dataset (Augmented)(v), with a value of 0.28, which shows the greatest diversity in this group and overall.
 \end{itemize}
-In figure \ref{fig:da_test_msssim_externo}, a similar configuration of two groups is observed, with one group being more concentrated than the other. The most compact group corresponds to the real and augmented datasets, which exhibit less diversity than the second group.\\
+In Figure~\ref{fig:da_test_msssim_externo}, a similar configuration of two groups is observed, with one group being more concentrated than the other. The most compact group corresponds to the real and augmented datasets, which exhibit less diversity than the second group.\\
 
-Regarding model performance, the Performance Score (PS), which incorporates the model training accuracy, the model testing accuracy on real data, and the MS-SSIM metric, should be examined. Figure \ref{fig:relation_index} shows that models trained on the Drifting (xi), Jittering (v), SpecAugment (xxi), and Drifting (ix) datasets exhibit the highest PS values, making them the most relevant in terms of the trade-off between model accuracy and dataset diversity. In contrast, models with low PS values, such as the Drifting dataset (vii) and the real event dataset (i), are negatively impacted by their lower diversity and imbalanced nature, respectively. This analysis conclusively demonstrates the extent to which data augmentation (DA) techniques and the inherent diversity of the dataset contribute to model performance.
+Regarding model performance, the Performance Score (PS), which incorporates the model training accuracy, the model testing accuracy on real data, and the MS-SSIM metric, should be examined. Figure \ref{fig:relation_index} shows that models trained on the Drifting (Augmented)(xi), Jittering (Augmented)(v), SpecAugment (Augmented)(xxi), and Drifting (Augmented)(ix) fully augmented datasets exhibit the highest PS values, making them the most relevant in terms of the trade-off between model accuracy and dataset diversity. In contrast, models with low PS values, such as the Drifting fully augmented dataset (Augmented)(vii) and the real event dataset (i), are negatively impacted by their lower diversity and imbalanced nature, respectively. This analysis conclusively demonstrates the extent to which data augmentation techniques and the inherent diversity of the dataset contributes to model performance.
 
 
 % needed in second column of first page if using \IEEEpubid
@@ -1133,34 +1114,35 @@ Regarding model performance, the Performance Score (PS), which incorporates the 
 
 
 \section{Conclusion}\label{conclusion}
-In this work, several data augmentation techniques are applied to the classification of seismic-volcanic signals. Initially, these techniques were employed to balance the datasets and subsequently to generate whole datasets. Deep learning classification models were then trained on these datasets, utilizing transfer learning with the pre-trained AlexNet model.
+\noindent In this work, several data augmentation techniques are applied to the classification of seismic-volcanic signals. Initially, these techniques were employed to balance the datasets and subsequently to generate fully augmented datasets. Deep learning classification models were then trained on these datasets, utilizing transfer learning with the pre-trained AlexNet model.
 The performance of the trained classification models was evaluated, revealing that data augmentation techniques enhance model performance.
-It was observed that the trained classification models, in conjunction with the considered data augmentation methods, are competitive with the baseline presented in previous research. Additionally, the following results were achieved:
+It was observed that the trained classification models, in conjunction with the considered data augmentation methods, are competitive with the baselines presented in previous research. Additionally, the following results were achieved:
 \begin{itemize}
-\item The integration of data from multiple stations on the Lascar volcano facilitated the construction of more generalized probabilistic models, thereby mitigating biases associated with individual stations through various data augmentation techniques.
+\item The integration of data from multiple stations on the Lascar volcano facilitated the construction of more generalizable probabilistic models, thereby mitigating biases associated with individual stations through various data augmentation techniques.
 \item Data augmentation techniques significantly improve the performance metrics of deep learning models, as they enable the generation of additional examples within the feature space of volcanic seismic events.
 \item Similarity and diversity metrics were considered to analyze these characteristics in the datasets generated by the various data augmentation techniques presented, in addition to the performance of the models.
 \item The presented data augmentation techniques generate data with greater diversity, and in several cases, models with better performance.
-\item Transfer learning significantly expedited the generation of deep learning models compared to training from scratch.
+\item Transfer learning significantly accelerated the generation of deep learning models compared to training from scratch.
 \end{itemize}
-The findings of this work can be used to improve the performance of deep learning models in seismic-volcanic signal recognition, considering the data augmentation techniques presented. Furthermore, the results indicate that models trained exclusively on augmented datasets show excellent performance when tested with real data, in addition to exhibiting diversity, which represents a substantial contribution to seismic-volcanic signal recognition.
-A repository is available on GitHub for data verification at: \href{https://github.com/franznet/daseismicsignals}{\color{blue}https://github.com/franznet/daseismicsignals}.
+The findings of this work can be used to improve the performance of deep learning models in seismic-volcanic signal recognition, considering the data augmentation techniques presented. Furthermore, the results indicate that models trained exclusively on augmented datasets show excellent performance when tested with real data, in addition to exhibiting diversity. This finding represents a substantial contribution to seismic-volcanic signal recognition.
+A repository is available on GitHub for data verification at: \href{https://github.com/franznet/daseismicsignals}{https://github.com/franznet/daseismicsignals}.
+
 
 \section{Future Work}\label{future_work}
-Future research could focus on optimizing the parameters of existing data augmentation methods to improve model performance. Furthermore, evaluating the effectiveness of these techniques on different types of seismic events and with varying levels of noise would provide deeper insight into their applicability. \\
-The Performance Score was calculated based on three components: the model training accuracy, the model test accuracy on real data, and the MS-SSIM diversity of the dataset. Initially, any constants for each component were defined to facilitate model comparison. However, a hyperparameter could be incorporated to appropriately weight these components when calculating the score.\\
+\noindent Future research could focus on optimizing the parameters of existing data augmentation methods to improve model performance. Furthermore, evaluating the effectiveness of these techniques on different types of seismic events and with varying levels of noise would provide deeper insight into their applicability. \\
+The Performance Score was calculated based on three components: the model training accuracy, the model test accuracy on real data, and the MS-SSIM diversity of the dataset. In our initial calculation (Eq. \ref{eq_ps}), specific constants were defined to facilitate model comparison. However, a hyperparameter could be incorporated to appropriately weigh these components when calculating the score.\\
 To improve model performance, it is essential to quantify the relationship between model accuracy and the diversity generated by the data augmentation method. Specifically, this requires determining the gain in accuracy relative to the variation in dataset diversity.\\
-Explore a methodology to formulate conditions that verify whether a data augmentation technique increases dataset diversity to safe levels without compromising class separation.\\
+Exploring a methodology to formulate conditions that determine whether a data augmentation technique increases dataset diversity to safe levels without compromising class separation.\\
 Integrating these data augmentation strategies with other machine learning approaches, such as ensemble learning or reinforcement learning, could lead to the development of more robust and accurate models for seismic-volcanic signal recognition.\\ 
 Finally, a large dataset could be generated using various data augmentation techniques from different channels, stations, and volcanoes.
 \\
 \\
-\textit{Data availability.} The data are registered by \href{https://doi.org/10.5281/Zenodo.6001869}{\color{blue}https://doi.org/10.5281/Zenodo.6001869} (Salazar et al., 2022). These can also be found in the link: \href{https://zenodo.org/record/6001870#.YkGXKffQ-Xl}{\color{blue}https://zenodo.org/record/6001870\#.YkGXKffQ-Xl} (last access: 24 February 2023).
 \\
-
-
+\textit{Data availability.} The data are registered by \href{https://doi.org/10.5281/Zenodo.6001869}{https://doi.org/10.5281/Zenodo.6001869} (Salazar et al., 2022). These can also be found in the link: \href{https://zenodo.org/record/6001870#.YkGXKffQ-Xl}{https://zenodo.org/record/6001870\#.YkGXKffQ-Xl} (last access: 24 February 2023).
+\\
 \section*{Acknowledgments}
-We express our acknowledgements to the CKELAR-VOLCANES team.
+\noindent We express our acknowledgements to the CKELAR-VOLCANES team.\\
+I acknowledge having used Google Gemini (\href{https://gemini.google.com/share/949a14a2c496}{https://gemini.google.com/share/949a14a2c496}) to correct lexical and syntactical errors in the text, as well as to improve the academic tone of this work. The results were used to improve the draft. I used the suggestions to correct some aspects of the text and improve the overall tone of the work.
 
 
 
